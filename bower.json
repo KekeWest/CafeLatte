@@ -1,0 +1,20 @@
+{
+  "name": "frontweb",
+  "version": "0.0.0",
+  "authors": [
+    ""
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "backbone": "~1.2.1",
+    "jquery": "~2.1.4",
+    "requirejs": "~2.1.20"
+  }
+}

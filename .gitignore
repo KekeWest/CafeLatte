@@ -1,0 +1,12 @@
+.gradle/
+.sass-cache/
+.settings/
+bin/
+build/
+node_modules/
+.classpath
+.project
+.springBeans
+src/main/resources/static/css
+src/main/resources/static/js
+*.swp
