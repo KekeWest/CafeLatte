@@ -1,4 +1,4 @@
-package com.keke.config;
+package cafelatte.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
-import com.keke.wshandler.WebSocketHandler;
+import cafelatte.wshandler.WebSocketHandler;
 
 /**
  * WebSocket用のコンフィグ
@@ -16,9 +16,10 @@ import com.keke.wshandler.WebSocketHandler;
 public class WebSocketConfig implements WebSocketConfigurer {
 
     @Autowired
-    private WebSocketHandler wsHandler;
+    protected WebSocketHandler wsHandler;
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(wsHandler, "/echo");
+        registry.addHandler(wsHandler, "/websocket");
     }
+
 }

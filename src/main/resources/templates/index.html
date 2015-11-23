@@ -6,7 +6,7 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript">
             $(function(){
-                var ws = new WebSocket("ws://192.168.1.21:9000/echo");
+                var ws = new WebSocket("ws://" + location.hostname + ":9000/websocket");
                 ws.onopen = function(){
                 };
                 ws.onclose = function(){
@@ -28,7 +28,7 @@
     <body>
         <div id="result"></div>
         <form id="form" action="#">
-            <input type="text" id="message" />
+            <textarea id="message" style="width: 285px; height: 342px;"></textarea>
             <input type="submit" value="送信" />
         </form>
     </body>
