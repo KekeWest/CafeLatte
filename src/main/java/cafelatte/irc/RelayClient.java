@@ -3,15 +3,10 @@ package cafelatte.irc;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import lombok.Getter;
 
 
 public class RelayClient {
-
-	private static final Logger logger = LoggerFactory.getLogger(RelayClient.class);
 
 	@Getter
 	protected APIConverter apiConverter;
