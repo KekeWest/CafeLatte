@@ -1,0 +1,3 @@
+[submodule "pircbotx"]
+	path = pircbotx
+	url = https://github.com/KekeWest/pircbotx.git

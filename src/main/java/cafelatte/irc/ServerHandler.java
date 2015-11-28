@@ -17,10 +17,9 @@ public class ServerHandler extends CommonHandler {
 
 
 	public void connectServer(ConnectServerDTO dto) {
-		Configuration<PircBotX> config = new Configuration.Builder<PircBotX>()
+		Configuration config = new Configuration.Builder()
 				.setName(dto.nickName)
-				.setServerHostname(dto.serverAddr)
-				.setServerPort(dto.serverPort)
+				.addServer(dto.serverAddr, dto.serverPort)
 				.addListener(relayClient.getIrcListener())
 				.buildConfiguration();
 

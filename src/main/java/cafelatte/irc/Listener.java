@@ -1,12 +1,17 @@
 package cafelatte.irc;
 
+import java.io.IOException;
+
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 import org.pircbotx.hooks.ListenerAdapter;
+import org.pircbotx.hooks.events.ConnectErrorEvent;
 import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.DisconnectEvent;
+import org.pircbotx.hooks.events.InputEvent;
 import org.pircbotx.hooks.events.JoinEvent;
 import org.pircbotx.hooks.events.MessageEvent;
+import org.pircbotx.hooks.events.OutputEvent;
 import org.pircbotx.hooks.events.PartEvent;
 import org.pircbotx.hooks.types.GenericChannelEvent;
 import org.pircbotx.hooks.types.GenericChannelUserEvent;
@@ -18,12 +23,14 @@ import cafelatte.dto.irc.ws.message.request.ConnectServerDTO;
 import cafelatte.dto.irc.ws.message.response.ConnectServerErrorDTO;
 import cafelatte.dto.irc.ws.message.response.ConnectedServerDTO;
 import cafelatte.dto.irc.ws.message.response.DisconnectedServerDTO;
+import cafelatte.dto.irc.ws.message.response.InputRawLineDTO;
 import cafelatte.dto.irc.ws.message.response.JoinedChannelDTO;
+import cafelatte.dto.irc.ws.message.response.OutputRawLineDTO;
 import cafelatte.dto.irc.ws.message.response.PartedChannelDTO;
 import cafelatte.dto.irc.ws.message.response.ReceivedMessageDTO;
 import cafelatte.dto.irc.ws.message.response.ResponseServerIdDTO;
 
-public class Listener extends ListenerAdapter<PircBotX> {
+public class Listener extends ListenerAdapter {
 
 	protected APIConverter apiConverter;
 
@@ -38,52 +45,66 @@ public class Listener extends ListenerAdapter<PircBotX> {
 		sendWSMessage(resDto);
 	}
 
-	public void connectServerError(Exception ex, PircBotX bot) {
+	@Override
+	public void onConnectError(ConnectErrorEvent event) {
 		ConnectServerErrorDTO dto = new ConnectServerErrorDTO();
-		dto.statusCode = 4001;
-		dto.statusMessage = ex.getMessage();
-		dto.serverId = bot.getBotId();
+		if (event.getException() instanceof IOException) {
+			dto.statusCode = 4001;
+		} else if (event.getException() instanceof IrcException) {
+			dto.statusCode = 4011;
+		}
+		dto.statusMessage = event.getException().getMessage();
+		dto.serverId = event.getBot().getBotId();
 		sendWSMessage(dto);
+
 	}
 
-	public void connectServerError(IrcException ex, PircBotX bot) {
-		ConnectServerErrorDTO dto = new ConnectServerErrorDTO();
-		dto.statusCode = 4011;
-		dto.statusMessage = ex.getMessage();
-		dto.serverId = bot.getBotId();
+	@Override
+	public void onInput(InputEvent event) {
+		InputRawLineDTO dto = new InputRawLineDTO();
+		dto.serverId = event.getBot().getBotId();
+		dto.rawLine = event.getRawLine();
 		sendWSMessage(dto);
 	}
 
 	@Override
-	public void onConnect(ConnectEvent<PircBotX> event) {
+	public void onOutput(OutputEvent event) {
+		OutputRawLineDTO dto = new OutputRawLineDTO();
+		dto.serverId = event.getBot().getBotId();
+		dto.rawLine = event.getRawLine();
+		sendWSMessage(dto);
+	}
+
+	@Override
+	public void onConnect(ConnectEvent event) {
 		ConnectedServerDTO dto = new ConnectedServerDTO();
 		dto.serverId = event.getBot().getBotId();
 		sendWSMessage(dto);
 	}
 
 	@Override
-	public void onDisconnect(DisconnectEvent<PircBotX> event) {
+	public void onDisconnect(DisconnectEvent event) {
 		DisconnectedServerDTO dto = new DisconnectedServerDTO();
 		dto.serverId = event.getBot().getBotId();
 		sendWSMessage(dto);
 	}
 
 	@Override
-	public void onJoin(JoinEvent<PircBotX> event) {
+	public void onJoin(JoinEvent event) {
 		JoinedChannelDTO dto = new JoinedChannelDTO();
 		setChannelUserDTO(dto, event);
 		sendWSMessage(dto);
 	}
 
 	@Override
-	public void onPart(PartEvent<PircBotX> event) {
+	public void onPart(PartEvent event) {
 		PartedChannelDTO dto = new PartedChannelDTO();
 		setChannelUserDTO(dto, event);
 		sendWSMessage(dto);
 	}
 
 	@Override
-	public void onMessage(MessageEvent<PircBotX> event) {
+	public void onMessage(MessageEvent event) {
 		ReceivedMessageDTO dto = new ReceivedMessageDTO();
 		setChannelNameDTO(dto, event);
 		dto.user = event.getUser().getNick();
@@ -95,12 +116,12 @@ public class Listener extends ListenerAdapter<PircBotX> {
 		apiConverter.sendWSMessage(dto);
 	}
 
-	protected void setChannelNameDTO(ChannelNameDTO dto, GenericChannelEvent<PircBotX> event) {
+	protected void setChannelNameDTO(ChannelNameDTO dto, GenericChannelEvent event) {
 		dto.serverId = event.getBot().getBotId();
 		dto.channel = event.getChannel().getName();
 	}
 
-	protected void setChannelUserDTO(ChannelUserDTO dto, GenericChannelUserEvent<PircBotX> event) {
+	protected void setChannelUserDTO(ChannelUserDTO dto, GenericChannelUserEvent event) {
 		setChannelNameDTO(dto, event);
 		dto.nickName = event.getUser().getNick();
 	}

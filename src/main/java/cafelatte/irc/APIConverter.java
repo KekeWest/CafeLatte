@@ -33,10 +33,8 @@ public class APIConverter {
 	public void sendWSMessage(WSMessageDTO dto) {
 		if (!wsSession.isOpen()) return;
 		try {
-
 			String jsonStr = objMapper.writeValueAsString(dto);
 			wsSession.sendMessage(new TextMessage(jsonStr));
-
 		} catch (IllegalStateException iex) {
 			if (iex.getMessage().equals("The remote endpoint was in state [TEXT_PARTIAL_WRITING] which is an invalid state for called method")) {
 				sendWSMessage(dto);

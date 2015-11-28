@@ -3,6 +3,8 @@ package cafelatte.irc;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.pircbotx.MultiBotManager;
+
 import lombok.Getter;
 
 
@@ -32,7 +34,7 @@ public class RelayClient {
 		ircListener = new Listener(apiConverter);
 		ircConfig = new Config();
 
-		serverManager = new MultiBotManager(ircListener);
+		serverManager = new MultiBotManager();
 		serverManager.start();
 
 		server = new ServerHandler(this);
