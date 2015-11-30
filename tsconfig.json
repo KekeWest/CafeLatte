@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {},
+  "filesGlob": [
+    "./**/*.ts",
+    "!./node_modules/**/*.ts"
+  ],
+  "files": [
+    "./front_src/main.ts",
+    "./front_src/require.config.ts",
+    "./front_src/typings/backbone/backbone.d.ts",
+    "./front_src/typings/jquery/jquery.d.ts",
+    "./front_src/typings/jst/jst.d.ts",
+    "./front_src/typings/requirejs/require.d.ts",
+    "./front_src/typings/tsd.d.ts",
+    "./front_src/typings/underscore/underscore.d.ts",
+    "./front_src/util/Environment.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}
