@@ -1,11 +1,13 @@
 require.config({
 
-  baseUrl: "./dist/js",
+  baseUrl: "./js",
 
   paths: {
-    jquery: "../../bower_components/jquery/dist/jquery.min",
-    underscore: "../../bower_components/underscore/underscore",
-    backbone: "../../bower_components/backbone/backbone"
+    jquery: "./bower_components/jquery/dist/jquery.min",
+    jquery_ui: "./bower_components/jquery-ui/jquery-ui.min",
+    jquery_sidebar: "./bower_components/simple-sidebar/dist/jquery.simple-sidebar.min",
+    underscore: "./bower_components/underscore/underscore",
+    backbone: "./bower_components/backbone/backbone"
   },
 
   shim: {
@@ -14,6 +16,14 @@ require.config({
     },
     jst: {
       exports: "JST"
+    },
+    jquery_ui: {
+      exports: "$",
+      deps: ["jquery"]
+    },
+    jquery_sidebar: {
+      exports: "$",
+      deps: ["jquery_ui"]
     }
   }
 

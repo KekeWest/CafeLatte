@@ -1,0 +1,36 @@
+.right-sidebar-container {
+  background-color: $color-chocolate;
+  float: right;
+  width: $sidebar-width;
+  margin-left: -1 * $sidebar-width;
+  height: 100%;
+}
+
+.channel-list {
+  margin-bottom: 40px;
+
+  &__label {
+    @include right-sidebar-label;
+  }
+}
+
+.channels {
+
+  &__channel {
+    padding: 3px 0px 3px 0px;
+    margin: 0px 10px 0px 10px;
+    color: $color-beige-2;
+    font-size: 18px;
+
+    &:hover {
+      background-color: $color-chocolate-hover;
+    }
+  }
+}
+
+.user-list {
+
+  &__label {
+    @include right-sidebar-label;
+  }
+}

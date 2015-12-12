@@ -1,0 +1,23 @@
+// http://www.colourlovers.com/palette/3435008/LS_TA_Wedding
+$color-chocolate: #5E3929; // chocolate pudding
+$color-burlywood: #A37E58; // milk chocolate shell
+$color-beige: #EFEDBD; // khaki
+$color-pink: #ED6A64; // pink soda pop
+$color-green: #9DCE5C; // Go ahead
+
+$color-beige-2: #FFFEED;
+$color-chocolate-hover: #715447;
+
+
+$sidebar-width: 200px;
+
+
+@mixin right-sidebar-label {
+  margin: 8px;
+  font-size: 26px;
+  color: $color-burlywood;
+  padding-bottom: 4px;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: $color-burlywood;
+}
