@@ -17,6 +17,7 @@
     "jquery": "2.1.4",
     "requirejs": "2.1.20",
     "jquery-ui": "jqueryui#1.11.4",
-    "simple-sidebar": "2.2.0"
+    "simple-sidebar": "2.2.0",
+    "semantic": "semantic-ui#2.1.6"
   }
 }

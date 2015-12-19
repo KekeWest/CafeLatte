@@ -14,6 +14,7 @@
     "./front_src/typings/jqueryui/jqueryui.d.ts",
     "./front_src/typings/jst/jst.d.ts",
     "./front_src/typings/requirejs/require.d.ts",
+    "./front_src/typings/semantic_ui/semantic_ui.d.ts",
     "./front_src/typings/tsd.d.ts",
     "./front_src/typings/underscore/underscore.d.ts",
     "./front_src/util/Environment.ts",

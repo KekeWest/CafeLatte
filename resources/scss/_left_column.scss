@@ -11,8 +11,35 @@
 
 .chat-container {
   height: 65%;
+  position: relative;
+}
+
+.input-container {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 .global-msg-container {
   height: 35%;
+}
+
+
+.ui.form.input-area .input-area {
+    &__message-input {
+      padding: 5px;
+      margin: 5px 5px 5px 15px;
+      width: calc(100% - 130px);
+    }
+
+    &__send-button {
+      margin: 5px 5px 5px 5px;
+      height: 30px;
+      width: 60px;
+      padding: 0px 0px 0px 0px;
+
+      &:focus {
+        background-color: #00B5AD;
+      }
+    }
 }
