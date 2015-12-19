@@ -11,6 +11,7 @@ class BaseView extends Backbone.View<Backbone.Model> {
   constructor(options?: any) {
     super(options);
     this._bindSubView();
+    this.events = this._setEvents();
   }
 
   public render(): BaseView {
@@ -31,6 +32,10 @@ class BaseView extends Backbone.View<Backbone.Model> {
     } else {
       return false;
     }
+  }
+
+  protected _setEvents(): any {
+    return {};
   }
 
   protected _renderSubView(): void {

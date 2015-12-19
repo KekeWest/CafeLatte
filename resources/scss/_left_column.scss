@@ -24,12 +24,44 @@
   height: 35%;
 }
 
+.chat-messagelist {
+  height: 100%;
+}
 
-.ui.form.input-area .input-area {
+.chat-message {
+  padding: 2px 10px;
+
+  &__header {
+
+  }
+
+  &__nick {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+
+  &__datetime {
+    font-size: 12px;
+    color: $color-cyan;
+  }
+
+  &__body {
+    padding: 2px 10px;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+}
+
+.ui.form.input-area {
+  border-bottom: 1px solid $color-border-gray;
+
+  .input-area {
     &__message-input {
       padding: 5px;
       margin: 5px 5px 5px 15px;
       width: calc(100% - 130px);
+      resize: none;
     }
 
     &__send-button {
@@ -38,8 +70,14 @@
       width: 60px;
       padding: 0px 0px 0px 0px;
 
-      &:focus {
-        background-color: #00B5AD;
+      &:focus,
+      &:hover {
+        background-color: $color-cyan;
+      }
+
+      &:active {
+        background-color: $color-darkcyan;
       }
     }
+  }
 }

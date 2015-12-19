@@ -4,9 +4,12 @@ $color-burlywood: #A37E58; // milk chocolate shell
 $color-beige: #EFEDBD; // khaki
 $color-pink: #ED6A64; // pink soda pop
 $color-green: #9DCE5C; // Go ahead
+$color-cyan: #00B5AD;
+$color-darkcyan: #008A84;
 
 $color-beige-2: #FFFEED;
 $color-chocolate-hover: #715447;
+$color-border-gray: #BFBFBF;
 
 
 $sidebar-width: 200px;
@@ -17,7 +20,7 @@ $sidebar-width: 200px;
   font-size: 26px;
   color: $color-burlywood;
   padding-bottom: 4px;
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: $color-burlywood;
 }

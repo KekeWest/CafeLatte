@@ -36,7 +36,7 @@ class LeftColumnView extends BaseView {
   }
 
   protected _setResizable(): void {
-    $(".chat-container").resizable({
+    this._chatView.$el.resizable({
       containment: ".left-col-container",
       handles: "s",
       resize: this._resizeGlobalMsgContainer.bind(this),

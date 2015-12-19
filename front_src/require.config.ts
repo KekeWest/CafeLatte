@@ -3,10 +3,10 @@ require.config({
   baseUrl: "./js",
 
   paths: {
-    jquery: "./bower_components/jquery/dist/jquery.min",
-    jquery_ui: "./bower_components/jquery-ui/jquery-ui.min",
-    semantic_ui: "./bower_components/semantic/dist/semantic.min",
-    jquery_sidebar: "./bower_components/simple-sidebar/dist/jquery.simple-sidebar.min",
+    jquery: "./bower_components/jquery/dist/jquery",
+    jquery_ui: "./bower_components/jquery-ui/jquery-ui",
+    semantic_ui: "./bower_components/semantic/dist/semantic",
+    jquery_sidebar: "./bower_components/simple-sidebar/dist/jquery.simple-sidebar",
     underscore: "./bower_components/underscore/underscore",
     backbone: "./bower_components/backbone/backbone"
   },
