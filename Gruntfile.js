@@ -81,8 +81,24 @@ module.exports = function(grunt) {
       }
     },
 
+    watch: {
+      typescript: {
+        tasks: "ts-build-fast",
+        files: ["front_src/**/*.ts"]
+      },
+      jst: {
+        tasks: "jst:compile",
+        files: ["front_src/template/**/*.html"]
+      },
+      sass: {
+        tasks: "compass:compile",
+        files: ["resources/scss/**/*.scss"]
+      }
+    }
+
   });
 
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-typescript');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-tslint');
@@ -92,7 +108,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-tsd');
 
 
-  grunt.registerTask("build",
+  grunt.registerTask("build-all",
     [
       "tslint:ts",
       "jst:compile",
@@ -102,5 +118,11 @@ module.exports = function(grunt) {
     ]
   );
 
-};
+  grunt.registerTask("ts-build-fast",
+    [
+      "tslint:ts",
+      "typescript:compile",
+    ]
+  );
 
+};

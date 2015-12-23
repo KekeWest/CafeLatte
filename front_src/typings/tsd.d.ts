@@ -5,3 +5,4 @@
 /// <reference path="requirejs/require.d.ts" />
 /// <reference path="jst/jst.d.ts" />
 /// <reference path="jqueryui/jqueryui.d.ts" />
+/// <reference path="mCustomScrollbar/mCustomScrollbar.d.ts" />

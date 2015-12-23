@@ -13,6 +13,7 @@
     "./front_src/typings/jquery/jquery.d.ts",
     "./front_src/typings/jqueryui/jqueryui.d.ts",
     "./front_src/typings/jst/jst.d.ts",
+    "./front_src/typings/mCustomScrollbar/mCustomScrollbar.d.ts",
     "./front_src/typings/requirejs/require.d.ts",
     "./front_src/typings/semantic_ui/semantic_ui.d.ts",
     "./front_src/typings/tsd.d.ts",
@@ -29,11 +30,13 @@
     "./front_src/view/contents/left_column/MessageView.ts",
     "./front_src/view/contents/right_sidebar/ChannelListView.ts",
     "./front_src/view/contents/right_sidebar/ChannelView.ts",
+    "./front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts",
     "./front_src/view/contents/right_sidebar/RightSidebarView.ts",
     "./front_src/view/contents/right_sidebar/UserListView.ts",
     "./front_src/view/contents/right_sidebar/UserView.ts",
     "./front_src/view/contents/toggle_sidebar/ServerListView.ts",
     "./front_src/view/contents/toggle_sidebar/ServerView.ts",
+    "./front_src/view/contents/toggle_sidebar/ToggleSidebarTopUtilView.ts",
     "./front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts"
   ],
   "atom": {

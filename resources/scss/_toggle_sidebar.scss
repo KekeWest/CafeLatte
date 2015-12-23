@@ -1,0 +1,25 @@
+.toggle-sidebar-container {
+  background-color: $color-beige-2;
+}
+
+.toggle-sidebar-top-util {
+  height: 38px;
+
+  &__add-server {
+    &.icon {
+      margin-top: 3px;
+      font-size: 30px;
+      line-height: 30px;
+      float: right;
+      color: $color-chocolate;
+    }
+  }
+}
+
+.server-list {
+  margin-bottom: 40px;
+
+  &__label {
+    @include toggle-sidebar-label;
+  }
+}

@@ -11,5 +11,16 @@ class ChannelListView extends BaseView {
     super(options);
   }
 
+  public render(): ChannelListView {
+    super.render();
+    this.$(".channels").mCustomScrollbar({
+      axis: "y",
+      scrollInertia: 0,
+      autoDraggerLength: true,
+      autoHideScrollbar: true
+    });
+    return this;
+  }
+
 }
 export = ChannelListView;

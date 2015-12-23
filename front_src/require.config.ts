@@ -7,6 +7,7 @@ require.config({
     jquery_ui: "./bower_components/jquery-ui/jquery-ui",
     semantic_ui: "./bower_components/semantic/dist/semantic",
     jquery_sidebar: "./bower_components/simple-sidebar/dist/jquery.simple-sidebar",
+    jquery_mCustomScrollbar: "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min",
     underscore: "./bower_components/underscore/underscore",
     backbone: "./bower_components/backbone/backbone"
   },
@@ -29,12 +30,22 @@ require.config({
     jquery_sidebar: {
       exports: "$",
       deps: ["jquery_ui"]
+    },
+    jquery_mCustomScrollbar: {
+      exports: "$",
+      deps: ["jquery"]
     }
   }
 
 });
 
 
-require(["main"], (Main: any) => {
+require(["main",
+"jquery_sidebar",
+"jquery_mCustomScrollbar"],
+(Main: any,
+jquery_sidebar: any,
+jquery_mCustomScrollbar: any
+) => {
   Main.run();
 });

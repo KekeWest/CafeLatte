@@ -6,15 +6,52 @@
   height: 100%;
 }
 
+.channel-list-container {
+  height: calc(45% - 18px);
+}
+
+.user-list-container {
+  height: calc(55% - 38px);
+}
+
+.right-sidebar-top-util {
+  height: 38px;
+
+  &__togglebar-switch {
+    &.icon {
+      font-size: 38px;
+      line-height: 35px;
+      float: right;
+      color: $color-burlywood;
+    }
+  }
+}
+
 .channel-list {
-  margin-bottom: 40px;
+  height: 100%;
 
   &__label {
     @include right-sidebar-label;
   }
+
+  &__add-channel {
+    &.icon {
+      margin-right: 0px;
+      font-size: 21px;
+      line-height: 24px;
+      float: right;
+      color: $color-burlywood;
+    }
+  }
 }
 
 .channels {
+  height: calc(100% - 32px);
+  overflow: hidden;
+
+  .mCSB_container {
+    margin-right: 0px;
+  }
 
   &__channel {
     padding: 3px 0px 3px 0px;
@@ -29,8 +66,24 @@
 }
 
 .user-list {
+  height: 100%;
 
   &__label {
     @include right-sidebar-label;
+  }
+}
+
+.users {
+  height: calc(100% - 32px);
+
+  &__user {
+    padding: 3px 0px 3px 0px;
+    margin: 0px 10px 0px 10px;
+    color: $color-beige-2;
+    font-size: 18px;
+
+    &:hover {
+      background-color: $color-chocolate-hover;
+    }
   }
 }

@@ -14,13 +14,22 @@ $color-border-gray: #BFBFBF;
 
 $sidebar-width: 200px;
 
-
-@mixin right-sidebar-label {
+@mixin sidebar-label {
   margin: 8px;
   font-size: 26px;
-  color: $color-burlywood;
   padding-bottom: 4px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+}
+
+@mixin right-sidebar-label {
+  @include sidebar-label;
+  color: $color-burlywood;
   border-bottom-color: $color-burlywood;
+}
+
+@mixin toggle-sidebar-label {
+  @include sidebar-label;
+  color: $color-chocolate;
+  border-bottom-color: $color-chocolate;
 }

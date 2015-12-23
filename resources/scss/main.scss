@@ -1,6 +1,7 @@
 @import "compass";
 @import "common";
 @import "right_sidebar";
+@import "toggle_sidebar";
 @import "left_column";
 
 
@@ -20,8 +21,4 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
-}
-
-.toggle-sidebar-container {
-  background-color: $color-beige-2;
 }
