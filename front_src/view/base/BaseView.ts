@@ -1,6 +1,7 @@
 import Backbone = require("backbone");
 
 import SubViewOption = require("./SubViewOption");
+import RenderOption = require("./RenderOption");
 
 
 class BaseView extends Backbone.View<Backbone.Model> {
@@ -14,14 +15,17 @@ class BaseView extends Backbone.View<Backbone.Model> {
     this.events = this._setEvents();
   }
 
-  public render(): BaseView {
+  public render(options: RenderOption = {}): BaseView {
     var html: any;
     if (this.model) {
-      html = this._template(this.model.toJSON());
+      html = this._template(_.extend(this.model.toJSON(), options.data));
     } else {
-      html = this._template({});
+      html = this._template(options.data);
     }
     this.$el.html(html);
+    if (options.$append) {
+      options.$append.append(this.$el);
+    }
     this._renderSubView();
     return this;
   }

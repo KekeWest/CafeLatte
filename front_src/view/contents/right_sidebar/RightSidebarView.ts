@@ -17,21 +17,21 @@ class RightSidebarView extends BaseView {
   constructor(options?: any) {
     this._template = JST["contents/right_sidebar/right_sidebar"];
     this._subViews = [
-      new SubViewOption({
+      {
         bind: "_rightSidebarTopUtilView",
         view: new RightSidebarTopUtilView(),
         selector: ".top-util-container"
-      }),
-      new SubViewOption({
+      },
+      {
         bind: "_channelListView",
         view: new ChannelListView(),
         selector: ".channel-list-container"
-      }),
-      new SubViewOption({
+      },
+      {
         bind: "_userListView",
         view: new UserListView(),
         selector: ".user-list-container"
-      })
+      }
     ];
     super(options);
   }

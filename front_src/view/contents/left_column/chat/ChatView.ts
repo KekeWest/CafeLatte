@@ -16,16 +16,16 @@ class ChatView extends BaseView {
   constructor(options?: any) {
     this._template = JST["contents/left_column/chat/chat"];
     this._subViews = [
-      new SubViewOption({
+      {
         bind: "_messageListView",
         view: new MessageListView(),
         selector: ".messagelist-container"
-      }),
-      new SubViewOption({
+      },
+      {
         bind: "_inputView",
         view: new InputView(),
         selector: ".input-container"
-      })
+      }
     ];
     super(options);
   }

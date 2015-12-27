@@ -22,4 +22,14 @@
   &__label {
     @include toggle-sidebar-label;
   }
+
+  &__add-server {
+    &.icon {
+      margin-right: 0px;
+      font-size: 21px;
+      line-height: 24px;
+      float: right;
+      color: $color-chocolate;
+    }
+  }
 }

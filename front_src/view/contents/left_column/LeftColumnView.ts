@@ -15,16 +15,16 @@ class LeftColumnView extends BaseView {
   constructor(options?: any) {
     this._template = JST["contents/left_column/left_column"];
     this._subViews = [
-      new SubViewOption({
+      {
         bind: "_chatView",
         view: new ChatView(),
         selector: ".chat-container"
-      }),
-      new SubViewOption({
+      },
+      {
         bind: "_globalMessageListView",
         view: new GlobalMessageListView(),
         selector: ".global-msg-container"
-      })
+      }
     ];
     super(options);
   }
