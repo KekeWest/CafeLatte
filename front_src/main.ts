@@ -1,5 +1,5 @@
 import Environment = require("./util/Environment");
-import Mediator = require("./util/Mediator");
+import Mediator = require("./mediator/Mediator");
 import ApplicationView = require("./view/ApplicationView");
 
 export function run(): void {

@@ -3,6 +3,8 @@ import JST = require("jst");
 
 import BaseView = require("./base/BaseView");
 import SubViewOption = require("./base/SubViewOption");
+import Mediator = require("../mediator/Mediator");
+import ViewEvent = require("../event/ViewEvent");
 import RightSidebarView = require("./contents/right_sidebar/RightSidebarView");
 import ToggleSidebarView = require("./contents/toggle_sidebar/ToggleSidebarView");
 import LeftColumnView = require("./contents/left_column/LeftColumnView");
@@ -59,7 +61,7 @@ class ApplicationView extends BaseView {
         align: "right",
         width: 200,
         css: {
-          zIndex: 3000
+          zIndex: 0
         }
       },
       animation: {

@@ -1,8 +1,8 @@
 import Backbone = require("backbone");
 import JST = require("jst");
 
-import Mediator = require("../../../util/Mediator");
-import ViewEvent = require("../../../enum/ViewEvent");
+import Mediator = require("../../../mediator/Mediator");
+import ViewEvent = require("../../../event/ViewEvent");
 import BaseView = require("../../base/BaseView");
 import SubViewOption = require("../../base/SubViewOption");
 
@@ -12,7 +12,7 @@ import AddServerDialogView = require("./AddServerDialogView");
 class DialogsView extends BaseView {
 
   protected _zIndex: number;
-  protected _dialogs: {[dialogName: string]: DialogView};
+  protected _dialogs: {[dialog: string]: DialogView};
 
   constructor(options?: any) {
     this._template = JST["contents/dialog/dialogs"];
@@ -24,19 +24,24 @@ class DialogsView extends BaseView {
 
   protected _startListenEvent(): void {
     this.listenTo(Mediator.mediator, ViewEvent.OPEN_ADD_SERVER_DIALOG, this.showAddServer.bind(this));
+    this.listenTo(Mediator.mediator, ViewEvent.CLOSE_DIALOG, this._removeDialog.bind(this));
   }
 
   public showAddServer(): void {
-    if (this._dialogs["AddServer"]) {
+    if (this._dialogs[AddServerDialogView.dialogName]) {
       return;
     }
     var addServerDialog: AddServerDialogView = new AddServerDialogView();
     addServerDialog.render({container: this.$el});
-    this._dialogs["AddServer"] = addServerDialog;
+    this._dialogs[addServerDialog.dialogId] = addServerDialog;
   }
 
   public focusDialog(): void {
     return;
+  }
+
+  protected _removeDialog(dialog: DialogView): void {
+    delete this._dialogs[dialog.dialogId];
   }
 
 }

@@ -15,9 +15,9 @@ class RightSidebarTopUtilView extends BaseView {
   }
 
   protected _setEvents(): any {
-    return {
+    return _.extend(super._setEvents(), {
       "click .right-sidebar-top-util__togglebar-switch": "changeTogglebarSwitch"
-    };
+    });
   }
 
   public changeTogglebarSwitch(state: string): void {

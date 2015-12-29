@@ -2,10 +2,16 @@ import Backbone = require("backbone");
 import JST = require("jst");
 
 import BaseView = require("../../base/BaseView");
+import Mediator = require("../../../mediator/Mediator");
+import ViewEvent = require("../../../event/ViewEvent");
 
 import DialogOption = require("./DialogOption");
 
 class DialogView extends BaseView {
+
+  protected static _idNum: number = 0;
+
+  protected _dialogId: string;
 
   protected _dialogOption: DialogOption;
 
@@ -31,7 +37,21 @@ class DialogView extends BaseView {
     } else {
       this._dialogOption = _.extend(DialogView._defaultOption(), this._dialogOption, options);
     }
-    super();
+    if (!this._dialogId) {
+      this._dialogId = DialogView._idNum.toString();
+      DialogView._idNum++;
+    }
+    super(options);
+  }
+
+  protected _setEvents(): any {
+    return _.extend(super._setEvents(), {
+      "click .dialog__close-btn": "close"
+    });
+  }
+
+  get dialogId(): string {
+    return this._dialogId;
   }
 
   public render(options?: DialogOption): DialogView {
@@ -46,7 +66,23 @@ class DialogView extends BaseView {
     });
     this._resize();
     this._adjustPosition();
+    this.$el.draggable({
+      containment: "document",
+      handle: this.$(".dialog__head"),
+      cancel: ".dialog__close-btn"
+    });
     return this;
+  }
+
+  protected _remove(): DialogView {
+    this.$el.draggable("destroy");
+    super.remove();
+    return this;
+  }
+
+  public close(): void {
+    this._remove();
+    Mediator.mediator.trigger(ViewEvent.CLOSE_DIALOG, this);
   }
 
   protected _resize(): void {

@@ -1,8 +1,8 @@
 import Backbone = require("backbone");
 import JST = require("jst");
 
-import Mediator = require("../../../util/Mediator");
-import ViewEvent = require("../../../enum/ViewEvent");
+import Mediator = require("../../../mediator/Mediator");
+import ViewEvent = require("../../../event/ViewEvent");
 import BaseView = require("../../base/BaseView");
 
 

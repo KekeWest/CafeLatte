@@ -2,14 +2,14 @@
   "compileOnSave": false,
   "compilerOptions": {},
   "filesGlob": [
-    "./**/*.ts",
-    "!./node_modules/**/*.ts"
+    "./front_src/**/*.ts"
   ],
   "files": [
     "./front_src/collection/base/BaseCollection.ts",
     "./front_src/collection/ServerCollection.ts",
-    "./front_src/enum/ViewEvent.ts",
+    "./front_src/event/ViewEvent.ts",
     "./front_src/main.ts",
+    "./front_src/mediator/Mediator.ts",
     "./front_src/require.config.ts",
     "./front_src/typings/backbone/backbone.d.ts",
     "./front_src/typings/jquery-sidebar/jquery-sidebar.d.ts",
@@ -22,7 +22,6 @@
     "./front_src/typings/tsd.d.ts",
     "./front_src/typings/underscore/underscore.d.ts",
     "./front_src/util/Environment.ts",
-    "./front_src/util/Mediator.ts",
     "./front_src/view/ApplicationView.ts",
     "./front_src/view/base/BaseView.ts",
     "./front_src/view/base/RenderOption.ts",

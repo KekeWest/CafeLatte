@@ -10,9 +10,9 @@ class BaseView extends Backbone.View<Backbone.Model> {
   protected _template: (data: any) => string;
 
   constructor(options?: any) {
-    super(options);
     this._bindSubView();
     this.events = this._setEvents();
+    super(options);
   }
 
   public render(options: RenderOption = {}): BaseView {
@@ -27,6 +27,16 @@ class BaseView extends Backbone.View<Backbone.Model> {
       options.$append.append(this.$el);
     }
     this._renderSubView();
+    return this;
+  }
+
+  public remove(): BaseView {
+    if (this.hasSubViews()) {
+      _(this._subViews).each((subView: SubViewOption) => {
+        subView.view.remove();
+      });
+    }
+    super.remove();
     return this;
   }
 
