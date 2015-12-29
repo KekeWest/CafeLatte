@@ -35,6 +35,16 @@ module.exports = function(grunt) {
             '!front_src/typings/**/*.ts'
           ]
         }
+      },
+      ts_dev: {
+        options: {
+          configuration: grunt.file.readJSON('tslint_dev.json')
+        },
+        files: {
+          src: ['front_src/**/*.ts',
+            '!front_src/typings/**/*.ts'
+          ]
+        }
       }
     },
 
@@ -120,7 +130,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask("ts-build-fast",
     [
-      "tslint:ts",
+      "tslint:ts_dev",
       "typescript:compile",
     ]
   );
