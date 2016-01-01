@@ -11,13 +11,48 @@ import LeftColumnView = require("./contents/left_column/LeftColumnView");
 import DialogsView = require("./contents/dialog/DialogsView");
 
 
+/**
+ * アプリケーションのメインのViewクラス<br>
+ * 他のViewを子Viewとして保持して管理しています
+ *
+ * @class ApplicationView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
+ *
+ */
 class ApplicationView extends BaseView {
 
+  /**
+   * 右サイドバーのView
+   *
+   * @property _rightSidebarView
+   * @protected
+   * @type {RightSidebarView}
+   */
   protected _rightSidebarView: RightSidebarView;
+
+  /**
+   * 右トグルサイドバーのView
+   *
+   * @property _toggleSidebarView
+   * @protected
+   * @type {ToggleSidebarView}
+   */
   protected _toggleSidebarView: ToggleSidebarView;
+
+  /**
+   * 左カラムのView
+   *
+   * @property _leftColumnView
+   * @protected
+   * @type {LeftColumnView}
+   */
   protected _leftColumnView: LeftColumnView;
 
-  constructor(options?: any) {
+
+  constructor(options: any = null) {
     this.setElement($("#app-container"));
     this._template = JST["app"];
     this._subViews = [
@@ -46,13 +81,29 @@ class ApplicationView extends BaseView {
     super(options);
   }
 
+  /**
+   * Viewをレンダリングします<br>
+   * 自身と子Viewをレンダリングした後、simpleSidebarを使って右トグルサイドバーがトグルできるようにセッティングします
+   *
+   * @override
+   * @method render
+   * @public
+   * @return {ApplicationView} 自身であるViewインスタンス
+   */
   public render(): ApplicationView {
     super.render();
-    this._setSidebar();
+    this._setToggleSidebar();
     return this;
   }
 
-  protected _setSidebar(): void {
+  /**
+   * 右トグルサイドバーがトグルできるようにsimpleSidebarを使ってセッテイングします
+   *
+   * @method _setToggleSidebar
+   * @protected
+   * @return {void}
+   */
+  protected _setToggleSidebar(): void {
     this._toggleSidebarView.$el.simpleSidebar({
       opener: this._rightSidebarView.rightSidebarTopUtilView.$(".right-sidebar-top-util__togglebar-switch").selector,
       wrapper: ".main-container",

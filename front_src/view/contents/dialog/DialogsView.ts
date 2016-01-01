@@ -9,10 +9,35 @@ import SubViewOption = require("../../base/SubViewOption");
 import DialogView = require("./DialogView");
 import AddServerDialogView = require("./AddServerDialogView");
 
+/**
+ * ダイアログを管理するクラス
+ *　
+ *
+ * @class DialogsView
+ * @extends BaseView
+ * @constructor
+ */
 class DialogsView extends BaseView {
 
+ /**
+  * 現在のz-indexの最大値
+  *
+  * @property _zIndex
+  * @type {number}
+  * @default 1000
+  * @protected
+  */
   protected _zIndex: number;
-  protected _dialogs: {[dialog: string]: DialogView};
+
+ /**
+  * DialogViewインスタンスを格納しておくためのオブジェクト
+  *
+  * @property _dialogs
+  * @type {{[dialogId: string]: DialogView}}
+  * @default {}
+  * @protected
+  */
+  protected _dialogs: {[dialogId: string]: DialogView};
 
   constructor(options?: any) {
     this._template = JST["contents/dialog/dialogs"];
@@ -27,6 +52,14 @@ class DialogsView extends BaseView {
     this.listenTo(Mediator.mediator, ViewEvent.CLOSE_DIALOG, this._removeDialog.bind(this));
   }
 
+ /**
+  * サーバ追加のダイアログを出す
+  * ダイアログが既に出ている場合はそのダイアログにフォーカスを当てる
+  *
+  * @method showAddServer
+  * @public
+  * @return {void}
+  */
   public showAddServer(): void {
     if (this._dialogs[AddServerDialogView.dialogName]) {
       return;
@@ -40,6 +73,15 @@ class DialogsView extends BaseView {
     return;
   }
 
+ /**
+  * ダイアログが閉じられた場合に呼ばれるイベントハンドラ<br>
+  * _dialogsから閉じられたダイアログを削除する
+  *
+  * @method _removeDialog
+  * @protected
+  * @param dialog {DialogView} DialogViewインスタンス
+  * @return {void}
+  */
   protected _removeDialog(dialog: DialogView): void {
     delete this._dialogs[dialog.dialogId];
   }

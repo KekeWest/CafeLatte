@@ -104,6 +104,19 @@ module.exports = function(grunt) {
         tasks: "compass:compile",
         files: ["resources/scss/**/*.scss"]
       }
+    },
+
+    yuidoc: {
+      dist: {
+        name: "CafeLatte",
+        description: "IRC Client",
+        version: "0.1.0",
+        options: {
+          extension: '.ts',
+          paths: ["front_src"],
+          outdir: "yuidoc"
+        }
+      }
     }
 
   });
@@ -116,6 +129,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-tsd');
+  grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
 
   grunt.registerTask("build-all",

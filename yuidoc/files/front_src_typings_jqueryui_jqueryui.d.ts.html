@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>front_src/typings/jqueryui/jqueryui.d.ts - CafeLatte</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="CafeLatte" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/AddServerDialogView.html">AddServerDialogView</a></li>
+                                <li><a href="../classes/ApplicationView.html">ApplicationView</a></li>
+                                <li><a href="../classes/BaseView.html">BaseView</a></li>
+                                <li><a href="../classes/DialogsView.html">DialogsView</a></li>
+                                <li><a href="../classes/DialogView.html">DialogView</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: front_src/typings/jqueryui/jqueryui.d.ts</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Type definitions for jQueryUI 1.9
+// Project: http://jqueryui.com/
+// Definitions by: Boris Yankov &lt;https://github.com/borisyankov/&gt;, John Reilly &lt;https://github.com/johnnyreilly&gt;
+// Definitions: https://github.com/borisyankov/DefinitelyTyped
+
+
+/// &lt;reference path=&quot;../jquery/jquery.d.ts&quot;/&gt;
+
+declare module JQueryUI {
+    // Accordion //////////////////////////////////////////////////
+
+    interface AccordionOptions extends AccordionEvents {
+        active?: any; // boolean or number
+        animate?: any; // boolean, number, string or object
+        collapsible?: boolean;
+        disabled?: boolean;
+        event?: string;
+        header?: string;
+        heightStyle?: string;
+        icons?: any;
+    }
+
+    interface AccordionUIParams {
+        newHeader: JQuery;
+        oldHeader: JQuery;
+        newPanel: JQuery;
+        oldPanel: JQuery;
+    }
+
+    interface AccordionEvent {
+        (event: Event, ui: AccordionUIParams): void;
+    }
+
+    interface AccordionEvents {
+        activate?: AccordionEvent;
+        beforeActivate?: AccordionEvent;
+        create?: AccordionEvent;
+    }
+
+    interface Accordion extends Widget, AccordionOptions {
+    }
+
+
+    // Autocomplete //////////////////////////////////////////////////
+
+    interface AutocompleteOptions extends AutocompleteEvents {
+        appendTo?: any; //Selector;
+        autoFocus?: boolean;
+        delay?: number;
+        disabled?: boolean;
+        minLength?: number;
+        position?: string;
+        source?: any; // [], string or ()
+    }
+
+    interface AutocompleteUIParams {
+        /**
+         * The item selected from the menu, if any. Otherwise the property is null
+         */
+        item?: any;
+    }
+
+    interface AutocompleteEvent {
+        (event: Event, ui: AutocompleteUIParams): void;
+    }
+
+    interface AutocompleteEvents {
+        change?: AutocompleteEvent;
+        close?: AutocompleteEvent;
+        create?: AutocompleteEvent;
+        focus?: AutocompleteEvent;
+        open?: AutocompleteEvent;
+        response?: AutocompleteEvent;
+        search?: AutocompleteEvent;
+        select?: AutocompleteEvent;
+    }
+
+    interface Autocomplete extends Widget, AutocompleteOptions {
+        escapeRegex: (value: string) =&gt; string;
+    }
+
+
+    // Button //////////////////////////////////////////////////
+
+    interface ButtonOptions {
+        disabled?: boolean;
+        icons?: any;
+        label?: string;
+        text?: string|boolean;
+        click?: (event?: Event) =&gt; void;
+    }
+
+    interface Button extends Widget, ButtonOptions {
+    }
+
+
+    // Datepicker //////////////////////////////////////////////////
+
+    interface DatepickerOptions {
+        /**
+         * An input element that is to be updated with the selected date from the datepicker. Use the altFormat option to change the format of the date within this field. Leave as blank for no alternate field.
+         */
+        altField?: any; // Selector, jQuery or Element
+        /**
+         * The dateFormat to be used for the altField option. This allows one date format to be shown to the user for selection purposes, while a different format is actually sent behind the scenes. For a full list of the possible formats see the formatDate function
+         */
+        altFormat?: string;
+        /**
+         * The text to display after each date field, e.g., to show the required format.
+         */
+        appendText?: string;
+        /**
+         * Set to true to automatically resize the input field to accommodate dates in the current dateFormat.
+         */
+        autoSize?: boolean;
+        /**
+         * A function that takes an input field and current datepicker instance and returns an options object to update the datepicker with. It is called just before the datepicker is displayed.
+         */
+        beforeShow?: (input: Element, inst: any) =&gt; JQueryUI.DatepickerOptions;
+        /**
+         * A function that takes a date as a parameter and must return an array with:
+         * [0]: true/false indicating whether or not this date is selectable
+         * [1]: a CSS class name to add to the date&#x27;s cell or &quot;&quot; for the default presentation
+         * [2]: an optional popup tooltip for this date
+         * The function is called for each day in the datepicker before it is displayed.
+         */
+        beforeShowDay?: (date: Date) =&gt; any[];
+        /**
+         * A URL of an image to use to display the datepicker when the showOn option is set to &quot;button&quot; or &quot;both&quot;. If set, the buttonText option becomes the alt value and is not directly displayed.
+         */
+        buttonImage?: string;
+        /**
+         * Whether the button image should be rendered by itself instead of inside a button element. This option is only relevant if the buttonImage option has also been set.
+         */
+        buttonImageOnly?: boolean;
+        /**
+         * The text to display on the trigger button. Use in conjunction with the showOn option set to &quot;button&quot; or &quot;both&quot;.
+         */
+        buttonText?: string;
+        /**
+         * A function to calculate the week of the year for a given date. The default implementation uses the ISO 8601 definition: weeks start on a Monday; the first week of the year contains the first Thursday of the year.
+         */
+        calculateWeek?: (date: Date) =&gt; string;
+        /**
+         * Whether the month should be rendered as a dropdown instead of text.
+         */
+        changeMonth?: boolean;
+        /**
+         * Whether the year should be rendered as a dropdown instead of text. Use the yearRange option to control which years are made available for selection.
+         */
+        changeYear?: boolean;
+        /**
+         * The text to display for the close link. Use the showButtonPanel option to display this button.
+         */
+        closeText?: string;
+        /**
+         * When true, entry in the input field is constrained to those characters allowed by the current dateFormat option.
+         */
+        constrainInput?: boolean;
+        /**
+         * The text to display for the current day link. Use the showButtonPanel option to display this button.
+         */
+        currentText?: string;
+        /**
+         * The format for parsed and displayed dates. For a full list of the possible formats see the formatDate function.
+         */
+        dateFormat?: string;
+        /**
+         * The list of long day names, starting from Sunday, for use as requested via the dateFormat option.
+         */
+        dayNames?: string[];
+        /**
+         * The list of minimised day names, starting from Sunday, for use as column headers within the datepicker.
+         */
+        dayNamesMin?: string[];
+        /**
+         * The list of abbreviated day names, starting from Sunday, for use as requested via the dateFormat option.
+         */
+        dayNamesShort?: string[];
+        /**
+         * Set the date to highlight on first opening if the field is blank. Specify either an actual date via a Date object or as a string in the current dateFormat, or a number of days from today (e.g. +7) or a string of values and periods (&#x27;y&#x27; for years, &#x27;m&#x27; for months, &#x27;w&#x27; for weeks, &#x27;d&#x27; for days, e.g. &#x27;+1m +7d&#x27;), or null for today.
+         * Multiple types supported:
+         * Date: A date object containing the default date.
+         * Number: A number of days from today. For example 2 represents two days from today and -1 represents yesterday.
+         * String: A string in the format defined by the dateFormat option, or a relative date. Relative dates must contain value and period pairs; valid periods are &quot;y&quot; for years, &quot;m&quot; for months, &quot;w&quot; for weeks, and &quot;d&quot; for days. For example, &quot;+1m +7d&quot; represents one month and seven days from today.
+         */
+        defaultDate?: any; // Date, number or string
+        /**
+         * Control the speed at which the datepicker appears, it may be a time in milliseconds or a string representing one of the three predefined speeds (&quot;slow&quot;, &quot;normal&quot;, &quot;fast&quot;).
+         */
+        duration?: string;
+        /**
+         * Set the first day of the week: Sunday is 0, Monday is 1, etc.
+         */
+        firstDay?: number;
+        /**
+         * When true, the current day link moves to the currently selected date instead of today.
+         */
+        gotoCurrent?: boolean;
+        /**
+         * Normally the previous and next links are disabled when not applicable (see the minDate and maxDate options). You can hide them altogether by setting this attribute to true.
+         */
+        hideIfNoPrevNext?: boolean;
+        /**
+         * Whether the current language is drawn from right to left.
+         */
+        isRTL?: boolean;
+        /**
+         * The maximum selectable date. When set to null, there is no maximum.
+         * Multiple types supported:
+         * Date: A date object containing the maximum date.
+         * Number: A number of days from today. For example 2 represents two days from today and -1 represents yesterday.
+         * String: A string in the format defined by the dateFormat option, or a relative date. Relative dates must contain value and period pairs; valid periods are &quot;y&quot; for years, &quot;m&quot; for months, &quot;w&quot; for weeks, and &quot;d&quot; for days. For example, &quot;+1m +7d&quot; represents one month and seven days from today.
+         */
+        maxDate?: any; // Date, number or string
+        /**
+         * The minimum selectable date. When set to null, there is no minimum.
+         * Multiple types supported:
+         * Date: A date object containing the minimum date.
+         * Number: A number of days from today. For example 2 represents two days from today and -1 represents yesterday.
+         * String: A string in the format defined by the dateFormat option, or a relative date. Relative dates must contain value and period pairs; valid periods are &quot;y&quot; for years, &quot;m&quot; for months, &quot;w&quot; for weeks, and &quot;d&quot; for days. For example, &quot;+1m +7d&quot; represents one month and seven days from today.
+         */
+        minDate?: any; // Date, number or string
+        /**
+         * The list of full month names, for use as requested via the dateFormat option.
+         */
+        monthNames?: string[];
+        /**
+         * The list of abbreviated month names, as used in the month header on each datepicker and as requested via the dateFormat option.
+         */
+        monthNamesShort?: string[];
+        /**
+         * Whether the prevText and nextText options should be parsed as dates by the formatDate function, allowing them to display the target month names for example.
+         */
+        navigationAsDateFormat?: boolean;
+        /**
+         * The text to display for the next month link. With the standard ThemeRoller styling, this value is replaced by an icon.
+         */
+        nextText?: string;
+        /**
+         * The number of months to show at once.
+         * Multiple types supported:
+         * Number: The number of months to display in a single row.
+         * Array: An array defining the number of rows and columns to display.
+         */
+        numberOfMonths?: any; // number or number[]
+        /**
+         * Called when the datepicker moves to a new month and/or year. The function receives the selected year, month (1-12), and the datepicker instance as parameters. this refers to the associated input field.
+         */
+        onChangeMonthYear?: (year: number, month: number, inst: any) =&gt; void;
+        /**
+         * Called when the datepicker is closed, whether or not a date is selected. The function receives the selected date as text (&quot;&quot; if none) and the datepicker instance as parameters. this refers to the associated input field.
+         */
+        onClose?: (dateText: string, inst: any) =&gt; void;
+        /**
+         * Called when the datepicker is selected. The function receives the selected date as text and the datepicker instance as parameters. this refers to the associated input field.
+         */
+        onSelect?: (dateText: string, inst: any) =&gt; void;
+        /**
+         * The text to display for the previous month link. With the standard ThemeRoller styling, this value is replaced by an icon.
+         */
+        prevText?: string;
+        /**
+         * Whether days in other months shown before or after the current month are selectable. This only applies if the showOtherMonths option is set to true.
+         */
+        selectOtherMonths?: boolean;
+        /**
+         * The cutoff year for determining the century for a date (used in conjunction with dateFormat &#x27;y&#x27;). Any dates entered with a year value less than or equal to the cutoff year are considered to be in the current century, while those greater than it are deemed to be in the previous century.
+         * Multiple types supported:
+         * Number: A value between 0 and 99 indicating the cutoff year.
+         * String: A relative number of years from the current year, e.g., &quot;+3&quot; or &quot;-5&quot;.
+         */
+        shortYearCutoff?: any; // number or string
+        /**
+         * The name of the animation used to show and hide the datepicker. Use &quot;show&quot; (the default), &quot;slideDown&quot;, &quot;fadeIn&quot;, any of the jQuery UI effects. Set to an empty string to disable animation.
+         */
+        showAnim?: string;
+        /**
+         * Whether to display a button pane underneath the calendar. The button pane contains two buttons, a Today button that links to the current day, and a Done button that closes the datepicker. The buttons&#x27; text can be customized using the currentText and closeText options respectively.
+         */
+        showButtonPanel?: boolean;
+        /**
+         * When displaying multiple months via the numberOfMonths option, the showCurrentAtPos option defines which position to display the current month in.
+         */
+        showCurrentAtPos?: number;
+        /**
+         * Whether to show the month after the year in the header.
+         */
+        showMonthAfterYear?: boolean;
+        /**
+         * When the datepicker should appear. The datepicker can appear when the field receives focus (&quot;focus&quot;), when a button is clicked (&quot;button&quot;), or when either event occurs (&quot;both&quot;).
+         */
+        showOn?: string;
+        /**
+         * If using one of the jQuery UI effects for the showAnim option, you can provide additional settings for that animation via this option.
+         */
+        showOptions?: any; // TODO
+        /**
+         * Whether to display dates in other months (non-selectable) at the start or end of the current month. To make these days selectable use the selectOtherMonths option.
+         */
+        showOtherMonths?: boolean;
+        /**
+         * When true, a column is added to show the week of the year. The calculateWeek option determines how the week of the year is calculated. You may also want to change the firstDay option.
+         */
+        showWeek?: boolean;
+        /**
+         * Set how many months to move when clicking the previous/next links.
+         */
+        stepMonths?: number;
+        /**
+         * The text to display for the week of the year column heading. Use the showWeek option to display this column.
+         */
+        weekHeader?: string;
+        /**
+         * The range of years displayed in the year drop-down: either relative to today&#x27;s year (&quot;-nn:+nn&quot;), relative to the currently selected year (&quot;c-nn:c+nn&quot;), absolute (&quot;nnnn:nnnn&quot;), or combinations of these formats (&quot;nnnn:-nn&quot;). Note that this option only affects what appears in the drop-down, to restrict which dates may be selected use the minDate and/or maxDate options.
+         */
+        yearRange?: string;
+        /**
+         * Additional text to display after the year in the month headers.
+         */
+        yearSuffix?: string;
+    }
+
+    interface DatepickerFormatDateOptions {
+        dayNamesShort?: string[];
+        dayNames?: string[];
+        monthNamesShort?: string[];
+        monthNames?: string[];
+    }
+
+    interface Datepicker extends Widget, DatepickerOptions {
+        regional: { [languageCod3: string]: any; };
+        setDefaults(defaults: DatepickerOptions): void;
+        formatDate(format: string, date: Date, settings?: DatepickerFormatDateOptions): string;
+        parseDate(format: string, date: string, settings?: DatepickerFormatDateOptions): Date;
+        iso8601Week(date: Date): number;
+        noWeekends(date: Date): any[];
+    }
+
+
+    // Dialog //////////////////////////////////////////////////
+
+    interface DialogOptions extends DialogEvents {
+        autoOpen?: boolean;
+        buttons?: { [buttonText: string]: (event?: Event) =&gt; void } | DialogButtonOptions[];
+        closeOnEscape?: boolean;
+        closeText?: string;
+        dialogClass?: string;
+        disabled?: boolean;
+        draggable?: boolean;
+        height?: number | string;
+        hide?: boolean | number | string | DialogShowHideOptions;
+        maxHeight?: number;
+        maxWidth?: number;
+        minHeight?: number;
+        minWidth?: number;
+        modal?: boolean;
+        position?: any; // object, string or []
+        resizable?: boolean;
+        show?: boolean | number | string | DialogShowHideOptions;
+        stack?: boolean;
+        title?: string;
+        width?: any; // number or string
+        zIndex?: number;
+		
+		open?: DialogEvent;
+        close?: DialogEvent;
+    }
+
+    interface DialogButtonOptions {
+        icons?: any;
+        showText?: string | boolean;
+        text?: string;
+        click?: (eventObject: JQueryEventObject) =&gt; any;
+        [attr: string]: any; // attributes for the &lt;button&gt; element
+    }
+
+    interface DialogShowHideOptions {
+        effect: string;
+        delay?: number;
+        duration?: number;
+        easing?: string;
+    }
+
+    interface DialogUIParams {
+    }
+
+    interface DialogEvent {
+        (event: Event, ui: DialogUIParams): void;
+    }
+
+    interface DialogEvents {
+        beforeClose?: DialogEvent;
+        close?: DialogEvent;
+        create?: DialogEvent;
+        drag?: DialogEvent;
+        dragStart?: DialogEvent;
+        dragStop?: DialogEvent;
+        focus?: DialogEvent;
+        open?: DialogEvent;
+        resize?: DialogEvent;
+        resizeStart?: DialogEvent;
+        resizeStop?: DialogEvent;
+    }
+
+    interface Dialog extends Widget, DialogOptions {
+    }
+
+
+    // Draggable //////////////////////////////////////////////////
+
+    interface DraggableEventUIParams {
+        helper: JQuery;
+        position: { top: number; left: number; };
+        offset: { top: number; left: number; };
+    }
+
+    interface DraggableEvent {
+        (event: Event, ui: DraggableEventUIParams): void;
+    }
+
+    interface DraggableOptions extends DraggableEvents {
+        disabled?: boolean;
+        addClasses?: boolean;
+        appendTo?: any;
+        axis?: string;
+        cancel?: string;
+        connectToSortable?: string;
+        containment?: any;
+        cursor?: string;
+        cursorAt?: any;
+        delay?: number;
+        distance?: number;
+        grid?: number[];
+        handle?: any;
+        helper?: any;
+        iframeFix?: any;
+        opacity?: number;
+        refreshPositions?: boolean;
+        revert?: any;
+        revertDuration?: number;
+        scope?: string;
+        scroll?: boolean;
+        scrollSensitivity?: number;
+        scrollSpeed?: number;
+        snap?: any;
+        snapMode?: string;
+        snapTolerance?: number;
+        stack?: string;
+        zIndex?: number;
+    }
+
+    interface DraggableEvents {
+        create?: DraggableEvent;
+        start?: DraggableEvent;
+        drag?: DraggableEvent;
+        stop?: DraggableEvent;
+    }
+
+    interface Draggable extends Widget, DraggableOptions, DraggableEvent {
+    }
+
+
+    // Droppable //////////////////////////////////////////////////
+
+    interface DroppableEventUIParam {
+        draggable: JQuery;
+        helper: JQuery;
+        position: { top: number; left: number; };
+        offset: { top: number; left: number; };
+    }
+
+    interface DroppableEvent {
+        (event: Event, ui: DroppableEventUIParam): void;
+    }
+
+    interface DroppableOptions extends DroppableEvents {
+        disabled?: boolean;
+        accept?: any;
+        activeClass?: string;
+        greedy?: boolean;
+        hoverClass?: string;
+        scope?: string;
+        tolerance?: string;
+    }
+
+    interface DroppableEvents {
+        create?: DroppableEvent;
+        activate?: DroppableEvent;
+        deactivate?: DroppableEvent;
+        over?: DroppableEvent;
+        out?: DroppableEvent;
+        drop?: DroppableEvent;
+    }
+
+    interface Droppable extends Widget, DroppableOptions {
+    }
+
+    // Menu //////////////////////////////////////////////////
+
+    interface MenuOptions {
+        disabled?: boolean;
+        icons?: any;
+        menus?: string;
+        position?: any; // TODO
+        role?: string;
+    }
+
+    interface MenuUIParams {
+    }
+
+    interface MenuEvent {
+        (event: Event, ui: MenuUIParams): void;
+    }
+
+    interface MenuEvents {
+        blur?: MenuEvent;
+        create?: MenuEvent;
+        focus?: MenuEvent;
+        select?: MenuEvent;
+    }
+
+    interface Menu extends Widget, MenuOptions, MenuEvents {
+    }
+
+
+    // Progressbar //////////////////////////////////////////////////
+
+    interface ProgressbarOptions extends ProgressbarEvents {
+        disabled?: boolean;
+        value?: number | boolean;
+        max?: number;
+    }
+
+    interface ProgressbarUIParams {
+    }
+
+    interface ProgressbarEvent {
+        (event: Event, ui: ProgressbarUIParams): void;
+    }
+
+    interface ProgressbarEvents {
+        change?: ProgressbarEvent;
+        complete?: ProgressbarEvent;
+        create?: ProgressbarEvent;
+    }
+
+    interface Progressbar extends Widget, ProgressbarOptions {
+    }
+
+
+    // Resizable //////////////////////////////////////////////////
+
+    interface ResizableOptions extends ResizableEvents {
+        alsoResize?: any; // Selector, JQuery or Element
+        animate?: boolean;
+        animateDuration?: any; // number or string
+        animateEasing?: string;
+        aspectRatio?: any; // boolean or number
+        autoHide?: boolean;
+        cancel?: string;
+        containment?: any; // Selector, Element or string
+        delay?: number;
+        disabled?: boolean;
+        distance?: number;
+        ghost?: boolean;
+        grid?: any;
+        handles?: any; // string or object
+        helper?: string;
+        maxHeight?: number;
+        maxWidth?: number;
+        minHeight?: number;
+        minWidth?: number;
+    }
+
+    interface ResizableUIParams {
+        element: JQuery;
+        helper: JQuery;
+        originalElement: JQuery;
+        originalPosition: any;
+        originalSize: any;
+        position: any;
+        size: any;
+    }
+
+    interface ResizableEvent {
+        (event: Event, ui: ResizableUIParams): void;
+    }
+
+    interface ResizableEvents {
+        resize?: ResizableEvent;
+        start?: ResizableEvent;
+        stop?: ResizableEvent;
+        create?: ResizableEvents;
+    }
+
+    interface Resizable extends Widget, ResizableOptions {
+    }
+
+
+    // Selectable //////////////////////////////////////////////////
+
+    interface SelectableOptions extends SelectableEvents {
+        autoRefresh?: boolean;
+        cancel?: string;
+        delay?: number;
+        disabled?: boolean;
+        distance?: number;
+        filter?: string;
+        tolerance?: string;
+    }
+
+    interface SelectableEvents {
+        selected? (event: Event, ui: { selected?: Element; }): void;
+        selecting? (event: Event, ui: { selecting?: Element; }): void;
+        start? (event: Event, ui: any): void;
+        stop? (event: Event, ui: any): void;
+        unselected? (event: Event, ui: { unselected: Element; }): void;
+        unselecting? (event: Event, ui: { unselecting: Element; }): void;
+    }
+
+    interface Selectable extends Widget, SelectableOptions {
+    }
+
+    // Slider //////////////////////////////////////////////////
+
+    interface SliderOptions extends SliderEvents {
+        animate?: any; // boolean, string or number
+        disabled?: boolean;
+        max?: number;
+        min?: number;
+        orientation?: string;
+        range?: any; // boolean or string
+        step?: number;
+        value?: number;
+        values?: number[];
+    }
+
+    interface SliderUIParams {
+        handle?: JQuery;
+        value?: number;
+        values?: number[];
+    }
+
+    interface SliderEvent {
+        (event: Event, ui: SliderUIParams): void;
+    }
+
+    interface SliderEvents {
+        change?: SliderEvent;
+        create?: SliderEvent;
+        slide?: SliderEvent;
+        start?: SliderEvent;
+        stop?: SliderEvent;
+    }
+
+    interface Slider extends Widget, SliderOptions {
+    }
+
+
+    // Sortable //////////////////////////////////////////////////
+
+    interface SortableOptions extends SortableEvents {
+        appendTo?: any; // jQuery, Element, Selector or string
+        axis?: string;
+        cancel?: any; // Selector
+        connectWith?: any; // Selector
+        containment?: any; // Element, Selector or string
+        cursor?: string;
+        cursorAt?: any;
+        delay?: number;
+        disabled?: boolean;
+        distance?: number;
+        dropOnEmpty?: boolean;
+        forceHelperSize?: boolean;
+        forcePlaceholderSize?: boolean;
+        grid?: number[];
+        helper?: string | ((event: Event, element: Sortable) =&gt; Element);
+        handle?: any; // Selector or Element
+        items?: any; // Selector
+        opacity?: number;
+        placeholder?: string;
+        revert?: any; // boolean or number
+        scroll?: boolean;
+        scrollSensitivity?: number;
+        scrollSpeed?: number;
+        tolerance?: string;
+        zIndex?: number;
+    }
+
+    interface SortableUIParams {
+        helper: JQuery;
+        item: JQuery;
+        offset: any;
+        position: any;
+        originalPosition: any;
+        sender: JQuery;
+        placeholder: JQuery;
+    }
+
+    interface SortableEvent {
+        (event: JQueryEventObject, ui: SortableUIParams): void;
+    }
+
+    interface SortableEvents {
+        activate?: SortableEvent;
+        beforeStop?: SortableEvent;
+        change?: SortableEvent;
+        deactivate?: SortableEvent;
+        out?: SortableEvent;
+        over?: SortableEvent;
+        receive?: SortableEvent;
+        remove?: SortableEvent;
+        sort?: SortableEvent;
+        start?: SortableEvent;
+        stop?: SortableEvent;
+        update?: SortableEvent;
+    }
+
+    interface Sortable extends Widget, SortableOptions, SortableEvents {
+    }
+
+
+    // Spinner //////////////////////////////////////////////////
+
+    interface SpinnerOptions extends SpinnerEvents {
+        culture?: string;
+        disabled?: boolean;
+        icons?: any;
+        incremental?: any; // boolean or ()
+        max?: any; // number or string
+        min?: any; // number or string
+        numberFormat?: string;
+        page?: number;
+        step?: any; // number or string
+    }
+
+    interface SpinnerUIParam {
+        value: number;
+    }
+
+    interface SpinnerEvent&lt;T&gt; {
+        (event: Event, ui: T): void;
+    }
+
+    interface SpinnerEvents {
+        change?: SpinnerEvent&lt;{}&gt;;
+        create?: SpinnerEvent&lt;{}&gt;;
+        spin?: SpinnerEvent&lt;SpinnerUIParam&gt;;
+        start?: SpinnerEvent&lt;{}&gt;;
+        stop?: SpinnerEvent&lt;{}&gt;;
+    }
+
+    interface Spinner extends Widget, SpinnerOptions {
+    }
+
+
+    // Tabs //////////////////////////////////////////////////
+
+    interface TabsOptions extends TabsEvents {
+        active?: any; // boolean or number
+        collapsible?: boolean;
+        disabled?: any; // boolean or []
+        event?: string;
+        heightStyle?: string;
+        hide?: any; // boolean, number, string or object
+        show?: any; // boolean, number, string or object
+    }
+
+    interface TabsActivationUIParams {
+        newTab: JQuery;
+        oldTab: JQuery;
+        newPanel: JQuery;
+        oldPanel: JQuery;
+    }
+
+    interface TabsBeforeLoadUIParams {
+        tab: JQuery;
+        panel: JQuery;
+        jqXHR: JQueryXHR;
+        ajaxSettings: any;
+    }
+
+    interface TabsCreateOrLoadUIParams {
+        tab: JQuery;
+        panel: JQuery;
+    }
+
+    interface TabsEvent&lt;UI&gt; {
+        (event: Event, ui: UI): void;
+    }
+
+    interface TabsEvents {
+        activate?: TabsEvent&lt;TabsActivationUIParams&gt;;
+        beforeActivate?: TabsEvent&lt;TabsActivationUIParams&gt;;
+        beforeLoad?: TabsEvent&lt;TabsBeforeLoadUIParams&gt;;
+        load?: TabsEvent&lt;TabsCreateOrLoadUIParams&gt;;
+        create?: TabsEvent&lt;TabsCreateOrLoadUIParams&gt;;
+    }
+
+    interface Tabs extends Widget, TabsOptions {
+    }
+
+
+    // Tooltip //////////////////////////////////////////////////
+
+    interface TooltipOptions extends TooltipEvents {
+        content?: any; // () or string
+        disabled?: boolean;
+        hide?: any; // boolean, number, string or object
+        items?: string;
+        position?: any; // TODO
+        show?: any; // boolean, number, string or object
+        tooltipClass?: string;
+        track?: boolean;
+    }
+
+    interface TooltipUIParams {
+    }
+
+    interface TooltipEvent {
+        (event: Event, ui: TooltipUIParams): void;
+    }
+
+    interface TooltipEvents {
+        close?: TooltipEvent;
+        open?: TooltipEvent;
+    }
+
+    interface Tooltip extends Widget, TooltipOptions {
+    }
+
+
+    // Effects //////////////////////////////////////////////////
+
+    interface EffectOptions {
+        effect: string;
+        easing?: string;
+        duration?: number;
+        complete: Function;
+    }
+
+    interface BlindEffect {
+        direction?: string;
+    }
+
+    interface BounceEffect {
+        distance?: number;
+        times?: number;
+    }
+
+    interface ClipEffect {
+        direction?: number;
+    }
+
+    interface DropEffect {
+        direction?: number;
+    }
+
+    interface ExplodeEffect {
+        pieces?: number;
+    }
+
+    interface FadeEffect { }
+
+    interface FoldEffect {
+        size?: any;
+        horizFirst?: boolean;
+    }
+
+    interface HighlightEffect {
+        color?: string;
+    }
+
+    interface PuffEffect {
+        percent?: number;
+    }
+
+    interface PulsateEffect {
+        times?: number;
+    }
+
+    interface ScaleEffect {
+        direction?: string;
+        origin?: string[];
+        percent?: number;
+        scale?: string;
+    }
+
+    interface ShakeEffect {
+        direction?: string;
+        distance?: number;
+        times?: number;
+    }
+
+    interface SizeEffect {
+        to?: any;
+        origin?: string[];
+        scale?: string;
+    }
+
+    interface SlideEffect {
+        direction?: string;
+        distance?: number;
+    }
+
+    interface TransferEffect {
+        className?: string;
+        to?: string;
+    }
+
+    interface JQueryPositionOptions {
+        my?: string;
+        at?: string;
+        of?: any;
+        collision?: string;
+        using?: Function;
+        within?: any;
+    }
+
+
+    // UI //////////////////////////////////////////////////
+
+    interface MouseOptions {
+        cancel?: string;
+        delay?: number;
+        distance?: number;
+    }
+
+    interface KeyCode {
+        BACKSPACE: number;
+        COMMA: number;
+        DELETE: number;
+        DOWN: number;
+        END: number;
+        ENTER: number;
+        ESCAPE: number;
+        HOME: number;
+        LEFT: number;
+        NUMPAD_ADD: number;
+        NUMPAD_DECIMAL: number;
+        NUMPAD_DIVIDE: number;
+        NUMPAD_ENTER: number;
+        NUMPAD_MULTIPLY: number;
+        NUMPAD_SUBTRACT: number;
+        PAGE_DOWN: number;
+        PAGE_UP: number;
+        PERIOD: number;
+        RIGHT: number;
+        SPACE: number;
+        TAB: number;
+        UP: number;
+    }
+
+    interface UI {
+        mouse(method: string): JQuery;
+        mouse(options: MouseOptions): JQuery;
+        mouse(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+        mouse(optionLiteral: string, optionValue: any): any;
+
+        accordion: Accordion;
+        autocomplete: Autocomplete;
+        button: Button;
+        buttonset: Button;
+        datepicker: Datepicker;
+        dialog: Dialog;
+        keyCode: KeyCode;
+        menu: Menu;
+        progressbar: Progressbar;
+        slider: Slider;
+        spinner: Spinner;
+        tabs: Tabs;
+        tooltip: Tooltip;
+        version: string;
+    }
+
+
+    // Widget //////////////////////////////////////////////////
+
+    interface WidgetOptions {
+        disabled?: boolean;
+        hide?: any;
+        show?: any;
+    }
+
+    interface Widget {
+        (methodName: string): JQuery;
+        (options: WidgetOptions): JQuery;
+        (options: AccordionOptions): JQuery;
+        (optionLiteral: string, optionName: string): any;
+        (optionLiteral: string, options: WidgetOptions): any;
+        (optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+        (name: string, prototype: any): JQuery;
+        (name: string, base: Function, prototype: any): JQuery;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+}
+
+interface JQuery {
+
+    accordion(): JQuery;
+    accordion(methodName: &#x27;destroy&#x27;): void;
+    accordion(methodName: &#x27;disable&#x27;): void;
+    accordion(methodName: &#x27;enable&#x27;): void;
+    accordion(methodName: &#x27;refresh&#x27;): void;
+    accordion(methodName: &#x27;widget&#x27;): JQuery;
+    accordion(methodName: string): JQuery;
+    accordion(options: JQueryUI.AccordionOptions): JQuery;
+    accordion(optionLiteral: string, optionName: string): any;
+    accordion(optionLiteral: string, options: JQueryUI.AccordionOptions): any;
+    accordion(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    autocomplete(): JQuery;
+    autocomplete(methodName: &#x27;close&#x27;): void;
+    autocomplete(methodName: &#x27;destroy&#x27;): void;
+    autocomplete(methodName: &#x27;disable&#x27;): void;
+    autocomplete(methodName: &#x27;enable&#x27;): void;
+    autocomplete(methodName: &#x27;search&#x27;, value?: string): void;
+    autocomplete(methodName: &#x27;widget&#x27;): JQuery;
+    autocomplete(methodName: string): JQuery;
+    autocomplete(options: JQueryUI.AutocompleteOptions): JQuery;
+    autocomplete(optionLiteral: string, optionName: string): any;
+    autocomplete(optionLiteral: string, options: JQueryUI.AutocompleteOptions): any;
+    autocomplete(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    button(): JQuery;
+    button(methodName: &#x27;destroy&#x27;): void;
+    button(methodName: &#x27;disable&#x27;): void;
+    button(methodName: &#x27;enable&#x27;): void;
+    button(methodName: &#x27;refresh&#x27;): void;
+    button(methodName: &#x27;widget&#x27;): JQuery;
+    button(methodName: string): JQuery;
+    button(options: JQueryUI.ButtonOptions): JQuery;
+    button(optionLiteral: string, optionName: string): any;
+    button(optionLiteral: string, options: JQueryUI.ButtonOptions): any;
+    button(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    buttonset(): JQuery;
+    buttonset(methodName: &#x27;destroy&#x27;): void;
+    buttonset(methodName: &#x27;disable&#x27;): void;
+    buttonset(methodName: &#x27;enable&#x27;): void;
+    buttonset(methodName: &#x27;refresh&#x27;): void;
+    buttonset(methodName: &#x27;widget&#x27;): JQuery;
+    buttonset(methodName: string): JQuery;
+    buttonset(options: JQueryUI.ButtonOptions): JQuery;
+    buttonset(optionLiteral: string, optionName: string): any;
+    buttonset(optionLiteral: string, options: JQueryUI.ButtonOptions): any;
+    buttonset(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    /**
+     * Initialize a datepicker
+     */
+    datepicker(): JQuery;
+    /**
+     * Removes the datepicker functionality completely. This will return the element back to its pre-init state.
+     *
+     * @param methodName &#x27;destroy&#x27;
+     */
+    datepicker(methodName: &#x27;destroy&#x27;): JQuery;
+    /**
+     * Opens the datepicker in a dialog box.
+     *
+     * @param methodName &#x27;dialog&#x27;
+     * @param date The initial date.
+     * @param onSelect A callback function when a date is selected. The function receives the date text and date picker instance as parameters.
+     * @param settings The new settings for the date picker.
+     * @param pos The position of the top/left of the dialog as [x, y] or a MouseEvent that contains the coordinates. If not specified the dialog is centered on the screen.
+     */
+    datepicker(methodName: &#x27;dialog&#x27;, date: Date, onSelect?: () =&gt; void, settings?: JQueryUI.DatepickerOptions, pos?: number[]): JQuery;
+    /**
+     * Opens the datepicker in a dialog box.
+     *
+     * @param methodName &#x27;dialog&#x27;
+     * @param date The initial date.
+     * @param onSelect A callback function when a date is selected. The function receives the date text and date picker instance as parameters.
+     * @param settings The new settings for the date picker.
+     * @param pos The position of the top/left of the dialog as [x, y] or a MouseEvent that contains the coordinates. If not specified the dialog is centered on the screen.
+     */
+    datepicker(methodName: &#x27;dialog&#x27;, date: Date, onSelect?: () =&gt; void, settings?: JQueryUI.DatepickerOptions, pos?: MouseEvent): JQuery;
+    /**
+     * Opens the datepicker in a dialog box.
+     *
+     * @param methodName &#x27;dialog&#x27;
+     * @param date The initial date.
+     * @param onSelect A callback function when a date is selected. The function receives the date text and date picker instance as parameters.
+     * @param settings The new settings for the date picker.
+     * @param pos The position of the top/left of the dialog as [x, y] or a MouseEvent that contains the coordinates. If not specified the dialog is centered on the screen.
+     */
+    datepicker(methodName: &#x27;dialog&#x27;, date: string, onSelect?: () =&gt; void, settings?: JQueryUI.DatepickerOptions, pos?: number[]): JQuery;
+    /**
+     * Opens the datepicker in a dialog box.
+     *
+     * @param methodName &#x27;dialog&#x27;
+     * @param date The initial date.
+     * @param onSelect A callback function when a date is selected. The function receives the date text and date picker instance as parameters.
+     * @param settings The new settings for the date picker.
+     * @param pos The position of the top/left of the dialog as [x, y] or a MouseEvent that contains the coordinates. If not specified the dialog is centered on the screen.
+     */
+    datepicker(methodName: &#x27;dialog&#x27;, date: string, onSelect?: () =&gt; void, settings?: JQueryUI.DatepickerOptions, pos?: MouseEvent): JQuery;
+    /**
+     * Returns the current date for the datepicker or null if no date has been selected.
+     *
+     * @param methodName &#x27;getDate&#x27;
+     */
+    datepicker(methodName: &#x27;getDate&#x27;): Date;
+    /**
+     * Close a previously opened date picker.
+     *
+     * @param methodName &#x27;hide&#x27;
+     */
+    datepicker(methodName: &#x27;hide&#x27;): JQuery;
+    /**
+     * Determine whether a date picker has been disabled.
+     *
+     * @param methodName &#x27;isDisabled&#x27;
+     */
+    datepicker(methodName: &#x27;isDisabled&#x27;): boolean;
+    /**
+     * Redraw the date picker, after having made some external modifications.
+     *
+     * @param methodName &#x27;refresh&#x27;
+     */
+    datepicker(methodName: &#x27;refresh&#x27;): JQuery;
+    /**
+     * Sets the date for the datepicker. The new date may be a Date object or a string in the current date format (e.g., &quot;01/26/2009&quot;), a number of days from today (e.g., +7) or a string of values and periods (&quot;y&quot; for years, &quot;m&quot; for months, &quot;w&quot; for weeks, &quot;d&quot; for days, e.g., &quot;+1m +7d&quot;), or null to clear the selected date.
+     *
+     * @param methodName &#x27;setDate&#x27;
+     * @param date The new date.
+     */
+    datepicker(methodName: &#x27;setDate&#x27;, date: Date): JQuery;
+    /**
+     * Sets the date for the datepicker. The new date may be a Date object or a string in the current date format (e.g., &quot;01/26/2009&quot;), a number of days from today (e.g., +7) or a string of values and periods (&quot;y&quot; for years, &quot;m&quot; for months, &quot;w&quot; for weeks, &quot;d&quot; for days, e.g., &quot;+1m +7d&quot;), or null to clear the selected date.
+     *
+     * @param methodName &#x27;setDate&#x27;
+     * @param date The new date.
+     */
+    datepicker(methodName: &#x27;setDate&#x27;, date: string): JQuery;
+    /**
+     * Open the date picker. If the datepicker is attached to an input, the input must be visible for the datepicker to be shown.
+     *
+     * @param methodName &#x27;show&#x27;
+     */
+    datepicker(methodName: &#x27;show&#x27;): JQuery;
+    /**
+     * Returns a jQuery object containing the datepicker.
+     *
+     * @param methodName &#x27;widget&#x27;
+     */
+    datepicker(methodName: &#x27;widget&#x27;): JQuery;
+
+    /**
+     * Get the altField option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;altField&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;altField&#x27;): any;
+    /**
+     * Set the altField option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;altField&#x27;
+     * @param altFieldValue An input element that is to be updated with the selected date from the datepicker. Use the altFormat option to change the format of the date within this field. Leave as blank for no alternate field.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;altField&#x27;, altFieldValue: string): JQuery;
+    /**
+     * Set the altField option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;altField&#x27;
+     * @param altFieldValue An input element that is to be updated with the selected date from the datepicker. Use the altFormat option to change the format of the date within this field. Leave as blank for no alternate field.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;altField&#x27;, altFieldValue: JQuery): JQuery;
+    /**
+     * Set the altField option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;altField&#x27;
+     * @param altFieldValue An input element that is to be updated with the selected date from the datepicker. Use the altFormat option to change the format of the date within this field. Leave as blank for no alternate field.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;altField&#x27;, altFieldValue: Element): JQuery;
+
+    /**
+     * Get the altFormat option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;altFormat&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;altFormat&#x27;): string;
+    /**
+     * Set the altFormat option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;altFormat&#x27;
+     * @param altFormatValue The dateFormat to be used for the altField option. This allows one date format to be shown to the user for selection purposes, while a different format is actually sent behind the scenes. For a full list of the possible formats see the formatDate function
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;altFormat&#x27;, altFormatValue: string): JQuery;
+
+    /**
+     * Get the appendText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;appendText&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;appendText&#x27;): string;
+    /**
+     * Set the appendText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;appendText&#x27;
+     * @param appendTextValue The text to display after each date field, e.g., to show the required format.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;appendText&#x27;, appendTextValue: string): JQuery;
+
+    /**
+     * Get the autoSize option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;autoSize&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;autoSize&#x27;): boolean;
+    /**
+     * Set the autoSize option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;autoSize&#x27;
+     * @param autoSizeValue Set to true to automatically resize the input field to accommodate dates in the current dateFormat.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;autoSize&#x27;, autoSizeValue: boolean): JQuery;
+
+    /**
+     * Get the beforeShow option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;beforeShow&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;beforeShow&#x27;): (input: Element, inst: any) =&gt; JQueryUI.DatepickerOptions;
+    /**
+     * Set the beforeShow option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;beforeShow&#x27;
+     * @param beforeShowValue A function that takes an input field and current datepicker instance and returns an options object to update the datepicker with. It is called just before the datepicker is displayed.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;beforeShow&#x27;, beforeShowValue: (input: Element, inst: any) =&gt; JQueryUI.DatepickerOptions): JQuery;
+
+    /**
+     * Get the beforeShow option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;beforeShowDay&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;beforeShowDay&#x27;): (date: Date) =&gt; any[];
+    /**
+     * Set the beforeShow option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;beforeShowDay&#x27;
+     * @param beforeShowDayValue A function that takes a date as a parameter and must return an array with:
+     * [0]: true/false indicating whether or not this date is selectable
+     * [1]: a CSS class name to add to the date&#x27;s cell or &quot;&quot; for the default presentation
+     * [2]: an optional popup tooltip for this date
+     * The function is called for each day in the datepicker before it is displayed.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;beforeShowDay&#x27;, beforeShowDayValue: (date: Date) =&gt; any[]): JQuery;
+
+    /**
+     * Get the buttonImage option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;buttonImage&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;buttonImage&#x27;): string;
+    /**
+     * Set the buttonImage option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;buttonImage&#x27;
+     * @param buttonImageValue A URL of an image to use to display the datepicker when the showOn option is set to &quot;button&quot; or &quot;both&quot;. If set, the buttonText option becomes the alt value and is not directly displayed.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;buttonImage&#x27;, buttonImageValue: string): JQuery;
+
+    /**
+     * Get the buttonImageOnly option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;buttonImageOnly&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;buttonImageOnly&#x27;): boolean;
+    /**
+     * Set the buttonImageOnly option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;buttonImageOnly&#x27;
+     * @param buttonImageOnlyValue Whether the button image should be rendered by itself instead of inside a button element. This option is only relevant if the buttonImage option has also been set.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;buttonImageOnly&#x27;, buttonImageOnlyValue: boolean): JQuery;
+
+    /**
+     * Get the buttonText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;buttonText&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;buttonText&#x27;): string;
+    /**
+     * Set the buttonText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;buttonText&#x27;
+     * @param buttonTextValue The text to display on the trigger button. Use in conjunction with the showOn option set to &quot;button&quot; or &quot;both&quot;.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;buttonText&#x27;, buttonTextValue: string): JQuery;
+
+    /**
+     * Get the calculateWeek option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;calculateWeek&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;calculateWeek&#x27;): (date: Date) =&gt; string;
+    /**
+     * Set the calculateWeek option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;calculateWeek&#x27;
+     * @param calculateWeekValue A function to calculate the week of the year for a given date. The default implementation uses the ISO 8601 definition: weeks start on a Monday; the first week of the year contains the first Thursday of the year.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;calculateWeek&#x27;, calculateWeekValue: (date: Date) =&gt; string): JQuery;
+
+    /**
+     * Get the changeMonth option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;changeMonth&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;changeMonth&#x27;): boolean;
+    /**
+     * Set the changeMonth option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;changeMonth&#x27;
+     * @param changeMonthValue Whether the month should be rendered as a dropdown instead of text.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;changeMonth&#x27;, changeMonthValue: boolean): JQuery;
+
+    /**
+     * Get the changeYear option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;changeYear&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;changeYear&#x27;): boolean;
+    /**
+     * Set the changeYear option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;changeYear&#x27;
+     * @param changeYearValue Whether the year should be rendered as a dropdown instead of text. Use the yearRange option to control which years are made available for selection.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;changeYear&#x27;, changeYearValue: boolean): JQuery;
+
+    /**
+     * Get the closeText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;closeText&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;closeText&#x27;): string;
+    /**
+     * Set the closeText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;closeText&#x27;
+     * @param closeTextValue The text to display for the close link. Use the showButtonPanel option to display this button.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;closeText&#x27;, closeTextValue: string): JQuery;
+
+    /**
+     * Get the constrainInput option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;constrainInput&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;constrainInput&#x27;): boolean;
+    /**
+     * Set the constrainInput option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;constrainInput&#x27;
+     * @param constrainInputValue When true, entry in the input field is constrained to those characters allowed by the current dateFormat option.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;constrainInput&#x27;, constrainInputValue: boolean): JQuery;
+
+    /**
+     * Get the currentText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;currentText&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;currentText&#x27;): string;
+    /**
+     * Set the currentText option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;currentText&#x27;
+     * @param currentTextValue The text to display for the current day link. Use the showButtonPanel option to display this button.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;currentText&#x27;, currentTextValue: string): JQuery;
+
+    /**
+     * Get the dateFormat option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dateFormat&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dateFormat&#x27;): string;
+    /**
+     * Set the dateFormat option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dateFormat&#x27;
+     * @param dateFormatValue The format for parsed and displayed dates. For a full list of the possible formats see the formatDate function.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dateFormat&#x27;, dateFormatValue: string): JQuery;
+
+    /**
+     * Get the dayNames option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dayNames&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dayNames&#x27;): string[];
+    /**
+     * Set the dayNames option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dayNames&#x27;
+     * @param dayNamesValue The list of long day names, starting from Sunday, for use as requested via the dateFormat option.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dayNames&#x27;, dayNamesValue: string[]): JQuery;
+
+    /**
+     * Get the dayNamesMin option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dayNamesMin&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dayNamesMin&#x27;): string[];
+    /**
+     * Set the dayNamesMin option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dayNamesMin&#x27;
+     * @param dayNamesMinValue The list of minimised day names, starting from Sunday, for use as column headers within the datepicker.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dayNamesMin&#x27;, dayNamesMinValue: string[]): JQuery;
+
+    /**
+     * Get the dayNamesShort option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dayNamesShort&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dayNamesShort&#x27;): string[];
+    /**
+     * Set the dayNamesShort option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;dayNamesShort&#x27;
+     * @param dayNamesShortValue The list of abbreviated day names, starting from Sunday, for use as requested via the dateFormat option.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;dayNamesShort&#x27;, dayNamesShortValue: string[]): JQuery;
+
+    /**
+     * Get the defaultDate option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;defaultDate&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;defaultDate&#x27;): any;
+    /**
+     * Set the defaultDate option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;defaultDate&#x27;
+     * @param defaultDateValue A date object containing the default date.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;defaultDate&#x27;, defaultDateValue: Date): JQuery;
+    /**
+     * Set the defaultDate option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;defaultDate&#x27;
+     * @param defaultDateValue A number of days from today. For example 2 represents two days from today and -1 represents yesterday.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;defaultDate&#x27;, defaultDateValue: number): JQuery;
+    /**
+     * Set the defaultDate option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;defaultDate&#x27;
+     * @param defaultDateValue A string in the format defined by the dateFormat option, or a relative date. Relative dates must contain value and period pairs; valid periods are &quot;y&quot; for years, &quot;m&quot; for months, &quot;w&quot; for weeks, and &quot;d&quot; for days. For example, &quot;+1m +7d&quot; represents one month and seven days from today.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;defaultDate&#x27;, defaultDateValue: string): JQuery;
+
+    /**
+     * Get the duration option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;duration&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;duration&#x27;): string;
+    /**
+     * Set the duration option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;duration&#x27;
+     * @param durationValue Control the speed at which the datepicker appears, it may be a time in milliseconds or a string representing one of the three predefined speeds (&quot;slow&quot;, &quot;normal&quot;, &quot;fast&quot;).
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;duration&#x27;, durationValue: string): JQuery;
+
+    /**
+     * Get the firstDay option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;firstDay&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;firstDay&#x27;): number;
+    /**
+     * Set the firstDay option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;firstDay&#x27;
+     * @param firstDayValue Set the first day of the week: Sunday is 0, Monday is 1, etc.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;firstDay&#x27;, firstDayValue: number): JQuery;
+
+    /**
+     * Get the gotoCurrent option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;gotoCurrent&#x27;
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;gotoCurrent&#x27;): boolean;
+    /**
+     * Set the gotoCurrent option, after initialization
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName &#x27;gotoCurrent&#x27;
+     * @param gotoCurrentValue When true, the current day link moves to the currently selected date instead of today.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: &#x27;gotoCurrent&#x27;, gotoCurrentValue: boolean): JQuery;
+
+    /**
+     * Gets the value currently associated with the specified optionName.
+     *
+     * @param methodName &#x27;option&#x27;
+     * @param optionName The name of the option to get.
+     */
+    datepicker(methodName: &#x27;option&#x27;, optionName: string): any;
+
+    datepicker(methodName: &#x27;option&#x27;, optionName: string, ...otherParams: any[]): any; // Used for getting and setting options
+
+    datepicker(methodName: string, ...otherParams: any[]): any;
+
+    /**
+     * Initialize a datepicker with the given options
+     */
+    datepicker(options: JQueryUI.DatepickerOptions): JQuery;
+
+    dialog(): JQuery;
+    dialog(methodName: &#x27;close&#x27;): JQuery;
+    dialog(methodName: &#x27;destroy&#x27;): JQuery;
+    dialog(methodName: &#x27;isOpen&#x27;): boolean;
+    dialog(methodName: &#x27;moveToTop&#x27;): JQuery;
+    dialog(methodName: &#x27;open&#x27;): JQuery;
+    dialog(methodName: &#x27;widget&#x27;): JQuery;
+    dialog(methodName: string): JQuery;
+    dialog(options: JQueryUI.DialogOptions): JQuery;
+    dialog(optionLiteral: string, optionName: string): any;
+    dialog(optionLiteral: string, options: JQueryUI.DialogOptions): any;
+    dialog(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    draggable(): JQuery;
+    draggable(methodName: &#x27;destroy&#x27;): void;
+    draggable(methodName: &#x27;disable&#x27;): void;
+    draggable(methodName: &#x27;enable&#x27;): void;
+    draggable(methodName: &#x27;widget&#x27;): JQuery;
+    draggable(methodName: string): JQuery;
+    draggable(options: JQueryUI.DraggableOptions): JQuery;
+    draggable(optionLiteral: string, optionName: string): any;
+    draggable(optionLiteral: string, options: JQueryUI.DraggableOptions): any;
+    draggable(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    droppable(): JQuery;
+    droppable(methodName: &#x27;destroy&#x27;): void;
+    droppable(methodName: &#x27;disable&#x27;): void;
+    droppable(methodName: &#x27;enable&#x27;): void;
+    droppable(methodName: &#x27;widget&#x27;): JQuery;
+    droppable(methodName: string): JQuery;
+    droppable(options: JQueryUI.DroppableOptions): JQuery;
+    droppable(optionLiteral: string, optionName: string): any;
+    droppable(optionLiteral: string, options: JQueryUI.DraggableOptions): any;
+    droppable(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    menu: {
+        (): JQuery;
+        (methodName: &#x27;blur&#x27;): void;
+        (methodName: &#x27;collapse&#x27;, event?: JQueryEventObject): void;
+        (methodName: &#x27;collapseAll&#x27;, event?: JQueryEventObject, all?: boolean): void;
+        (methodName: &#x27;destroy&#x27;): void;
+        (methodName: &#x27;disable&#x27;): void;
+        (methodName: &#x27;enable&#x27;): void;
+        (methodName: string, event: JQueryEventObject, item: JQuery): void;
+        (methodName: &#x27;focus&#x27;, event: JQueryEventObject, item: JQuery): void;
+        (methodName: &#x27;isFirstItem&#x27;): boolean;
+        (methodName: &#x27;isLastItem&#x27;): boolean;
+        (methodName: &#x27;next&#x27;, event?: JQueryEventObject): void;
+        (methodName: &#x27;nextPage&#x27;, event?: JQueryEventObject): void;
+        (methodName: &#x27;previous&#x27;, event?: JQueryEventObject): void;
+        (methodName: &#x27;previousPage&#x27;, event?: JQueryEventObject): void;
+        (methodName: &#x27;refresh&#x27;): void;
+        (methodName: &#x27;select&#x27;, event?: JQueryEventObject): void;
+        (methodName: &#x27;widget&#x27;): JQuery;
+        (methodName: string): JQuery;
+        (options: JQueryUI.MenuOptions): JQuery;
+        (optionLiteral: string, optionName: string): any;
+        (optionLiteral: string, options: JQueryUI.MenuOptions): any;
+        (optionLiteral: string, optionName: string, optionValue: any): JQuery;
+        active: boolean;
+    }
+
+    progressbar(): JQuery;
+    progressbar(methodName: &#x27;destroy&#x27;): void;
+    progressbar(methodName: &#x27;disable&#x27;): void;
+    progressbar(methodName: &#x27;enable&#x27;): void;
+    progressbar(methodName: &#x27;refresh&#x27;): void;
+    progressbar(methodName: &#x27;value&#x27;): any; // number or boolean
+    progressbar(methodName: &#x27;value&#x27;, value: number): void;
+    progressbar(methodName: &#x27;value&#x27;, value: boolean): void;
+    progressbar(methodName: &#x27;widget&#x27;): JQuery;
+    progressbar(methodName: string): JQuery;
+    progressbar(options: JQueryUI.ProgressbarOptions): JQuery;
+    progressbar(optionLiteral: string, optionName: string): any;
+    progressbar(optionLiteral: string, options: JQueryUI.ProgressbarOptions): any;
+    progressbar(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    resizable(): JQuery;
+    resizable(methodName: &#x27;destroy&#x27;): void;
+    resizable(methodName: &#x27;disable&#x27;): void;
+    resizable(methodName: &#x27;enable&#x27;): void;
+    resizable(methodName: &#x27;widget&#x27;): JQuery;
+    resizable(methodName: string): JQuery;
+    resizable(options: JQueryUI.ResizableOptions): JQuery;
+    resizable(optionLiteral: string, optionName: string): any;
+    resizable(optionLiteral: string, options: JQueryUI.ResizableOptions): any;
+    resizable(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    selectable(): JQuery;
+    selectable(methodName: &#x27;destroy&#x27;): void;
+    selectable(methodName: &#x27;disable&#x27;): void;
+    selectable(methodName: &#x27;enable&#x27;): void;
+    selectable(methodName: &#x27;widget&#x27;): JQuery;
+    selectable(methodName: string): JQuery;
+    selectable(options: JQueryUI.SelectableOptions): JQuery;
+    selectable(optionLiteral: string, optionName: string): any;
+    selectable(optionLiteral: string, options: JQueryUI.SelectableOptions): any;
+    selectable(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    slider(): JQuery;
+    slider(methodName: &#x27;destroy&#x27;): void;
+    slider(methodName: &#x27;disable&#x27;): void;
+    slider(methodName: &#x27;enable&#x27;): void;
+    slider(methodName: &#x27;refresh&#x27;): void;
+    slider(methodName: &#x27;value&#x27;): number;
+    slider(methodName: &#x27;value&#x27;, value: number): void;
+    slider(methodName: &#x27;values&#x27;): Array&lt;number&gt;;
+    slider(methodName: &#x27;values&#x27;, index: number): number;
+    slider(methodName: string, index: number, value: number): void;
+    slider(methodName: &#x27;values&#x27;, index: number, value: number): void;
+    slider(methodName: string, values: Array&lt;number&gt;): void;
+    slider(methodName: &#x27;values&#x27;, values: Array&lt;number&gt;): void;
+    slider(methodName: &#x27;widget&#x27;): JQuery;
+    slider(methodName: string): JQuery;
+    slider(options: JQueryUI.SliderOptions): JQuery;
+    slider(optionLiteral: string, optionName: string): any;
+    slider(optionLiteral: string, options: JQueryUI.SliderOptions): any;
+    slider(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    sortable(): JQuery;
+    sortable(methodName: &#x27;destroy&#x27;): void;
+    sortable(methodName: &#x27;disable&#x27;): void;
+    sortable(methodName: &#x27;enable&#x27;): void;
+    sortable(methodName: &#x27;widget&#x27;): JQuery;
+    sortable(methodName: &#x27;toArray&#x27;): string[];
+    sortable(methodName: string): JQuery;
+    sortable(options: JQueryUI.SortableOptions): JQuery;
+    sortable(optionLiteral: string, optionName: string): any;
+    sortable(methodName: &#x27;serialize&#x27;, options: { key?: string; attribute?: string; expression?: RegExp }): string;
+    sortable(optionLiteral: string, options: JQueryUI.SortableOptions): any;
+    sortable(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    spinner(): JQuery;
+    spinner(methodName: &#x27;destroy&#x27;): void;
+    spinner(methodName: &#x27;disable&#x27;): void;
+    spinner(methodName: &#x27;enable&#x27;): void;
+    spinner(methodName: &#x27;pageDown&#x27;, pages?: number): void;
+    spinner(methodName: &#x27;pageUp&#x27;, pages?: number): void;
+    spinner(methodName: &#x27;stepDown&#x27;, steps?: number): void;
+    spinner(methodName: &#x27;stepUp&#x27;, steps?: number): void;
+    spinner(methodName: &#x27;value&#x27;): number;
+    spinner(methodName: &#x27;value&#x27;, value: number): void;
+    spinner(methodName: &#x27;widget&#x27;): JQuery;
+    spinner(methodName: string): JQuery;
+    spinner(options: JQueryUI.SpinnerOptions): JQuery;
+    spinner(optionLiteral: string, optionName: string): any;
+    spinner(optionLiteral: string, options: JQueryUI.SpinnerOptions): any;
+    spinner(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    tabs(): JQuery;
+    tabs(methodName: &#x27;destroy&#x27;): void;
+    tabs(methodName: &#x27;disable&#x27;): void;
+    tabs(methodName: &#x27;enable&#x27;): void;
+    tabs(methodName: &#x27;load&#x27;, index: number): void;
+    tabs(methodName: &#x27;refresh&#x27;): void;
+    tabs(methodName: &#x27;widget&#x27;): JQuery;
+    tabs(methodName: string): JQuery;
+    tabs(options: JQueryUI.TabsOptions): JQuery;
+    tabs(optionLiteral: string, optionName: string): any;
+    tabs(optionLiteral: string, options: JQueryUI.TabsOptions): any;
+    tabs(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+    tooltip(): JQuery;
+    tooltip(methodName: &#x27;destroy&#x27;): void;
+    tooltip(methodName: &#x27;disable&#x27;): void;
+    tooltip(methodName: &#x27;enable&#x27;): void;
+    tooltip(methodName: &#x27;open&#x27;): void;
+    tooltip(methodName: &#x27;close&#x27;): void;
+    tooltip(methodName: &#x27;widget&#x27;): JQuery;
+    tooltip(methodName: string): JQuery;
+    tooltip(options: JQueryUI.TooltipOptions): JQuery;
+    tooltip(optionLiteral: string, optionName: string): any;
+    tooltip(optionLiteral: string, options: JQueryUI.TooltipOptions): any;
+    tooltip(optionLiteral: string, optionName: string, optionValue: any): JQuery;
+
+
+    addClass(classNames: string, speed?: number, callback?: Function): JQuery;
+    addClass(classNames: string, speed?: string, callback?: Function): JQuery;
+    addClass(classNames: string, speed?: number, easing?: string, callback?: Function): JQuery;
+    addClass(classNames: string, speed?: string, easing?: string, callback?: Function): JQuery;
+
+    removeClass(classNames: string, speed?: number, callback?: Function): JQuery;
+    removeClass(classNames: string, speed?: string, callback?: Function): JQuery;
+    removeClass(classNames: string, speed?: number, easing?: string, callback?: Function): JQuery;
+    removeClass(classNames: string, speed?: string, easing?: string, callback?: Function): JQuery;
+
+    switchClass(removeClassName: string, addClassName: string, duration?: number, easing?: string, complete?: Function): JQuery;
+    switchClass(removeClassName: string, addClassName: string, duration?: string, easing?: string, complete?: Function): JQuery;
+
+    toggleClass(className: string, duration?: number, easing?: string, complete?: Function): JQuery;
+    toggleClass(className: string, duration?: string, easing?: string, complete?: Function): JQuery;
+    toggleClass(className: string, aswitch?: boolean, duration?: number, easing?: string, complete?: Function): JQuery;
+    toggleClass(className: string, aswitch?: boolean, duration?: string, easing?: string, complete?: Function): JQuery;
+
+    effect(options: any): JQuery;
+    effect(effect: string, options?: any, duration?: number, complete?: Function): JQuery;
+    effect(effect: string, options?: any, duration?: string, complete?: Function): JQuery;
+
+    hide(options: any): JQuery;
+    hide(effect: string, options?: any, duration?: number, complete?: Function): JQuery;
+    hide(effect: string, options?: any, duration?: string, complete?: Function): JQuery;
+
+    show(options: any): JQuery;
+    show(effect: string, options?: any, duration?: number, complete?: Function): JQuery;
+    show(effect: string, options?: any, duration?: string, complete?: Function): JQuery;
+
+    toggle(options: any): JQuery;
+    toggle(effect: string, options?: any, duration?: number, complete?: Function): JQuery;
+    toggle(effect: string, options?: any, duration?: string, complete?: Function): JQuery;
+
+    position(options: JQueryUI.JQueryPositionOptions): JQuery;
+
+    enableSelection(): JQuery;
+    disableSelection(): JQuery;
+    focus(delay: number, callback?: Function): JQuery;
+    uniqueId(): JQuery;
+    removeUniqueId(): JQuery;
+    scrollParent(): JQuery;
+    zIndex(): JQuery;
+    zIndex(zIndex: number): JQuery;
+
+    widget: JQueryUI.Widget;
+
+    jQuery: JQueryStatic;
+}
+
+interface JQueryStatic {
+    ui: JQueryUI.UI;
+    datepicker: JQueryUI.Datepicker;
+    widget: JQueryUI.Widget;
+    Widget: JQueryUI.Widget;
+}
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

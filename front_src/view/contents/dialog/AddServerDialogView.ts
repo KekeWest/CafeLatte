@@ -5,10 +5,26 @@ import DialogView = require("./DialogView");
 import DialogOption = require("./DialogOption");
 import AddServerView = require("../symbol/AddServerView");
 
-
+/**
+ * サーバ追加ダイアログのViewクラス
+ *
+ * @class AddServerDialogView
+ * @extends DialogView
+ * @constructor
+ * @override
+ * @param options {DialogOption} ダイアログオプション
+ */
 class AddServerDialogView extends DialogView {
 
+  /**
+   * ダイアログ名
+   *
+   * @property dialogName
+   * @static
+   * @type {string}
+   */
   static dialogName: string = "AddServer";
+
 
   constructor(options?: DialogOption) {
     this._template = JST["contents/dialog/dialog"];

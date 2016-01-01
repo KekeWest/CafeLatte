@@ -1,0 +1,3510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>front_src/typings/underscore/underscore.d.ts - CafeLatte</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="CafeLatte" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/AddServerDialogView.html">AddServerDialogView</a></li>
+                                <li><a href="../classes/ApplicationView.html">ApplicationView</a></li>
+                                <li><a href="../classes/BaseView.html">BaseView</a></li>
+                                <li><a href="../classes/DialogsView.html">DialogsView</a></li>
+                                <li><a href="../classes/DialogView.html">DialogView</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: front_src/typings/underscore/underscore.d.ts</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+// Type definitions for Underscore 1.7.0
+// Project: http://underscorejs.org/
+// Definitions by: Boris Yankov &lt;https://github.com/borisyankov/&gt;, Josh Baldwin &lt;https://github.com/jbaldwin/&gt;
+// Definitions: https://github.com/borisyankov/DefinitelyTyped
+
+declare module _ {
+	/**
+	* underscore.js _.throttle options.
+	**/
+	interface ThrottleSettings {
+
+		/**
+		* If you&#x27;d like to disable the leading-edge call, pass this as false.
+		**/
+		leading?: boolean;
+
+		/**
+		* If you&#x27;d like to disable the execution on the trailing-edge, pass false.
+		**/
+		trailing?: boolean;
+	}
+
+	/**
+	* underscore.js template settings, set templateSettings or pass as an argument
+	* to &#x27;template()&#x27; to override defaults.
+	**/
+	interface TemplateSettings {
+		/**
+		* Default value is &#x27;/&lt;%([\s\S]+?)%&gt;/g&#x27;.
+		**/
+		evaluate?: RegExp;
+
+		/**
+		* Default value is &#x27;/&lt;%=([\s\S]+?)%&gt;/g&#x27;.
+		**/
+		interpolate?: RegExp;
+
+		/**
+		* Default value is &#x27;/&lt;%-([\s\S]+?)%&gt;/g&#x27;.
+		**/
+		escape?: RegExp;
+	}
+
+	interface Collection&lt;T&gt; { }
+
+	// Common interface between Arrays and jQuery objects
+	interface List&lt;T&gt; extends Collection&lt;T&gt; {
+		[index: number]: T;
+		length: number;
+	}
+
+	interface Dictionary&lt;T&gt; extends Collection&lt;T&gt; {
+		[index: string]: T;
+	}
+
+	interface ListIterator&lt;T, TResult&gt; {
+		(value: T, index: number, list: List&lt;T&gt;): TResult;
+	}
+
+	interface ObjectIterator&lt;T, TResult&gt; {
+		(element: T, key: string, list: Dictionary&lt;T&gt;): TResult;
+	}
+
+	interface MemoIterator&lt;T, TResult&gt; {
+		(prev: TResult, curr: T, index: number, list: List&lt;T&gt;): TResult;
+	}
+
+	interface MemoObjectIterator&lt;T, TResult&gt; {
+		(prev: TResult, curr: T, key: string, list: Dictionary&lt;T&gt;): TResult;
+	}
+}
+
+interface UnderscoreStatic {
+	/**
+	* Underscore OOP Wrapper, all Underscore functions that take an object
+	* as the first parameter can be invoked through this function.
+	* @param key First argument to Underscore object functions.
+	**/
+	&lt;T&gt;(value: Array&lt;T&gt;): Underscore&lt;T&gt;;
+	&lt;T&gt;(value: T): Underscore&lt;T&gt;;
+
+	/* *************
+	 * Collections *
+	 ************* */
+
+	/**
+	* Iterates over a list of elements, yielding each in turn to an iterator function. The iterator is
+	* bound to the context object, if one is passed. Each invocation of iterator is called with three
+	* arguments: (element, index, list). If list is a JavaScript object, iterator&#x27;s arguments will be
+	* (value, key, object). Delegates to the native forEach function if it exists.
+	* @param list Iterates over this list of elements.
+	* @param iterator Iterator function for each element &#x60;list&#x60;.
+	* @param context &#x27;this&#x27; object in &#x60;iterator&#x60;, optional.
+	**/
+	each&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, void&gt;,
+		context?: any): _.List&lt;T&gt;;
+
+	/**
+	* @see _.each
+	* @param object Iterates over properties of this object.
+	* @param iterator Iterator function for each property on &#x60;object&#x60;.
+	* @param context &#x27;this&#x27; object in &#x60;iterator&#x60;, optional.
+	**/
+	each&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, void&gt;,
+		context?: any): _.Dictionary&lt;T&gt;;
+
+	/**
+	* @see _.each
+	**/
+	forEach&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, void&gt;,
+		context?: any): _.List&lt;T&gt;;
+
+	/**
+	* @see _.each
+	**/
+	forEach&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, void&gt;,
+		context?: any): _.Dictionary&lt;T&gt;;
+
+	/**
+	* Produces a new array of values by mapping each value in list through a transformation function
+	* (iterator). If the native map method exists, it will be used instead. If list is a JavaScript
+	* object, iterator&#x27;s arguments will be (value, key, object).
+	* @param list Maps the elements of this array.
+	* @param iterator Map iterator function for each element in &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The mapped array result.
+	**/
+	map&lt;T, TResult&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, TResult&gt;,
+		context?: any): TResult[];
+
+	/**
+	* @see _.map
+	* @param object Maps the properties of this object.
+	* @param iterator Map iterator function for each property on &#x60;object&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The mapped object result.
+	**/
+	map&lt;T, TResult&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, TResult&gt;,
+		context?: any): TResult[];
+
+	/**
+	* @see _.map
+	**/
+	collect&lt;T, TResult&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, TResult&gt;,
+		context?: any): TResult[];
+
+	/**
+	* @see _.map
+	**/
+	collect&lt;T, TResult&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, TResult&gt;,
+		context?: any): TResult[];
+
+	/**
+	* Also known as inject and foldl, reduce boils down a list of values into a single value.
+	* Memo is the initial state of the reduction, and each successive step of it should be
+	* returned by iterator. The iterator is passed four arguments: the memo, then the value
+	* and index (or key) of the iteration, and finally a reference to the entire list.
+	* @param list Reduces the elements of this array.
+	* @param iterator Reduce iterator function for each element in &#x60;list&#x60;.
+	* @param memo Initial reduce state.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return Reduced object result.
+	**/
+	reduce&lt;T, TResult&gt;(
+		list: _.Collection&lt;T&gt;,
+		iterator: _.MemoIterator&lt;T, TResult&gt;,
+		memo?: TResult,
+		context?: any): TResult;
+
+	reduce&lt;T, TResult&gt;(
+		list: _.Dictionary&lt;T&gt;,
+		iterator: _.MemoObjectIterator&lt;T, TResult&gt;,
+		memo?: TResult,
+		context?: any): TResult;
+
+	/**
+	* @see _.reduce
+	**/
+	inject&lt;T, TResult&gt;(
+		list: _.Collection&lt;T&gt;,
+		iterator: _.MemoIterator&lt;T, TResult&gt;,
+		memo?: TResult,
+		context?: any): TResult;
+
+	/**
+	* @see _.reduce
+	**/
+	foldl&lt;T, TResult&gt;(
+		list: _.Collection&lt;T&gt;,
+		iterator: _.MemoIterator&lt;T, TResult&gt;,
+		memo?: TResult,
+		context?: any): TResult;
+
+	/**
+	* The right-associative version of reduce. Delegates to the JavaScript 1.8 version of
+	* reduceRight, if it exists. &#x60;foldr&#x60; is not as useful in JavaScript as it would be in a
+	* language with lazy evaluation.
+	* @param list Reduces the elements of this array.
+	* @param iterator Reduce iterator function for each element in &#x60;list&#x60;.
+	* @param memo Initial reduce state.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return Reduced object result.
+	**/
+	reduceRight&lt;T, TResult&gt;(
+		list: _.Collection&lt;T&gt;,
+		iterator: _.MemoIterator&lt;T, TResult&gt;,
+		memo?: TResult,
+		context?: any): TResult;
+
+	/**
+	* @see _.reduceRight
+	**/
+	foldr&lt;T, TResult&gt;(
+		list: _.Collection&lt;T&gt;,
+		iterator: _.MemoIterator&lt;T, TResult&gt;,
+		memo?: TResult,
+		context?: any): TResult;
+
+	/**
+	* Looks through each value in the list, returning the first one that passes a truth
+	* test (iterator). The function returns as soon as it finds an acceptable element,
+	* and doesn&#x27;t traverse the entire list.
+	* @param list Searches for a value in this list.
+	* @param iterator Search iterator function for each element in &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The first acceptable found element in &#x60;list&#x60;, if nothing is found undefined/null is returned.
+	**/
+	find&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): T;
+
+	/**
+	* @see _.find
+	**/
+	find&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): T;
+
+	/**
+	* @see _.find
+	**/
+	detect&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): T;
+
+	/**
+	* @see _.find
+	**/
+	detect&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, boolean&gt;,
+        context?: any): T;
+
+    /**
+	* Looks through each value in the list, returning the index of the first one that passes a truth
+	* test (iterator). The function returns as soon as it finds an acceptable element,
+	* and doesn&#x27;t traverse the entire list.
+	* @param list Searches for a value in this list.
+	* @param iterator Search iterator function for each element in &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The index of the first acceptable found element in &#x60;list&#x60;, if nothing is found -1 is returned.
+	**/
+    findIndex&lt;T&gt;(
+        list: _.List&lt;T&gt;,
+        iterator: _.ListIterator&lt;T, boolean&gt;,
+        context?: any): number;
+
+
+	/**
+	* Looks through each value in the list, returning an array of all the values that pass a truth
+	* test (iterator). Delegates to the native filter method, if it exists.
+	* @param list Filter elements out of this list.
+	* @param iterator Filter iterator function for each element in &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The filtered list of elements.
+	**/
+	filter&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.filter
+	**/
+	filter&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.filter
+	**/
+	select&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.filter
+	**/
+	select&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): T[];
+
+	/**
+	* Looks through each value in the list, returning an array of all the values that contain all
+	* of the key-value pairs listed in properties.
+	* @param list List to match elements again &#x60;properties&#x60;.
+	* @param properties The properties to check for on each element within &#x60;list&#x60;.
+	* @return The elements within &#x60;list&#x60; that contain the required &#x60;properties&#x60;.
+	**/
+	where&lt;T, U extends {}&gt;(
+		list: _.List&lt;T&gt;,
+		properties: U): T[];
+
+	/**
+	* Looks through the list and returns the first value that matches all of the key-value pairs listed in properties.
+	* @param list Search through this list&#x27;s elements for the first object with all &#x60;properties&#x60;.
+	* @param properties Properties to look for on the elements within &#x60;list&#x60;.
+	* @return The first element in &#x60;list&#x60; that has all &#x60;properties&#x60;.
+	**/
+	findWhere&lt;T, U extends {}&gt;(
+		list: _.List&lt;T&gt;,
+		properties: U): T;
+
+	/**
+	* Returns the values in list without the elements that the truth test (iterator) passes.
+	* The opposite of filter.
+	* Return all the elements for which a truth test fails.
+	* @param list Reject elements within this list.
+	* @param iterator Reject iterator function for each element in &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The rejected list of elements.
+	**/
+	reject&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.reject
+	**/
+	reject&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): T[];
+
+	/**
+	* Returns true if all of the values in the list pass the iterator truth test. Delegates to the
+	* native method every, if present.
+	* @param list Truth test against all elements within this list.
+	* @param iterator Trust test iterator function for each element in &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return True if all elements passed the truth test, otherwise false.
+	**/
+	every&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* @see _.every
+	**/
+	every&lt;T&gt;(
+		list: _.Dictionary&lt;T&gt;,
+		iterator?: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* @see _.every
+	**/
+	all&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* @see _.every
+	**/
+	all&lt;T&gt;(
+		list: _.Dictionary&lt;T&gt;,
+		iterator?: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* Returns true if any of the values in the list pass the iterator truth test. Short-circuits and
+	* stops traversing the list if a true element is found. Delegates to the native method some, if present.
+	* @param list Truth test against all elements within this list.
+	* @param iterator Trust test iterator function for each element in &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return True if any elements passed the truth test, otherwise false.
+	**/
+	some&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* @see _.some
+	**/
+	some&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator?: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* @see _.some
+	**/
+	any&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* @see _.some
+	**/
+	any&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		iterator?: _.ObjectIterator&lt;T, boolean&gt;,
+		context?: any): boolean;
+
+	/**
+	* Returns true if the value is present in the list. Uses indexOf internally,
+	* if list is an Array.
+	* @param list Checks each element to see if &#x60;value&#x60; is present.
+	* @param value The value to check for within &#x60;list&#x60;.
+	* @return True if &#x60;value&#x60; is present in &#x60;list&#x60;, otherwise false.
+	**/
+	contains&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		value: T): boolean;
+
+	/**
+	* @see _.contains
+	**/
+	contains&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		value: T): boolean;
+
+	/**
+	* @see _.contains
+	**/
+	include&lt;T&gt;(
+		list: _.Collection&lt;T&gt;,
+		value: T): boolean;
+
+	/**
+	* @see _.contains
+	**/
+	include&lt;T&gt;(
+		object: _.Dictionary&lt;T&gt;,
+		value: T): boolean;
+
+	/**
+	* Calls the method named by methodName on each value in the list. Any extra arguments passed to
+	* invoke will be forwarded on to the method invocation.
+	* @param list The element&#x27;s in this list will each have the method &#x60;methodName&#x60; invoked.
+	* @param methodName The method&#x27;s name to call on each element within &#x60;list&#x60;.
+	* @param arguments Additional arguments to pass to the method &#x60;methodName&#x60;.
+	**/
+	invoke&lt;T extends {}&gt;(
+		list: _.List&lt;T&gt;,
+		methodName: string,
+		...arguments: any[]): any;
+
+	/**
+	* A convenient version of what is perhaps the most common use-case for map: extracting a list of
+	* property values.
+	* @param list The list to pluck elements out of that have the property &#x60;propertyName&#x60;.
+	* @param propertyName The property to look for on each element within &#x60;list&#x60;.
+	* @return The list of elements within &#x60;list&#x60; that have the property &#x60;propertyName&#x60;.
+	**/
+	pluck&lt;T extends {}&gt;(
+		list: _.List&lt;T&gt;,
+		propertyName: string): any[];
+
+	/**
+	* Returns the maximum value in list.
+	* @param list Finds the maximum value in this list.
+	* @return Maximum value in &#x60;list&#x60;.
+	**/
+	max(list: _.List&lt;number&gt;): number;
+
+	/**
+	* Returns the maximum value in list. If iterator is passed, it will be used on each value to generate
+	* the criterion by which the value is ranked.
+	* @param list Finds the maximum value in this list.
+	* @param iterator Compares each element in &#x60;list&#x60; to find the maximum value.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The maximum element within &#x60;list&#x60;.
+	**/
+	max&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, any&gt;,
+		context?: any): T;
+
+	/**
+	* Returns the minimum value in list.
+	* @param list Finds the minimum value in this list.
+	* @return Minimum value in &#x60;list&#x60;.
+	**/
+	min(list: _.List&lt;number&gt;): number;
+
+	/**
+	* Returns the minimum value in list. If iterator is passed, it will be used on each value to generate
+	* the criterion by which the value is ranked.
+	* @param list Finds the minimum value in this list.
+	* @param iterator Compares each element in &#x60;list&#x60; to find the minimum value.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return The minimum element within &#x60;list&#x60;.
+	**/
+	min&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, any&gt;,
+		context?: any): T;
+
+	/**
+	* Returns a sorted copy of list, ranked in ascending order by the results of running each value
+	* through iterator. Iterator may also be the string name of the property to sort by (eg. length).
+	* @param list Sorts this list.
+	* @param iterator Sort iterator for each element within &#x60;list&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return A sorted copy of &#x60;list&#x60;.
+	**/
+	sortBy&lt;T, TSort&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, TSort&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.sortBy
+	* @param iterator Sort iterator for each element within &#x60;list&#x60;.
+	**/
+	sortBy&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: string,
+		context?: any): T[];
+
+	/**
+	* Splits a collection into sets, grouped by the result of running each value through iterator.
+	* If iterator is a string instead of a function, groups by the property named by iterator on
+	* each of the values.
+	* @param list Groups this list.
+	* @param iterator Group iterator for each element within &#x60;list&#x60;, return the key to group the element by.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return An object with the group names as properties where each property contains the grouped elements from &#x60;list&#x60;.
+	**/
+	groupBy&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, any&gt;,
+		context?: any): _.Dictionary&lt;T[]&gt;;
+
+	/**
+	* @see _.groupBy
+	* @param iterator Property on each object to group them by.
+	**/
+	groupBy&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: string,
+		context?: any): _.Dictionary&lt;T[]&gt;;
+
+	/**
+	* Given a &#x60;list&#x60;, and an &#x60;iterator&#x60; function that returns a key for each element in the list (or a property name),
+	* returns an object with an index of each item.  Just like _.groupBy, but for when you know your keys are unique.
+	**/
+	indexBy&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, any&gt;,
+		context?: any): _.Dictionary&lt;T&gt;;
+
+	/**
+	* @see _.indexBy
+	* @param iterator Property on each object to index them by.
+	**/
+	indexBy&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: string,
+		context?: any): _.Dictionary&lt;T&gt;;
+
+	/**
+	* Sorts a list into groups and returns a count for the number of objects in each group. Similar
+	* to groupBy, but instead of returning a list of values, returns a count for the number of values
+	* in that group.
+	* @param list Group elements in this list and then count the number of elements in each group.
+	* @param iterator Group iterator for each element within &#x60;list&#x60;, return the key to group the element by.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return An object with the group names as properties where each property contains the number of elements in that group.
+	**/
+	countBy&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, any&gt;,
+		context?: any): _.Dictionary&lt;number&gt;;
+
+	/**
+	* @see _.countBy
+	* @param iterator Function name
+	**/
+	countBy&lt;T&gt;(
+		list: _.List&lt;T&gt;,
+		iterator: string,
+		context?: any): _.Dictionary&lt;number&gt;;
+
+	/**
+	* Returns a shuffled copy of the list, using a version of the Fisher-Yates shuffle.
+	* @param list List to shuffle.
+	* @return Shuffled copy of &#x60;list&#x60;.
+	**/
+	shuffle&lt;T&gt;(list: _.Collection&lt;T&gt;): T[];
+
+	/**
+	* Produce a random sample from the &#x60;list&#x60;.  Pass a number to return &#x60;n&#x60; random elements from the list.  Otherwise a single random item will be returned.
+	* @param list List to sample.
+	* @return Random sample of &#x60;n&#x60; elements in &#x60;list&#x60;.
+	**/
+	sample&lt;T&gt;(list: _.Collection&lt;T&gt;, n: number): T[];
+
+	/**
+	* @see _.sample
+	**/
+	sample&lt;T&gt;(list: _.Collection&lt;T&gt;): T;
+
+	/**
+	* Converts the list (anything that can be iterated over), into a real Array. Useful for transmuting
+	* the arguments object.
+	* @param list object to transform into an array.
+	* @return &#x60;list&#x60; as an array.
+	**/
+	toArray&lt;T&gt;(list: _.Collection&lt;T&gt;): T[];
+
+	/**
+	* Return the number of values in the list.
+	* @param list Count the number of values/elements in this list.
+	* @return Number of values in &#x60;list&#x60;.
+	**/
+	size&lt;T&gt;(list: _.Collection&lt;T&gt;): number;
+
+	/**
+	* Split array into two arrays: 
+	* one whose elements all satisfy predicate and one whose elements all do not satisfy predicate.
+	* @param array Array to split in two.
+	* @param iterator Filter iterator function for each element in &#x60;array&#x60;.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	* @return Array where Array[0] are the elements in &#x60;array&#x60; that satisfies the predicate, and Array[1] the elements that did not.
+	**/
+	partition&lt;T&gt;(
+		array: Array&lt;T&gt;,
+		iterator: _.ListIterator&lt;T, boolean&gt;,
+		context?: any): T[][];
+
+	/*********
+	* Arrays *
+	**********/
+
+	/**
+	* Returns the first element of an array. Passing n will return the first n elements of the array.
+	* @param array Retrieves the first element of this array.
+	* @return Returns the first element of &#x60;array&#x60;.
+	**/
+	first&lt;T&gt;(array: _.List&lt;T&gt;): T;
+
+	/**
+	* @see _.first
+	* @param n Return more than one element from &#x60;array&#x60;.
+	**/
+	first&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n: number): T[];
+
+	/**
+	* @see _.first
+	**/
+	head&lt;T&gt;(array: _.List&lt;T&gt;): T;
+
+	/**
+	* @see _.first
+	**/
+	head&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n: number): T[];
+
+	/**
+	* @see _.first
+	**/
+	take&lt;T&gt;(array: _.List&lt;T&gt;): T;
+
+	/**
+	* @see _.first
+	**/
+	take&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n: number): T[];
+
+	/**
+	* Returns everything but the last entry of the array. Especially useful on the arguments object.
+	* Pass n to exclude the last n elements from the result.
+	* @param array Retrieve all elements except the last &#x60;n&#x60;.
+	* @param n Leaves this many elements behind, optional.
+	* @return Returns everything but the last &#x60;n&#x60; elements of &#x60;array&#x60;.
+	**/
+	initial&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n?: number): T[];
+
+	/**
+	* Returns the last element of an array. Passing n will return the last n elements of the array.
+	* @param array Retrieves the last element of this array.
+	* @return Returns the last element of &#x60;array&#x60;.
+	**/
+	last&lt;T&gt;(array: _.List&lt;T&gt;): T;
+
+	/**
+	* @see _.last
+	* @param n Return more than one element from &#x60;array&#x60;.
+	**/
+	last&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n: number): T[];
+
+	/**
+	* Returns the rest of the elements in an array. Pass an index to return the values of the array
+	* from that index onward.
+	* @param array The array to retrieve all but the first &#x60;index&#x60; elements.
+	* @param n The index to start retrieving elements forward from, optional, default = 1.
+	* @return Returns the elements of &#x60;array&#x60; from &#x60;index&#x60; to the end of &#x60;array&#x60;.
+	**/
+	rest&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n?: number): T[];
+
+	/**
+	* @see _.rest
+	**/
+	tail&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n?: number): T[];
+
+	/**
+	* @see _.rest
+	**/
+	drop&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		n?: number): T[];
+
+	/**
+	* Returns a copy of the array with all falsy values removed. In JavaScript, false, null, 0, &quot;&quot;,
+	* undefined and NaN are all falsy.
+	* @param array Array to compact.
+	* @return Copy of &#x60;array&#x60; without false values.
+	**/
+	compact&lt;T&gt;(array: _.List&lt;T&gt;): T[];
+
+	/**
+	* Flattens a nested array (the nesting can be to any depth). If you pass shallow, the array will
+	* only be flattened a single level.
+	* @param array The array to flatten.
+	* @param shallow If true then only flatten one level, optional, default = false.
+	* @return &#x60;array&#x60; flattened.
+	**/
+	flatten(
+		array: _.List&lt;any&gt;,
+		shallow?: boolean): any[];
+
+	/**
+	* Returns a copy of the array with all instances of the values removed.
+	* @param array The array to remove &#x60;values&#x60; from.
+	* @param values The values to remove from &#x60;array&#x60;.
+	* @return Copy of &#x60;array&#x60; without &#x60;values&#x60;.
+	**/
+	without&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		...values: T[]): T[];
+
+	/**
+	* Computes the union of the passed-in arrays: the list of unique items, in order, that are
+	* present in one or more of the arrays.
+	* @param arrays Array of arrays to compute the union of.
+	* @return The union of elements within &#x60;arrays&#x60;.
+	**/
+	union&lt;T&gt;(...arrays: _.List&lt;T&gt;[]): T[];
+
+	/**
+	* Computes the list of values that are the intersection of all the arrays. Each value in the result
+	* is present in each of the arrays.
+	* @param arrays Array of arrays to compute the intersection of.
+	* @return The intersection of elements within &#x60;arrays&#x60;.
+	**/
+	intersection&lt;T&gt;(...arrays: _.List&lt;T&gt;[]): T[];
+
+	/**
+	* Similar to without, but returns the values from array that are not present in the other arrays.
+	* @param array Keeps values that are within &#x60;others&#x60;.
+	* @param others The values to keep within &#x60;array&#x60;.
+	* @return Copy of &#x60;array&#x60; with only &#x60;others&#x60; values.
+	**/
+	difference&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		...others: _.List&lt;T&gt;[]): T[];
+
+	/**
+	* Produces a duplicate-free version of the array, using === to test object equality. If you know in
+	* advance that the array is sorted, passing true for isSorted will run a much faster algorithm. If
+	* you want to compute unique items based on a transformation, pass an iterator function.
+	* @param array Array to remove duplicates from.
+	* @param isSorted True if &#x60;array&#x60; is already sorted, optional, default = false.
+	* @param iterator Transform the elements of &#x60;array&#x60; before comparisons for uniqueness.
+	* @param context &#x27;this&#x27; object in &#x60;iterator&#x60;, optional.
+	* @return Copy of &#x60;array&#x60; where all elements are unique.
+	**/
+	uniq&lt;T, TSort&gt;(
+		array: _.List&lt;T&gt;,
+		isSorted?: boolean,
+		iterator?: _.ListIterator&lt;T, TSort&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.uniq
+	**/
+	uniq&lt;T, TSort&gt;(
+		array: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, TSort&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.uniq
+	**/
+	unique&lt;T, TSort&gt;(
+		array: _.List&lt;T&gt;,
+		iterator?: _.ListIterator&lt;T, TSort&gt;,
+		context?: any): T[];
+
+	/**
+	* @see _.uniq
+	**/
+	unique&lt;T, TSort&gt;(
+		array: _.List&lt;T&gt;,
+		isSorted?: boolean,
+		iterator?: _.ListIterator&lt;T, TSort&gt;,
+		context?: any): T[];
+
+
+	/**
+	* Merges together the values of each of the arrays with the values at the corresponding position.
+	* Useful when you have separate data sources that are coordinated through matching array indexes.
+	* If you&#x27;re working with a matrix of nested arrays, zip.apply can transpose the matrix in a similar fashion.
+	* @param arrays The arrays to merge/zip.
+	* @return Zipped version of &#x60;arrays&#x60;.
+	**/
+	zip(...arrays: any[][]): any[][];
+
+	/**
+	* @see _.zip
+	**/
+	zip(...arrays: any[]): any[];
+
+	/**
+	* Converts arrays into objects. Pass either a single list of [key, value] pairs, or a
+	* list of keys, and a list of values.
+	* @param keys Key array.
+	* @param values Value array.
+	* @return An object containing the &#x60;keys&#x60; as properties and &#x60;values&#x60; as the property values.
+	**/
+	object&lt;TResult extends {}&gt;(
+		keys: _.List&lt;string&gt;,
+		values: _.List&lt;any&gt;): TResult;
+
+	/**
+	* Converts arrays into objects. Pass either a single list of [key, value] pairs, or a
+	* list of keys, and a list of values.
+	* @param keyValuePairs Array of [key, value] pairs.
+	* @return An object containing the &#x60;keys&#x60; as properties and &#x60;values&#x60; as the property values.
+	**/
+	object&lt;TResult extends {}&gt;(...keyValuePairs: any[][]): TResult;
+
+	/**
+	* @see _.object
+	**/
+	object&lt;TResult extends {}&gt;(
+		list: _.List&lt;any&gt;,
+		values?: any): TResult;
+
+	/**
+	* Returns the index at which value can be found in the array, or -1 if value is not present in the array.
+	* Uses the native indexOf function unless it&#x27;s missing. If you&#x27;re working with a large array, and you know
+	* that the array is already sorted, pass true for isSorted to use a faster binary search ... or, pass a number
+	* as the third argument in order to look for the first matching value in the array after the given index.
+	* @param array The array to search for the index of &#x60;value&#x60;.
+	* @param value The value to search for within &#x60;array&#x60;.
+	* @param isSorted True if the array is already sorted, optional, default = false.
+	* @return The index of &#x60;value&#x60; within &#x60;array&#x60;.
+	**/
+	indexOf&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		value: T,
+		isSorted?: boolean): number;
+
+	/**
+	* @see _indexof
+	**/
+	indexOf&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		value: T,
+		startFrom: number): number;
+
+	/**
+	* Returns the index of the last occurrence of value in the array, or -1 if value is not present. Uses the
+	* native lastIndexOf function if possible. Pass fromIndex to start your search at a given index.
+	* @param array The array to search for the last index of &#x60;value&#x60;.
+	* @param value The value to search for within &#x60;array&#x60;.
+	* @param from The starting index for the search, optional.
+	* @return The index of the last occurrence of &#x60;value&#x60; within &#x60;array&#x60;.
+	**/
+	lastIndexOf&lt;T&gt;(
+		array: _.List&lt;T&gt;,
+		value: T,
+		from?: number): number;
+
+	/**
+	* Uses a binary search to determine the index at which the value should be inserted into the list in order
+	* to maintain the list&#x27;s sorted order. If an iterator is passed, it will be used to compute the sort ranking
+	* of each value, including the value you pass.
+	* @param list The sorted list.
+	* @param value The value to determine its index within &#x60;list&#x60;.
+	* @param iterator Iterator to compute the sort ranking of each value, optional.
+	* @return The index where &#x60;value&#x60; should be inserted into &#x60;list&#x60;.
+	**/
+	sortedIndex&lt;T, TSort&gt;(
+		list: _.List&lt;T&gt;,
+		value: T,
+		iterator?: (x: T) =&gt; TSort, context?: any): number;
+
+	/**
+	* A function to create flexibly-numbered lists of integers, handy for each and map loops. start, if omitted,
+	* defaults to 0; step defaults to 1. Returns a list of integers from start to stop, incremented (or decremented)
+	* by step, exclusive.
+	* @param start Start here.
+	* @param stop Stop here.
+	* @param step The number to count up by each iteration, optional, default = 1.
+	* @return Array of numbers from &#x60;start&#x60; to &#x60;stop&#x60; with increments of &#x60;step&#x60;.
+	**/
+
+	range(
+		start: number,
+		stop: number,
+		step?: number): number[];
+
+	/**
+	* @see _.range
+	* @param stop Stop here.
+	* @return Array of numbers from 0 to &#x60;stop&#x60; with increments of 1.
+	* @note If start is not specified the implementation will never pull the step (step = arguments[2] || 0)
+	**/
+	range(stop: number): number[];
+
+	/*************
+	 * Functions *
+	 *************/
+
+	/**
+	* Bind a function to an object, meaning that whenever the function is called, the value of this will
+	* be the object. Optionally, bind arguments to the function to pre-fill them, also known as partial application.
+	* @param func The function to bind &#x60;this&#x60; to &#x60;object&#x60;.
+	* @param context The &#x60;this&#x60; pointer whenever &#x60;fn&#x60; is called.
+	* @param arguments Additional arguments to pass to &#x60;fn&#x60; when called.
+	* @return &#x60;fn&#x60; with &#x60;this&#x60; bound to &#x60;object&#x60;.
+	**/
+	bind(
+		func: Function,
+		context: any,
+		...arguments: any[]): () =&gt; any;
+
+	/**
+	* Binds a number of methods on the object, specified by methodNames, to be run in the context of that object
+	* whenever they are invoked. Very handy for binding functions that are going to be used as event handlers,
+	* which would otherwise be invoked with a fairly useless this. If no methodNames are provided, all of the
+	* object&#x27;s function properties will be bound to it.
+	* @param object The object to bind the methods &#x60;methodName&#x60; to.
+	* @param methodNames The methods to bind to &#x60;object&#x60;, optional and if not provided all of &#x60;object&#x60;&#x27;s
+	* methods are bound.
+	**/
+	bindAll(
+		object: any,
+		...methodNames: string[]): any;
+
+	/**
+	* Partially apply a function by filling in any number of its arguments, without changing its dynamic this value.
+	* A close cousin of bind.  You may pass _ in your list of arguments to specify an argument that should not be 
+	* pre-filled, but left open to supply at call-time. 
+	* @param fn Function to partially fill in arguments.
+	* @param arguments The partial arguments.
+	* @return &#x60;fn&#x60; with partially filled in arguments.
+	**/
+	partial(
+		fn: Function,
+		...arguments: any[]): Function;
+
+	/**
+	* Memoizes a given function by caching the computed result. Useful for speeding up slow-running computations.
+	* If passed an optional hashFunction, it will be used to compute the hash key for storing the result, based
+	* on the arguments to the original function. The default hashFunction just uses the first argument to the
+	* memoized function as the key.
+	* @param fn Computationally expensive function that will now memoized results.
+	* @param hashFn Hash function for storing the result of &#x60;fn&#x60;.
+	* @return Memoized version of &#x60;fn&#x60;.
+	**/
+	memoize(
+		fn: Function,
+		hashFn?: (...args: any[]) =&gt; string): Function;
+
+	/**
+	* Much like setTimeout, invokes function after wait milliseconds. If you pass the optional arguments,
+	* they will be forwarded on to the function when it is invoked.
+	* @param func Function to delay &#x60;waitMS&#x60; amount of ms.
+	* @param wait The amount of milliseconds to delay &#x60;fn&#x60;.
+	* @arguments Additional arguments to pass to &#x60;fn&#x60;.
+	**/
+	delay(
+		func: Function,
+		wait: number,
+		...arguments: any[]): any;
+
+	/**
+	* @see _delay
+	**/
+	delay(
+		func: Function,
+		...arguments: any[]): any;
+
+	/**
+	* Defers invoking the function until the current call stack has cleared, similar to using setTimeout
+	* with a delay of 0. Useful for performing expensive computations or HTML rendering in chunks without
+	* blocking the UI thread from updating. If you pass the optional arguments, they will be forwarded on
+	* to the function when it is invoked.
+	* @param fn The function to defer.
+	* @param arguments Additional arguments to pass to &#x60;fn&#x60;.
+	**/
+	defer(
+		fn: Function,
+		...arguments: any[]): void;
+
+	/**
+	* Creates and returns a new, throttled version of the passed function, that, when invoked repeatedly,
+	* will only actually call the original function at most once per every wait milliseconds. Useful for
+	* rate-limiting events that occur faster than you can keep up with.
+	* By default, throttle will execute the function as soon as you call it for the first time, and,
+	* if you call it again any number of times during the wait period, as soon as that period is over.
+	* If you&#x27;d like to disable the leading-edge call, pass {leading: false}, and if you&#x27;d like to disable
+	* the execution on the trailing-edge, pass {trailing: false}.
+	* @param func Function to throttle &#x60;waitMS&#x60; ms.
+	* @param wait The number of milliseconds to wait before &#x60;fn&#x60; can be invoked again.
+	* @param options Allows for disabling execution of the throttled function on either the leading or trailing edge.
+	* @return &#x60;fn&#x60; with a throttle of &#x60;wait&#x60;.
+	**/
+	throttle&lt;T extends Function&gt;(
+		func: T,
+		wait: number,
+		options?: _.ThrottleSettings): T;
+
+	/**
+	* Creates and returns a new debounced version of the passed function that will postpone its execution
+	* until after wait milliseconds have elapsed since the last time it was invoked. Useful for implementing
+	* behavior that should only happen after the input has stopped arriving. For example: rendering a preview
+	* of a Markdown comment, recalculating a layout after the window has stopped being resized, and so on.
+	*
+	* Pass true for the immediate parameter to cause debounce to trigger the function on the leading instead
+	* of the trailing edge of the wait interval. Useful in circumstances like preventing accidental double
+	*-clicks on a &quot;submit&quot; button from firing a second time.
+	* @param fn Function to debounce &#x60;waitMS&#x60; ms.
+	* @param wait The number of milliseconds to wait before &#x60;fn&#x60; can be invoked again.
+	* @param immediate True if &#x60;fn&#x60; should be invoked on the leading edge of &#x60;waitMS&#x60; instead of the trailing edge.
+	* @return Debounced version of &#x60;fn&#x60; that waits &#x60;wait&#x60; ms when invoked.
+	**/
+	debounce&lt;T extends Function&gt;(
+		fn: T,
+		wait: number,
+		immediate?: boolean): T;
+
+	/**
+	* Creates a version of the function that can only be called one time. Repeated calls to the modified
+	* function will have no effect, returning the value from the original call. Useful for initialization
+	* functions, instead of having to set a boolean flag and then check it later.
+	* @param fn Function to only execute once.
+	* @return Copy of &#x60;fn&#x60; that can only be invoked once.
+	**/
+	once&lt;T extends Function&gt;(fn: T): T;
+
+	/**
+	* Creates a version of the function that will only be run after first being called count times. Useful
+	* for grouping asynchronous responses, where you want to be sure that all the async calls have finished,
+	* before proceeding.
+	* @param number count Number of times to be called before actually executing.
+	* @param Function fn The function to defer execution &#x60;count&#x60; times.
+	* @return Copy of &#x60;fn&#x60; that will not execute until it is invoked &#x60;count&#x60; times.
+	**/
+	after(
+		count: number,
+		fn: Function): Function;
+
+	/**
+	* Creates a version of the function that can be called no more than count times.  The result of
+	* the last function call is memoized and returned when count has been reached.
+	* @param number count  The maxmimum number of times the function can be called.
+	* @param Function fn The function to limit the number of times it can be called.
+	* @return Copy of &#x60;fn&#x60; that can only be called &#x60;count&#x60; times.
+	**/
+	before(
+		count: number,
+		fn: Function): Function;
+
+	/**
+	* Wraps the first function inside of the wrapper function, passing it as the first argument. This allows
+	* the wrapper to execute code before and after the function runs, adjust the arguments, and execute it
+	* conditionally.
+	* @param fn Function to wrap.
+	* @param wrapper The function that will wrap &#x60;fn&#x60;.
+	* @return Wrapped version of &#x60;fn.
+	**/
+	wrap(
+		fn: Function,
+		wrapper: (fn: Function, ...args: any[]) =&gt; any): Function;
+
+	/**
+	* Returns a negated version of the pass-in predicate.
+	* @param Function predicate
+	* @return boolean
+	**/
+	negate(predicate: Function): boolean;
+
+	/**
+	* Returns the composition of a list of functions, where each function consumes the return value of the
+	* function that follows. In math terms, composing the functions f(), g(), and h() produces f(g(h())).
+	* @param functions List of functions to compose.
+	* @return Composition of &#x60;functions&#x60;.
+	**/
+	compose(...functions: Function[]): Function;
+
+	/**********
+	* Objects *
+	***********/
+
+	/**
+	* Retrieve all the names of the object&#x27;s properties.
+	* @param object Retrieve the key or property names from this object.
+	* @return List of all the property names on &#x60;object&#x60;.
+	**/
+	keys(object: any): string[];
+
+	/**
+	* Return all of the values of the object&#x27;s properties.
+	* @param object Retrieve the values of all the properties on this object.
+	* @return List of all the values on &#x60;object&#x60;.
+	**/
+	values(object: any): any[];
+    
+    /**
+     * Like map, but for objects. Transform the value of each property in turn.
+     * @param object The object to transform
+     * @param iteratee The function that transforms property values
+     * @param context The optional context (value of &#x60;this&#x60;) to bind to
+     * @return a new _.Dictionary of property values
+     */
+    mapObject&lt;T, U&gt;(object: _.Dictionary&lt;T&gt;, iteratee: (val: T, key: string, object: _.Dictionary&lt;T&gt;) =&gt; U, context?: any): _.Dictionary&lt;U&gt;;
+    
+    /**
+     * Like map, but for objects. Transform the value of each property in turn.
+     * @param object The object to transform
+     * @param iteratee The function that tranforms property values
+     * @param context The optional context (value of &#x60;this&#x60;) to bind to
+     */
+    mapObject&lt;T&gt;(object: any, iteratee: (val: any, key: string, object: any) =&gt; T, context?: any): _.Dictionary&lt;T&gt;;
+    
+    /**
+     * Like map, but for objects. Retrieves a property from each entry in the object, as if by _.property
+     * @param object The object to transform
+     * @param iteratee The property name to retrieve
+     * @param context The optional context (value of &#x60;this&#x60;) to bind to
+     */
+    mapObject(object: any, iteratee: string, context?: any): _.Dictionary&lt;any&gt;;
+
+	/**
+	* Convert an object into a list of [key, value] pairs.
+	* @param object Convert this object to a list of [key, value] pairs.
+	* @return List of [key, value] pairs on &#x60;object&#x60;.
+	**/
+	pairs(object: any): any[][];
+
+	/**
+	* Returns a copy of the object where the keys have become the values and the values the keys.
+	* For this to work, all of your object&#x27;s values should be unique and string serializable.
+	* @param object Object to invert key/value pairs.
+	* @return An inverted key/value paired version of &#x60;object&#x60;.
+	**/
+	invert(object: any): any;
+
+	/**
+	* Returns a sorted list of the names of every method in an object - that is to say,
+	* the name of every function property of the object.
+	* @param object Object to pluck all function property names from.
+	* @return List of all the function names on &#x60;object&#x60;.
+	**/
+	functions(object: any): string[];
+
+	/**
+	* @see _functions
+	**/
+	methods(object: any): string[];
+
+	/**
+	* Copy all of the properties in the source objects over to the destination object, and return
+	* the destination object. It&#x27;s in-order, so the last source will override properties of the
+	* same name in previous arguments.
+	* @param destination Object to extend all the properties from &#x60;sources&#x60;.
+	* @param sources Extends &#x60;destination&#x60; with all properties from these source objects.
+	* @return &#x60;destination&#x60; extended with all the properties from the &#x60;sources&#x60; objects.
+	**/
+	extend(
+		destination: any,
+		...sources: any[]): any;
+
+	/**
+	* Return a copy of the object, filtered to only have values for the whitelisted keys
+	* (or array of valid keys).
+	* @param object Object to strip unwanted key/value pairs.
+	* @keys The key/value pairs to keep on &#x60;object&#x60;.
+	* @return Copy of &#x60;object&#x60; with only the &#x60;keys&#x60; properties.
+	**/
+	pick(
+		object: any,
+		...keys: any[]): any;
+
+	/**
+	* @see _.pick
+	**/
+	pick(
+		object: any,
+		fn: (value: any, key: any, object: any) =&gt; any): any;
+
+	/**
+	* Return a copy of the object, filtered to omit the blacklisted keys (or array of keys).
+	* @param object Object to strip unwanted key/value pairs.
+	* @param keys The key/value pairs to remove on &#x60;object&#x60;.
+	* @return Copy of &#x60;object&#x60; without the &#x60;keys&#x60; properties.
+	**/
+	omit(
+		object: any,
+		...keys: string[]): any;
+
+	/**
+	* @see _.omit
+	**/
+	omit(
+		object: any,
+		keys: string[]): any;
+
+	/**
+	* @see _.omit
+	**/
+	omit(
+		object: any,
+		iteratee: Function): any;
+
+	/**
+	* Fill in null and undefined properties in object with values from the defaults objects,
+	* and return the object. As soon as the property is filled, further defaults will have no effect.
+	* @param object Fill this object with default values.
+	* @param defaults The default values to add to &#x60;object&#x60;.
+	* @return &#x60;object&#x60; with added &#x60;defaults&#x60; values.
+	**/
+	defaults(
+		object: any,
+		...defaults: any[]): any;
+
+	/**
+	* Create a shallow-copied clone of the object.
+	* Any nested objects or arrays will be copied by reference, not duplicated.
+	* @param object Object to clone.
+	* @return Copy of &#x60;object&#x60;.
+	**/
+	clone&lt;T&gt;(object: T): T;
+
+	/**
+	* Invokes interceptor with the object, and then returns object. The primary purpose of this method
+	* is to &quot;tap into&quot; a method chain, in order to perform operations on intermediate results within the chain.
+	* @param object Argument to &#x60;interceptor&#x60;.
+	* @param intercepter The function to modify &#x60;object&#x60; before continuing the method chain.
+	* @return Modified &#x60;object&#x60;.
+	**/
+	tap&lt;T&gt;(object: T, intercepter: Function): T;
+
+	/**
+	* Does the object contain the given key? Identical to object.hasOwnProperty(key), but uses a safe
+	* reference to the hasOwnProperty function, in case it&#x27;s been overridden accidentally.
+	* @param object Object to check for &#x60;key&#x60;.
+	* @param key The key to check for on &#x60;object&#x60;.
+	* @return True if &#x60;key&#x60; is a property on &#x60;object&#x60;, otherwise false.
+	**/
+	has(object: any, key: string): boolean;
+
+	/**
+	* Returns a predicate function that will tell you if a passed in object contains all of the key/value properties present in attrs.
+	* @param attrs Object with key values pair
+	* @return Predicate function
+	**/
+	matches&lt;T, TResult&gt;(attrs: T): _.ListIterator&lt;T, TResult&gt;;
+
+	/**
+	* Returns a function that will itself return the key property of any passed-in object.
+	* @param key Property of the object.
+	* @return Function which accept an object an returns the value of key in that object.
+	**/
+	property(key: string): (object: Object) =&gt; any;
+
+	/**
+	* Performs an optimized deep comparison between the two objects,
+	* to determine if they should be considered equal.
+	* @param object Compare to &#x60;other&#x60;.
+	* @param other Compare to &#x60;object&#x60;.
+	* @return True if &#x60;object&#x60; is equal to &#x60;other&#x60;.
+	**/
+	isEqual(object: any, other: any): boolean;
+
+	/**
+	* Returns true if object contains no values.
+	* @param object Check if this object has no properties or values.
+	* @return True if &#x60;object&#x60; is empty.
+	**/
+	isEmpty(object: any): boolean;
+
+	/**
+	* Returns true if object is a DOM element.
+	* @param object Check if this object is a DOM element.
+	* @return True if &#x60;object&#x60; is a DOM element, otherwise false.
+	**/
+	isElement(object: any): boolean;
+
+	/**
+	* Returns true if object is an Array.
+	* @param object Check if this object is an Array.
+	* @return True if &#x60;object&#x60; is an Array, otherwise false.
+	**/
+	isArray(object: any): boolean;
+
+	/**
+	* Returns true if value is an Object. Note that JavaScript arrays and functions are objects,
+	* while (normal) strings and numbers are not.
+	* @param object Check if this object is an Object.
+	* @return True of &#x60;object&#x60; is an Object, otherwise false.
+	**/
+	isObject(object: any): boolean;
+
+	/**
+	* Returns true if object is an Arguments object.
+	* @param object Check if this object is an Arguments object.
+	* @return True if &#x60;object&#x60; is an Arguments object, otherwise false.
+	**/
+	isArguments(object: any): boolean;
+
+	/**
+	* Returns true if object is a Function.
+	* @param object Check if this object is a Function.
+	* @return True if &#x60;object&#x60; is a Function, otherwise false.
+	**/
+	isFunction(object: any): boolean;
+
+	/**
+	* Returns true if object is a String.
+	* @param object Check if this object is a String.
+	* @return True if &#x60;object&#x60; is a String, otherwise false.
+	**/
+	isString(object: any): boolean;
+
+	/**
+	* Returns true if object is a Number (including NaN).
+	* @param object Check if this object is a Number.
+	* @return True if &#x60;object&#x60; is a Number, otherwise false.
+	**/
+	isNumber(object: any): boolean;
+
+	/**
+	* Returns true if object is a finite Number.
+	* @param object Check if this object is a finite Number.
+	* @return True if &#x60;object&#x60; is a finite Number.
+	**/
+	isFinite(object: any): boolean;
+
+	/**
+	* Returns true if object is either true or false.
+	* @param object Check if this object is a bool.
+	* @return True if &#x60;object&#x60; is a bool, otherwise false.
+	**/
+	isBoolean(object: any): boolean;
+
+	/**
+	* Returns true if object is a Date.
+	* @param object Check if this object is a Date.
+	* @return True if &#x60;object&#x60; is a Date, otherwise false.
+	**/
+	isDate(object: any): boolean;
+
+	/**
+	* Returns true if object is a RegExp.
+	* @param object Check if this object is a RegExp.
+	* @return True if &#x60;object&#x60; is a RegExp, otherwise false.
+	**/
+	isRegExp(object: any): boolean;
+
+	/**
+	* Returns true if object is NaN.
+	* Note: this is not the same as the native isNaN function,
+	* which will also return true if the variable is undefined.
+	* @param object Check if this object is NaN.
+	* @return True if &#x60;object&#x60; is NaN, otherwise false.
+	**/
+	isNaN(object: any): boolean;
+
+	/**
+	* Returns true if the value of object is null.
+	* @param object Check if this object is null.
+	* @return True if &#x60;object&#x60; is null, otherwise false.
+	**/
+	isNull(object: any): boolean;
+
+	/**
+	* Returns true if value is undefined.
+	* @param object Check if this object is undefined.
+	* @return True if &#x60;object&#x60; is undefined, otherwise false.
+	**/
+	isUndefined(value: any): boolean;
+
+	/* *********
+	 * Utility *
+	********** */
+
+	/**
+	* Give control of the &quot;_&quot; variable back to its previous owner.
+	* Returns a reference to the Underscore object.
+	* @return Underscore object reference.
+	**/
+	noConflict(): any;
+
+	/**
+	* Returns the same value that is used as the argument. In math: f(x) = x
+	* This function looks useless, but is used throughout Underscore as a default iterator.
+	* @param value Identity of this object.
+	* @return &#x60;value&#x60;.
+	**/
+	identity&lt;T&gt;(value: T): T;
+
+	/**
+	* Creates a function that returns the same value that is used as the argument of _.constant
+	* @param value Identity of this object.
+	* @return Function that return value.
+	**/
+	constant&lt;T&gt;(value: T): () =&gt; T;
+
+	/**
+	* Returns undefined irrespective of the arguments passed to it.  Useful as the default 
+	* for optional callback arguments.
+	* Note there is no way to indicate a &#x27;undefined&#x27; return, so it is currently typed as void.
+	* @return undefined
+	**/
+	noop(): void;
+
+	/**
+	* Invokes the given iterator function n times.
+	* Each invocation of iterator is called with an index argument
+	* @param n Number of times to invoke &#x60;iterator&#x60;.
+	* @param iterator Function iterator to invoke &#x60;n&#x60; times.
+	* @param context &#x60;this&#x60; object in &#x60;iterator&#x60;, optional.
+	**/
+	times&lt;TResult&gt;(n: number, iterator: (n: number) =&gt; TResult, context?: any): TResult[];
+
+	/**
+	* Returns a random integer between min and max, inclusive. If you only pass one argument,
+	* it will return a number between 0 and that number.
+	* @param max The maximum random number.
+	* @return A random number between 0 and &#x60;max&#x60;.
+	**/
+	random(max: number): number;
+
+	/**
+	* @see _.random
+	* @param min The minimum random number.
+	* @return A random number between &#x60;min&#x60; and &#x60;max&#x60;.
+	**/
+	random(min: number, max: number): number;
+
+	/**
+	* Allows you to extend Underscore with your own utility functions. Pass a hash of
+	* {name: function} definitions to have your functions added to the Underscore object,
+	* as well as the OOP wrapper.
+	* @param object Mixin object containing key/function pairs to add to the Underscore object.
+	**/
+	mixin(object: any): void;
+
+	/**
+	* A mostly-internal function to generate callbacks that can be applied to each element
+	* in a collection, returning the desired result -- either identity, an arbitrary callback,
+	* a property matcher, or a propetery accessor.
+	* @param string|Function|Object value The value to iterate over, usually the key.
+	* @param any context
+	* @param number argCount
+	* @return Callback that can be applied to each element in a collection.
+	**/
+	iteratee(value: string): Function;
+	iteratee(value: Function, context?: any, argCount?: number): Function;
+	iteratee(value: Object): Function;
+
+	/**
+	* Generate a globally-unique id for client-side models or DOM elements that need one.
+	* If prefix is passed, the id will be appended to it. Without prefix, returns an integer.
+	* @param prefix A prefix string to start the unique ID with.
+	* @return Unique string ID beginning with &#x60;prefix&#x60;.
+	**/
+	uniqueId(prefix: string): string;
+
+	/**
+	* @see _.uniqueId
+	**/
+	uniqueId(): number;
+
+	/**
+	* Escapes a string for insertion into HTML, replacing &amp;, &lt;, &gt;, &quot;, &#x27;, and / characters.
+	* @param str Raw string to escape.
+	* @return &#x60;str&#x60; HTML escaped.
+	**/
+	escape(str: string): string;
+
+	/**
+	* The opposite of escape, replaces &amp;amp;, &amp;lt;, &amp;gt;, &amp;quot;, and &amp;#x27; with their unescaped counterparts.
+	* @param str HTML escaped string.
+	* @return &#x60;str&#x60; Raw string.
+	**/
+	unescape(str: string): string;
+
+	/**
+	* If the value of the named property is a function then invoke it; otherwise, return it.
+	* @param object Object to maybe invoke function &#x60;property&#x60; on.
+	* @param property The function by name to invoke on &#x60;object&#x60;.
+	* @return The result of invoking the function &#x60;property&#x60; on &#x60;object.
+	**/
+	result(object: any, property: string): any;
+
+	/**
+	* Compiles JavaScript templates into functions that can be evaluated for rendering. Useful
+	* for rendering complicated bits of HTML from JSON data sources. Template functions can both
+	* interpolate variables, using &lt;%= ... %&gt;, as well as execute arbitrary JavaScript code, with
+	* &lt;% ... %&gt;. If you wish to interpolate a value, and have it be HTML-escaped, use &lt;%- ... %&gt; When
+	* you evaluate a template function, pass in a data object that has properties corresponding to
+	* the template&#x27;s free variables. If you&#x27;re writing a one-off, you can pass the data object as
+	* the second parameter to template in order to render immediately instead of returning a template
+	* function. The settings argument should be a hash containing any _.templateSettings that should
+	* be overridden.
+	* @param templateString Underscore HTML template.
+	* @param data Data to use when compiling &#x60;templateString&#x60;.
+	* @param settings Settings to use while compiling.
+	* @return Returns the compiled Underscore HTML template.
+	**/
+	template(templateString: string, settings?: _.TemplateSettings): (...data: any[]) =&gt; string;
+    	
+	/**
+	* By default, Underscore uses ERB-style template delimiters, change the
+	* following template settings to use alternative delimiters.
+	**/
+	templateSettings: _.TemplateSettings;
+
+	/**
+	* Returns an integer timestamp for the current time, using the fastest method available in the runtime. Useful for implementing timing/animation functions.
+	**/
+	now(): number;
+
+	/* **********
+	 * Chaining *
+	*********** */
+
+	/**
+	* Returns a wrapped object. Calling methods on this object will continue to return wrapped objects
+	* until value() is used.
+	* @param obj Object to chain.
+	* @return Wrapped &#x60;obj&#x60;.
+	**/
+	chain&lt;T&gt;(obj: T[]): _Chain&lt;T&gt;;
+	chain&lt;T extends {}&gt;(obj: T): _Chain&lt;T&gt;;
+
+	/**
+	* Extracts the value of a wrapped object.
+	* @param obj Wrapped object to extract the value from.
+	* @return Value of &#x60;obj&#x60;.
+	**/
+	value&lt;T, TResult&gt;(obj: T): TResult;
+}
+
+interface Underscore&lt;T&gt; {
+
+	/* *************
+	 * Collections *
+	 ************* */
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.each
+	**/
+	each(iterator: _.ListIterator&lt;T, void&gt;, context?: any): T[];
+
+	/**
+	* @see _.each
+	**/
+	each(iterator: _.ObjectIterator&lt;T, void&gt;, context?: any): T[];
+
+	/**
+	* @see _.each
+	**/
+	forEach(iterator: _.ListIterator&lt;T, void&gt;, context?: any): T[];
+
+	/**
+	* @see _.each
+	**/
+	forEach(iterator: _.ObjectIterator&lt;T, void&gt;, context?: any): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.map
+	**/
+	map&lt;TResult&gt;(iterator: _.ListIterator&lt;T, TResult&gt;, context?: any): TResult[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.map
+	**/
+	map&lt;TResult&gt;(iterator: _.ObjectIterator&lt;T, TResult&gt;, context?: any): TResult[];
+
+	/**
+	* @see _.map
+	**/
+	collect&lt;TResult&gt;(iterator: _.ListIterator&lt;T, TResult&gt;, context?: any): TResult[];
+
+	/**
+	* @see _.map
+	**/
+	collect&lt;TResult&gt;(iterator: _.ObjectIterator&lt;T, TResult&gt;, context?: any): TResult[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.reduce
+	**/
+	reduce&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): TResult;
+
+	/**
+	* @see _.reduce
+	**/
+	inject&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): TResult;
+
+	/**
+	* @see _.reduce
+	**/
+	foldl&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): TResult;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.reduceRight
+	**/
+	reduceRight&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): TResult;
+
+	/**
+	* @see _.reduceRight
+	**/
+	foldr&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): TResult;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.find
+	**/
+	find(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): T;
+
+	/**
+	* @see _.find
+	**/
+	detect(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): T;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.filter
+	**/
+	filter(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): T[];
+
+	/**
+	* @see _.filter
+	**/
+	select(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.where
+	**/
+	where&lt;U extends {}&gt;(properties: U): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.findWhere
+	**/
+	findWhere&lt;U extends {}&gt;(properties: U): T;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.reject
+	**/
+	reject(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.all
+	**/
+	all(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): boolean;
+
+	/**
+	* @see _.all
+	**/
+	every(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): boolean;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.any
+	**/
+	any(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): boolean;
+
+	/**
+	* @see _.any
+	**/
+	some(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): boolean;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.contains
+	**/
+	contains(value: T): boolean;
+
+	/**
+	* Alias for &#x27;contains&#x27;.
+	* @see contains
+	**/
+	include(value: T): boolean;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.invoke
+	**/
+	invoke(methodName: string, ...arguments: any[]): any;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.pluck
+	**/
+	pluck(propertyName: string): any[];
+
+	/**
+	* Wrapped type &#x60;number[]&#x60;.
+	* @see _.max
+	**/
+	max(): number;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.max
+	**/
+	max(iterator: _.ListIterator&lt;T, number&gt;, context?: any): T;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.max
+	**/
+	max(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): T;
+
+	/**
+	* Wrapped type &#x60;number[]&#x60;.
+	* @see _.min
+	**/
+	min(): number;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.min
+	**/
+	min(iterator: _.ListIterator&lt;T, number&gt;, context?: any): T;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.min
+	**/
+	min(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): T;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sortBy
+	**/
+	sortBy(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sortBy
+	**/
+	sortBy(iterator: string, context?: any): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.groupBy
+	**/
+	groupBy(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): _.Dictionary&lt;_.List&lt;T&gt;&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.groupBy
+	**/
+	groupBy(iterator: string, context?: any): _.Dictionary&lt;T[]&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.indexBy
+	**/
+	indexBy(iterator: _.ListIterator&lt;T, any&gt;, context?: any): _.Dictionary&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.indexBy
+	**/
+	indexBy(iterator: string, context?: any): _.Dictionary&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.countBy
+	**/
+	countBy(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): _.Dictionary&lt;number&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.countBy
+	**/
+	countBy(iterator: string, context?: any): _.Dictionary&lt;number&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.shuffle
+	**/
+	shuffle(): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sample
+	**/
+	sample&lt;T&gt;(n: number): T[];
+
+	/**
+	* @see _.sample
+	**/
+	sample&lt;T&gt;(): T;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.toArray
+	**/
+	toArray(): T[];
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.size
+	**/
+	size(): number;
+
+	/*********
+	* Arrays *
+	**********/
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.first
+	**/
+	first(): T;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.first
+	**/
+	first(n: number): T[];
+
+	/**
+	* @see _.first
+	**/
+	head(): T;
+
+	/**
+	* @see _.first
+	**/
+	head(n: number): T[];
+
+	/**
+	* @see _.first
+	**/
+	take(): T;
+
+	/**
+	* @see _.first
+	**/
+	take(n: number): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.initial
+	**/
+	initial(n?: number): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.last
+	**/
+	last(): T;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.last
+	**/
+	last(n: number): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.rest
+	**/
+	rest(n?: number): T[];
+
+	/**
+	* @see _.rest
+	**/
+	tail(n?: number): T[];
+
+	/**
+	* @see _.rest
+	**/
+	drop(n?: number): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.compact
+	**/
+	compact(): T[];
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.flatten
+	**/
+	flatten(shallow?: boolean): any[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.without
+	**/
+	without(...values: T[]): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.partition
+	**/
+	partition(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): T[][];
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.union
+	**/
+	union(...arrays: _.List&lt;T&gt;[]): T[];
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.intersection
+	**/
+	intersection(...arrays: _.List&lt;T&gt;[]): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.difference
+	**/
+	difference(...others: _.List&lt;T&gt;[]): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.uniq
+	**/
+	uniq(isSorted?: boolean, iterator?: _.ListIterator&lt;T, any&gt;): T[];
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.uniq
+	**/
+	uniq&lt;TSort&gt;(iterator?: _.ListIterator&lt;T, TSort&gt;, context?: any): T[];
+
+	/**
+	* @see _.uniq
+	**/
+	unique&lt;TSort&gt;(isSorted?: boolean, iterator?: _.ListIterator&lt;T, TSort&gt;): T[];
+
+	/**
+	* @see _.uniq
+	**/
+	unique&lt;TSort&gt;(iterator?: _.ListIterator&lt;T, TSort&gt;, context?: any): T[];
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.zip
+	**/
+	zip(...arrays: any[][]): any[][];
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.object
+	**/
+	object(...keyValuePairs: any[][]): any;
+
+	/**
+	* @see _.object
+	**/
+	object(values?: any): any;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.indexOf
+	**/
+	indexOf(value: T, isSorted?: boolean): number;
+
+	/**
+	* @see _.indexOf
+	**/
+	indexOf(value: T, startFrom: number): number;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.lastIndexOf
+	**/
+	lastIndexOf(value: T, from?: number): number;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sortedIndex
+	**/
+	sortedIndex(value: T, iterator?: (x: T) =&gt; any, context?: any): number;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.range
+	**/
+	range(stop: number, step?: number): number[];
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.range
+	**/
+	range(): number[];
+
+	/* ***********
+	 * Functions *
+	************ */
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.bind
+	**/
+	bind(object: any, ...arguments: any[]): Function;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.bindAll
+	**/
+	bindAll(...methodNames: string[]): any;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.partial
+	**/
+	partial(...arguments: any[]): Function;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.memoize
+	**/
+	memoize(hashFn?: (n: any) =&gt; string): Function;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.defer
+	**/
+	defer(...arguments: any[]): void;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.delay
+	**/
+	delay(wait: number, ...arguments: any[]): any;
+
+	/**
+	* @see _.delay
+	**/
+	delay(...arguments: any[]): any;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.throttle
+	**/
+	throttle(wait: number, options?: _.ThrottleSettings): Function;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.debounce
+	**/
+	debounce(wait: number, immediate?: boolean): Function;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.once
+	**/
+	once(): Function;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.after
+	**/
+	after(fn: Function): Function;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.before
+	**/
+	before(fn: Function): Function;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.wrap
+	**/
+	wrap(wrapper: Function): () =&gt; Function;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.negate
+	**/
+	negate(): boolean;
+
+	/**
+	* Wrapped type &#x60;Function[]&#x60;.
+	* @see _.compose
+	**/
+	compose(...functions: Function[]): Function;
+
+	/********* *
+	 * Objects *
+	********** */
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.keys
+	**/
+	keys(): string[];
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.values
+	**/
+	values(): T[];
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.pairs
+	**/
+	pairs(): any[][];
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.invert
+	**/
+	invert(): any;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.functions
+	**/
+	functions(): string[];
+
+	/**
+	* @see _.functions
+	**/
+	methods(): string[];
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.extend
+	**/
+	extend(...sources: any[]): any;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.pick
+	**/
+	pick(...keys: any[]): any;
+	pick(keys: any[]): any;
+	pick(fn: (value: any, key: any, object: any) =&gt; any): any;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.omit
+	**/
+	omit(...keys: string[]): any;
+	omit(keys: string[]): any;
+	omit(fn: Function): any;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.defaults
+	**/
+	defaults(...defaults: any[]): any;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.clone
+	**/
+	clone(): T;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.tap
+	**/
+	tap(interceptor: (...as: any[]) =&gt; any): any;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.has
+	**/
+	has(key: string): boolean;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.matches
+	**/
+	matches&lt;TResult&gt;(): _.ListIterator&lt;T, TResult&gt;;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.property
+	**/
+	property(): (object: Object) =&gt; any;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isEqual
+	**/
+	isEqual(other: any): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isEmpty
+	**/
+	isEmpty(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isElement
+	**/
+	isElement(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isArray
+	**/
+	isArray(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isObject
+	**/
+	isObject(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isArguments
+	**/
+	isArguments(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isFunction
+	**/
+	isFunction(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isString
+	**/
+	isString(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isNumber
+	**/
+	isNumber(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isFinite
+	**/
+	isFinite(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isBoolean
+	**/
+	isBoolean(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isDate
+	**/
+	isDate(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isRegExp
+	**/
+	isRegExp(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isNaN
+	**/
+	isNaN(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isNull
+	**/
+	isNull(): boolean;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isUndefined
+	**/
+	isUndefined(): boolean;
+
+	/********* *
+	 * Utility *
+	********** */
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.identity
+	**/
+	identity(): any;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.constant
+	**/
+	constant(): () =&gt; T;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.noop
+	**/
+	noop(): void;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.times
+	**/
+	times&lt;TResult&gt;(iterator: (n: number) =&gt; TResult, context?: any): TResult[];
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.random
+	**/
+	random(): number;
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.random
+	**/
+	random(max: number): number;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.mixin
+	**/
+	mixin(): void;
+
+	/**
+	* Wrapped type &#x60;string|Function|Object&#x60;.
+	* @see _.iteratee
+	**/
+	iteratee(context?: any, argCount?: number): Function;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.uniqueId
+	**/
+	uniqueId(): string;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.escape
+	**/
+	escape(): string;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.unescape
+	**/
+	unescape(): string;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.result
+	**/
+	result(property: string): any;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.template
+	**/
+	template(settings?: _.TemplateSettings): (...data: any[]) =&gt; string;
+
+	/********** *
+	 * Chaining *
+	*********** */
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.chain
+	**/
+	chain(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.value
+	**/
+	value&lt;TResult&gt;(): TResult;
+}
+
+interface _Chain&lt;T&gt; {
+
+	/* *************
+	 * Collections *
+	 ************* */
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.each
+	**/
+	each(iterator: _.ListIterator&lt;T, void&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.each
+	**/
+	each(iterator: _.ObjectIterator&lt;T, void&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.each
+	**/
+	forEach(iterator: _.ListIterator&lt;T, void&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.each
+	**/
+	forEach(iterator: _.ObjectIterator&lt;T, void&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.map
+	**/
+	map&lt;TArray&gt;(iterator: _.ListIterator&lt;T, TArray[]&gt;, context?: any): _ChainOfArrays&lt;TArray&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.map
+	**/
+	map&lt;TResult&gt;(iterator: _.ListIterator&lt;T, TResult&gt;, context?: any): _Chain&lt;TResult&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.map
+	**/
+	map&lt;TArray&gt;(iterator: _.ObjectIterator&lt;T, TArray[]&gt;, context?: any): _ChainOfArrays&lt;TArray&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.map
+	**/
+	map&lt;TResult&gt;(iterator: _.ObjectIterator&lt;T, TResult&gt;, context?: any): _Chain&lt;TResult&gt;;
+
+	/**
+	* @see _.map
+	**/
+	collect&lt;TResult&gt;(iterator: _.ListIterator&lt;T, TResult&gt;, context?: any): _Chain&lt;TResult&gt;;
+
+	/**
+	* @see _.map
+	**/
+	collect&lt;TResult&gt;(iterator: _.ObjectIterator&lt;T, TResult&gt;, context?: any): _Chain&lt;TResult&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.reduce
+	**/
+	reduce&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): _ChainSingle&lt;TResult&gt;;
+
+	/**
+	* @see _.reduce
+	**/
+	inject&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): _ChainSingle&lt;TResult&gt;;
+
+	/**
+	* @see _.reduce
+	**/
+	foldl&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): _ChainSingle&lt;TResult&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.reduceRight
+	**/
+	reduceRight&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): _ChainSingle&lt;TResult&gt;;
+
+	/**
+	* @see _.reduceRight
+	**/
+	foldr&lt;TResult&gt;(iterator: _.MemoIterator&lt;T, TResult&gt;, memo?: TResult, context?: any): _ChainSingle&lt;TResult&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.find
+	**/
+	find(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): _ChainSingle&lt;T&gt;;
+
+	/**
+	* @see _.find
+	**/
+	detect(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.filter
+	**/
+	filter(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.filter
+	**/
+	select(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.where
+	**/
+	where&lt;U extends {}&gt;(properties: U): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.findWhere
+	**/
+	findWhere&lt;U extends {}&gt;(properties: U): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.reject
+	**/
+	reject(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.all
+	**/
+	all(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.all
+	**/
+	every(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.any
+	**/
+	any(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.any
+	**/
+	some(iterator?: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.contains
+	**/
+	contains(value: T): _Chain&lt;T&gt;;
+
+	/**
+	* Alias for &#x27;contains&#x27;.
+	* @see contains
+	**/
+	include(value: T): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.invoke
+	**/
+	invoke(methodName: string, ...arguments: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.pluck
+	**/
+	pluck(propertyName: string): _Chain&lt;any&gt;;
+
+	/**
+	* Wrapped type &#x60;number[]&#x60;.
+	* @see _.max
+	**/
+	max(): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.max
+	**/
+	max(iterator: _.ListIterator&lt;T, number&gt;, context?: any): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.max
+	**/
+	max(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;number[]&#x60;.
+	* @see _.min
+	**/
+	min(): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.min
+	**/
+	min(iterator: _.ListIterator&lt;T, number&gt;, context?: any): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.min
+	**/
+	min(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sortBy
+	**/
+	sortBy(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sortBy
+	**/
+	sortBy(iterator: string, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.groupBy
+	**/
+	groupBy(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): _ChainOfArrays&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.groupBy
+	**/
+	groupBy(iterator: string, context?: any): _ChainOfArrays&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.indexBy
+	**/
+	indexBy(iterator: _.ListIterator&lt;T, any&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.indexBy
+	**/
+	indexBy(iterator: string, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.countBy
+	**/
+	countBy(iterator?: _.ListIterator&lt;T, any&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.countBy
+	**/
+	countBy(iterator: string, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.shuffle
+	**/
+	shuffle(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sample
+	**/
+	sample&lt;T&gt;(n: number): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.sample
+	**/
+	sample&lt;T&gt;(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.toArray
+	**/
+	toArray(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.size
+	**/
+	size(): _Chain&lt;T&gt;;
+
+	/*********
+	* Arrays *
+	**********/
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.first
+	**/
+	first(): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.first
+	**/
+	first(n: number): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.first
+	**/
+	head(): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.first
+	**/
+	head(n: number): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.first
+	**/
+	take(): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.first
+	**/
+	take(n: number): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.initial
+	**/
+	initial(n?: number): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.last
+	**/
+	last(): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.last
+	**/
+	last(n: number): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.rest
+	**/
+	rest(n?: number): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.rest
+	**/
+	tail(n?: number): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.rest
+	**/
+	drop(n?: number): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.compact
+	**/
+	compact(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.flatten
+	**/
+	flatten(shallow?: boolean): _Chain&lt;any&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.without
+	**/
+	without(...values: T[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.partition
+	**/
+	partition(iterator: _.ListIterator&lt;T, boolean&gt;, context?: any): _Chain&lt;T[]&gt;;
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.union
+	**/
+	union(...arrays: _.List&lt;T&gt;[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.intersection
+	**/
+	intersection(...arrays: _.List&lt;T&gt;[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.difference
+	**/
+	difference(...others: _.List&lt;T&gt;[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.uniq
+	**/
+	uniq(isSorted?: boolean, iterator?: _.ListIterator&lt;T, any&gt;): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.uniq
+	**/
+	uniq&lt;TSort&gt;(iterator?: _.ListIterator&lt;T, TSort&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.uniq
+	**/
+	unique&lt;TSort&gt;(isSorted?: boolean, iterator?: _.ListIterator&lt;T, TSort&gt;): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.uniq
+	**/
+	unique&lt;TSort&gt;(iterator?: _.ListIterator&lt;T, TSort&gt;, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.zip
+	**/
+	zip(...arrays: any[][]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[][]&#x60;.
+	* @see _.object
+	**/
+	object(...keyValuePairs: any[][]): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.object
+	**/
+	object(values?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.indexOf
+	**/
+	indexOf(value: T, isSorted?: boolean): _ChainSingle&lt;T&gt;;
+
+	/**
+	* @see _.indexOf
+	**/
+	indexOf(value: T, startFrom: number): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.lastIndexOf
+	**/
+	lastIndexOf(value: T, from?: number): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.sortedIndex
+	**/
+	sortedIndex(value: T, iterator?: (x: T) =&gt; any, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.range
+	**/
+	range(stop: number, step?: number): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.range
+	**/
+	range(): _Chain&lt;T&gt;;
+
+	/* ***********
+	 * Functions *
+	************ */
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.bind
+	**/
+	bind(object: any, ...arguments: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.bindAll
+	**/
+	bindAll(...methodNames: string[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.partial
+	**/
+	partial(...arguments: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.memoize
+	**/
+	memoize(hashFn?: (n: any) =&gt; string): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.defer
+	**/
+	defer(...arguments: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.delay
+	**/
+	delay(wait: number, ...arguments: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.delay
+	**/
+	delay(...arguments: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.throttle
+	**/
+	throttle(wait: number, options?: _.ThrottleSettings): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.debounce
+	**/
+	debounce(wait: number, immediate?: boolean): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.once
+	**/
+	once(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.after
+	**/
+	after(func: Function): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.before
+	**/
+	before(fn: Function): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.wrap
+	**/
+	wrap(wrapper: Function): () =&gt; _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function&#x60;.
+	* @see _.negate
+	**/
+	negate(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;Function[]&#x60;.
+	* @see _.compose
+	**/
+	compose(...functions: Function[]): _Chain&lt;T&gt;;
+
+	/********* *
+	 * Objects *
+	********** */
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.keys
+	**/
+	keys(): _Chain&lt;string&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.values
+	**/
+	values(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.pairs
+	**/
+	pairs(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.invert
+	**/
+	invert(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.functions
+	**/
+	functions(): _Chain&lt;T&gt;;
+
+	/**
+	* @see _.functions
+	**/
+	methods(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.extend
+	**/
+	extend(...sources: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.pick
+	**/
+	pick(...keys: any[]): _Chain&lt;T&gt;;
+	pick(keys: any[]): _Chain&lt;T&gt;;
+	pick(fn: (value: any, key: any, object: any) =&gt; any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.omit
+	**/
+	omit(...keys: string[]): _Chain&lt;T&gt;;
+	omit(keys: string[]): _Chain&lt;T&gt;;
+	omit(iteratee: Function): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.defaults
+	**/
+	defaults(...defaults: any[]): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.clone
+	**/
+	clone(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.tap
+	**/
+	tap(interceptor: (...as: any[]) =&gt; any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.has
+	**/
+	has(key: string): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any[]&#x60;.
+	* @see _.matches
+	**/
+	matches&lt;TResult&gt;(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.property
+	**/
+	property(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isEqual
+	**/
+	isEqual(other: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isEmpty
+	**/
+	isEmpty(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isElement
+	**/
+	isElement(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isArray
+	**/
+	isArray(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isObject
+	**/
+	isObject(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isArguments
+	**/
+	isArguments(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isFunction
+	**/
+	isFunction(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isString
+	**/
+	isString(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isNumber
+	**/
+	isNumber(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isFinite
+	**/
+	isFinite(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isBoolean
+	**/
+	isBoolean(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isDate
+	**/
+	isDate(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isRegExp
+	**/
+	isRegExp(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isNaN
+	**/
+	isNaN(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isNull
+	**/
+	isNull(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.isUndefined
+	**/
+	isUndefined(): _Chain&lt;T&gt;;
+
+	/********* *
+	 * Utility *
+	********** */
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.identity
+	**/
+	identity(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.constant
+	**/
+	constant(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.noop
+	**/
+	noop(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.times
+	**/
+	times&lt;TResult&gt;(iterator: (n: number) =&gt; TResult, context?: any): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.random
+	**/
+	random(): _Chain&lt;T&gt;;
+	/**
+	* Wrapped type &#x60;number&#x60;.
+	* @see _.random
+	**/
+	random(max: number): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.mixin
+	**/
+	mixin(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;string|Function|Object&#x60;.
+	* @see _.iteratee
+	**/
+	iteratee(context?: any, argCount?: number): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.uniqueId
+	**/
+	uniqueId(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.escape
+	**/
+	escape(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.unescape
+	**/
+	unescape(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;object&#x60;.
+	* @see _.result
+	**/
+	result(property: string): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;string&#x60;.
+	* @see _.template
+	**/
+	template(settings?: _.TemplateSettings): (...data: any[]) =&gt; _Chain&lt;T&gt;;
+
+	/************* *
+	* Array proxy *
+	************** */
+	
+	/**
+	* Returns a new array comprised of the array on which it is called
+	* joined with the array(s) and/or value(s) provided as arguments.
+	* @param arr Arrays and/or values to concatenate into a new array. See the discussion below for details.
+	* @return A new array comprised of the array on which it is called
+	**/
+	concat(...arr: Array&lt;T[]&gt;): _Chain&lt;T&gt;;
+
+	/**
+	* Join all elements of an array into a string.
+	* @param separator Optional. Specifies a string to separate each element of the array. The separator is converted to a string if necessary. If omitted, the array elements are separated with a comma.
+	* @return The string conversions of all array elements joined into one string.
+	**/
+	join(separator?: any): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Removes the last element from an array and returns that element.
+	* @return Returns the popped element.
+	**/
+	pop(): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Adds one or more elements to the end of an array and returns the new length of the array.
+	* @param item The elements to add to the end of the array.
+	* @return The array with the element added to the end.
+	**/
+	push(...item: Array&lt;T&gt;): _Chain&lt;T&gt;;
+
+	/**
+	* Reverses an array in place. The first array element becomes the last and the last becomes the first.
+	* @return The reversed array.
+	**/
+	reverse(): _Chain&lt;T&gt;;
+
+	/**
+	* Removes the first element from an array and returns that element. This method changes the length of the array.
+	* @return The shifted element.
+	**/
+	shift(): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Returns a shallow copy of a portion of an array into a new array object.
+	* @param start Zero-based index at which to begin extraction.
+	* @param end Optional. Zero-based index at which to end extraction. slice extracts up to but not including end.
+	* @return A shallow copy of a portion of an array into a new array object.
+	**/
+	slice(start: number, end?: number): _Chain&lt;T&gt;;
+
+	/**
+	* Sorts the elements of an array in place and returns the array. The sort is not necessarily stable. The default sort order is according to string Unicode code points.
+	* @param compareFn Optional. Specifies a function that defines the sort order. If omitted, the array is sorted according to each character&#x27;s Unicode code point value, according to the string conversion of each element.
+	* @return The sorted array.
+	**/
+	sort(compareFn: (a: T, b: T) =&gt; boolean): _Chain&lt;T&gt;;
+
+	/**
+	* Changes the content of an array by removing existing elements and/or adding new elements.
+	* @param index Index at which to start changing the array. If greater than the length of the array, actual starting index will be set to the length of the array. If negative, will begin that many elements from the end.
+	* @param quantity An integer indicating the number of old array elements to remove. If deleteCount is 0, no elements are removed. In this case, you should specify at least one new element. If deleteCount is greater than the number of elements left in the array starting at index, then all of the elements through the end of the array will be deleted.
+	* @param items The element to add to the array. If you don&#x27;t specify any elements, splice will only remove elements from the array.
+	* @return An array containing the deleted elements. If only one element is removed, an array of one element is returned. If no elements are removed, an empty array is returned.
+	**/
+	splice(index: number, quantity: number, ...items: Array&lt;T&gt;): _Chain&lt;T&gt;;
+
+	/**
+	* A string representing the specified array and its elements.
+	* @return A string representing the specified array and its elements.
+	**/
+	toString(): _ChainSingle&lt;T&gt;;
+
+	/**
+	* Adds one or more elements to the beginning of an array and returns the new length of the array.
+	* @param items The elements to add to the front of the array.
+	* @return The array with the element added to the beginning.
+	**/
+	unshift(...items: Array&lt;T&gt;): _Chain&lt;T&gt;;
+
+	/********** *
+	 * Chaining *
+	*********** */
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.chain
+	**/
+	chain(): _Chain&lt;T&gt;;
+
+	/**
+	* Wrapped type &#x60;any&#x60;.
+	* @see _.value
+	**/
+	value&lt;TResult&gt;(): T[];
+}
+interface _ChainSingle&lt;T&gt; {
+	value(): T;
+}
+interface _ChainOfArrays&lt;T&gt; extends _Chain&lt;T[]&gt; {
+	flatten(): _Chain&lt;T&gt;;
+}
+
+declare var _: UnderscoreStatic;
+
+declare module &quot;underscore&quot; {
+	export = _;
+}
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
