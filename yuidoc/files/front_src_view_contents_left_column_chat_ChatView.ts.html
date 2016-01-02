@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/left_column/chat/ChatView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,98 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/left_column/chat/ChatView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../../base/BaseView&quot;);
+import SubViewOption = require(&quot;../../../base/SubViewOption&quot;);
+
+import InputView = require(&quot;./InputView&quot;);
+import MessageListView = require(&quot;./MessageListView&quot;);
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * チャット部分のViewクラス&lt;br&gt;
+ * 左カラムのチャット部分のクラスです。現在入っているチャンネル（もしくはユーザ）のチャットを表示します&lt;br&gt;
+ * 子ViewにメッセージリストView、メッセージ入力Viewを持ち管理しています
  *
- * @interface SubViewOption
+ * @class ChatView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class ChatView extends BaseView {
 
   /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
+   * メッセージリストView
    *
-   * @property bind
-   * @type {string}
+   * @property _messageListView
+   * @protected
+   * @type {MessageListView}
    */
-  bind?: string;
+  protected _messageListView: MessageListView;
 
   /**
-   * 子Viewインスタンス
+   * メッセージ入力部分のView
    *
-   * @property view
-   * @type {BaseView}
+   * @property _inputView
+   * @protected
+   * @type {InputView}
    */
-  view: BaseView;
+  protected _inputView: InputView;
+
+
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/left_column/chat/chat&quot;];
+    this._subViews = [
+      {
+        bind: &quot;_messageListView&quot;,
+        view: new MessageListView(),
+        selector: &quot;.messagelist-container&quot;
+      },
+      {
+        bind: &quot;_inputView&quot;,
+        view: new InputView(),
+        selector: &quot;.input-container&quot;
+      }
+    ];
+    super(options);
+  }
 
   /**
-   * ビューに関連付けするDOM要素のセレクタ
+   * Viewをレンダリングします
    *
-   * @property selector
-   * @type {string}
+   * @override
+   * @method render
+   * @public
+   * @return {ChatView}
    */
-  selector?: string;
+  public render(): ChatView {
+    super.render();
+    this._resizeMsgListContainer();
+    this.listenTo(this._inputView, InputView.CHANGE_HEIGHT, this._resizeMsgListContainer.bind(this));
+    return this;
+  }
+
+  /**
+   * メッセージリストViewが入るDOM要素の高さを調整します&lt;br&gt;
+   * メッセージ入力部分のViewの高さが変更した時に呼び出され、メッセージ入力部分の高さの変更に合わせてDOM要素の高さを調整します。
+   *
+   * @method _resizeMsgListContainer
+   * @protected
+   * @return {void}
+   */
+  protected _resizeMsgListContainer(): void {
+    var inputHeight: number = this._inputView.$el.height();
+    this._messageListView.$el.css({height: &quot;calc(100% - &quot; + inputHeight + &quot;px)&quot;});
+  }
+
 }
-export = SubViewOption;
+export = ChatView;
 
     </pre>
 </div>

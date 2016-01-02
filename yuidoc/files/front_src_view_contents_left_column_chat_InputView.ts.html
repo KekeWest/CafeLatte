@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/left_column/chat/InputView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,84 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/left_column/chat/InputView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../../base/BaseView&quot;);
+
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * メッセージ入力部分のViewクラス
  *
- * @interface SubViewOption
+ * @class InputView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class InputView extends BaseView {
 
   /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
+   * メッセージ入力部分の高さが変更した時に発火するイベント
    *
-   * @property bind
-   * @type {string}
+   * @event CHANGE_HEIGHT
+   * @static
    */
-  bind?: string;
+  static CHANGE_HEIGHT = &quot;InputView.CHANGE_HEIGHT&quot;;
+
+
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/left_column/chat/input&quot;];
+    super(options);
+  }
 
   /**
-   * 子Viewインスタンス
+   * elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します&lt;br&gt;
+   * &lt;br&gt;
+   * elプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。&lt;br&gt;
+   * コールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。
    *
-   * @property view
-   * @type {BaseView}
+   * @override
+   * @method _setEvents
+   * @protected
+   * @return {any} 設定するイベントとコールバック関数との関連付け
+   * @example
+   *      protected _setEvents(): any {
+   *        return {
+   *          &quot;click .dom-class&quot;: &quot;callbackMethodName&quot;
+   *        };
+   *      }
    */
-  view: BaseView;
+  protected _setEvents(): any {
+    return _.extend(super._setEvents(), {
+      &quot;input .input-area__message-input&quot;: &quot;_onInputMessage&quot;
+    });
+  }
 
   /**
-   * ビューに関連付けするDOM要素のセレクタ
+   * メッセージが入力されるたびに呼び出されるイベントハンドラ&lt;br&gt;
+   * メッセージの行数に合わせて高さを調整します。4行以上になると高さをそれ以上に高くすることはありません&lt;br&gt;
+   * 高さに変更があった場合は、高さを調整した後にInputView.CHANGE_HEIGHTイベントが発火します
    *
-   * @property selector
-   * @type {string}
+   * @method _onInputMessage
+   * @protected
+   * @return {void}
    */
-  selector?: string;
+  protected _onInputMessage(): void {
+    var str: string = this.$(&quot;.input-area__message-input&quot;).val();
+    var lineCount: number = str.split(&quot;\n&quot;).length;
+    if (1 &lt;= lineCount &amp;&amp; lineCount &lt;= 4) {
+      this.$(&quot;.input-area__message-input&quot;).attr(&quot;rows&quot;, lineCount);
+      this.trigger(InputView.CHANGE_HEIGHT);
+    }
+  }
+
 }
-export = SubViewOption;
+export = InputView;
 
     </pre>
 </div>

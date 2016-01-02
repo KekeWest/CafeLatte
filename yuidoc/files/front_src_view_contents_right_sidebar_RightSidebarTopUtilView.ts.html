@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,97 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../base/BaseView&quot;);
+
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * 右サイドバーの上部にあるユーティリティViewクラス&lt;br&gt;
+ * トグルサイドバーのトグルスイッチや設定ボタンなどが配置されています
  *
- * @interface SubViewOption
+ * @class RightSidebarTopUtilView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class RightSidebarTopUtilView extends BaseView {
 
   /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
+   * トグルサイドバーが開いているか&lt;br&gt;
+   * 開いていればtrue、閉じていればfalse
    *
-   * @property bind
-   * @type {string}
+   * @property _openTogglebar
+   * @protected
+   * @type {boolean}
    */
-  bind?: string;
+  protected _openTogglebar: boolean;
+
+
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/right_sidebar/top_util&quot;];
+    this._openTogglebar = false;
+    super(options);
+  }
 
   /**
-   * 子Viewインスタンス
+   * elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します&lt;br&gt;
+   * &lt;br&gt;
+   * elプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。&lt;br&gt;
+   * コールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。
    *
-   * @property view
-   * @type {BaseView}
+   * @override
+   * @method _setEvents
+   * @protected
+   * @return {any} 設定するイベントとコールバック関数との関連付け
+   * @example
+   *      protected _setEvents(): any {
+   *        return {
+   *          &quot;click .dom-class&quot;: &quot;callbackMethodName&quot;
+   *        };
+   *      }
    */
-  view: BaseView;
+  protected _setEvents(): any {
+    return _.extend(super._setEvents(), {
+      &quot;click .right-sidebar-top-util__togglebar-switch&quot;: &quot;changeTogglebarSwitch&quot;
+    });
+  }
 
   /**
-   * ビューに関連付けするDOM要素のセレクタ
+   * トグルサイドバーのトグルスイッチを押した時に呼ばれるイベントハンドラ&lt;br&gt;
+   * トグルサイドバーの開閉状態に合わせてトグルスイッチの矢印の方向を変えます。
+   * 引数を与えることにより矢印を任意の方向に変更することもできます
    *
-   * @property selector
-   * @type {string}
+   * @method changeTogglebarSwitch
+   * @public
+   * @param [state=null] {string} &quot;left&quot;を与えると左に、&quot;right&quot;を与えると右にトグルスイッチの矢印の方向を変えます。
+   * 何も指定しなかった場合はトグルサイドバーの状態に合わせます
+   * @return {void}
    */
-  selector?: string;
+  public changeTogglebarSwitch(state: string = null): void {
+    if (state === &quot;left&quot;) {
+      this._openTogglebar = false;
+    } else if (state === &quot;right&quot;) {
+      this._openTogglebar = true;
+    } else {
+      this._openTogglebar = !this._openTogglebar;
+    }
+
+    if (this._openTogglebar) {
+      this.$(&quot;.right-sidebar-top-util__togglebar-switch&quot;).removeClass(&quot;left&quot;).addClass(&quot;right&quot;);
+    } else {
+      this.$(&quot;.right-sidebar-top-util__togglebar-switch&quot;).removeClass(&quot;right&quot;).addClass(&quot;left&quot;);
+    }
+  }
+
 }
-export = SubViewOption;
+export = RightSidebarTopUtilView;
 
     </pre>
 </div>

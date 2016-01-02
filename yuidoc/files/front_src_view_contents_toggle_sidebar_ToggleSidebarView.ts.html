@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,50 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../base/BaseView&quot;);
+import SubViewOption = require(&quot;../../base/SubViewOption&quot;);
+
+import ToggleSidebarTopUtilView = require(&quot;./ToggleSidebarTopUtilView&quot;);
+import ServerListView = require(&quot;./ServerListView&quot;);
+
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * 右トグルサイドバーのViewクラス&lt;br&gt;
+ * 右トグルサイドバー上部のユーティリティView、サーバーリストViewを子Viewとして持ち管理しています
  *
- * @interface SubViewOption
+ * @class ToggleSidebarView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class ToggleSidebarView extends BaseView {
 
-  /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
-   *
-   * @property bind
-   * @type {string}
-   */
-  bind?: string;
-
-  /**
-   * 子Viewインスタンス
-   *
-   * @property view
-   * @type {BaseView}
-   */
-  view: BaseView;
-
-  /**
-   * ビューに関連付けするDOM要素のセレクタ
-   *
-   * @property selector
-   * @type {string}
-   */
-  selector?: string;
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/toggle_sidebar/toggle_sidebar&quot;];
+    this._subViews = [
+      {
+        bind: &quot;_toggleSidebarTopUtilView&quot;,
+        view: new ToggleSidebarTopUtilView(),
+        selector: &quot;.top-util-container&quot;
+      },
+      {
+        bind: &quot;_serverListView&quot;,
+        view: new ServerListView(),
+        selector: &quot;.server-list-container&quot;
+      }
+    ];
+    super(options);
+  }
 }
-export = SubViewOption;
+export = ToggleSidebarView;
 
     </pre>
 </div>

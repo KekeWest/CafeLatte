@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/right_sidebar/ChannelListView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,52 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/right_sidebar/ChannelListView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../base/BaseView&quot;);
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * 右サイドバーにあるチャンネルリストのViewクラス
  *
- * @interface SubViewOption
+ * @class ChannelListView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class ChannelListView extends BaseView {
+
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/right_sidebar/channel_list&quot;];
+    super(options);
+  }
 
   /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
+   * Viewをレンダリングします
    *
-   * @property bind
-   * @type {string}
+   * @override
+   * @method render
+   * @public
+   * @return {ChannelListView} 自身のインスタンス
    */
-  bind?: string;
+  public render(): ChannelListView {
+    super.render();
+    this.$(&quot;.channels&quot;).mCustomScrollbar({
+      axis: &quot;y&quot;,
+      scrollInertia: 0,
+      autoDraggerLength: true,
+      autoHideScrollbar: true
+    });
+    return this;
+  }
 
-  /**
-   * 子Viewインスタンス
-   *
-   * @property view
-   * @type {BaseView}
-   */
-  view: BaseView;
-
-  /**
-   * ビューに関連付けするDOM要素のセレクタ
-   *
-   * @property selector
-   * @type {string}
-   */
-  selector?: string;
 }
-export = SubViewOption;
+export = ChannelListView;
 
     </pre>
 </div>

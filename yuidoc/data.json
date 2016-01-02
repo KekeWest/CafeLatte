@@ -97,6 +97,105 @@
             "fors": {},
             "namespaces": {}
         },
+        "front_src/view/contents/left_column/chat/ChatView.ts": {
+            "name": "front_src/view/contents/left_column/chat/ChatView.ts",
+            "modules": {},
+            "classes": {
+                "ChatView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/left_column/chat/InputView.ts": {
+            "name": "front_src/view/contents/left_column/chat/InputView.ts",
+            "modules": {},
+            "classes": {
+                "InputView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/left_column/chat/MessageListView.ts": {
+            "name": "front_src/view/contents/left_column/chat/MessageListView.ts",
+            "modules": {},
+            "classes": {
+                "MessageListView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/left_column/globalmessages/GlobalMessageListView.ts": {
+            "name": "front_src/view/contents/left_column/globalmessages/GlobalMessageListView.ts",
+            "modules": {},
+            "classes": {
+                "GlobalMessageListView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/left_column/LeftColumnView.ts": {
+            "name": "front_src/view/contents/left_column/LeftColumnView.ts",
+            "modules": {},
+            "classes": {
+                "LeftColumnView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/right_sidebar/ChannelListView.ts": {
+            "name": "front_src/view/contents/right_sidebar/ChannelListView.ts",
+            "modules": {},
+            "classes": {
+                "ChannelListView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts": {
+            "name": "front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts",
+            "modules": {},
+            "classes": {
+                "RightSidebarTopUtilView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/right_sidebar/RightSidebarView.ts": {
+            "name": "front_src/view/contents/right_sidebar/RightSidebarView.ts",
+            "modules": {},
+            "classes": {
+                "RightSidebarView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/right_sidebar/UserListView.ts": {
+            "name": "front_src/view/contents/right_sidebar/UserListView.ts",
+            "modules": {},
+            "classes": {
+                "UserListView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/toggle_sidebar/ServerListView.ts": {
+            "name": "front_src/view/contents/toggle_sidebar/ServerListView.ts",
+            "modules": {},
+            "classes": {
+                "ServerListView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts": {
+            "name": "front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts",
+            "modules": {},
+            "classes": {
+                "ToggleSidebarView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "front_src/view/ApplicationView.ts": {
             "name": "front_src/view/ApplicationView.ts",
             "modules": {},
@@ -192,6 +291,270 @@
             "description": "ダイアログを管理するクラス",
             "extends": "BaseView",
             "is_constructor": 1
+        },
+        "ChatView": {
+            "name": "ChatView",
+            "shortname": "ChatView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/left_column/chat/ChatView.ts",
+            "line": 10,
+            "description": "チャット部分のViewクラス<br>\n左カラムのチャット部分のクラスです。現在入っているチャンネル（もしくはユーザ）のチャットを表示します<br>\n子ViewにメッセージリストView、メッセージ入力Viewを持ち管理しています",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "InputView": {
+            "name": "InputView",
+            "shortname": "InputView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/left_column/chat/InputView.ts",
+            "line": 7,
+            "description": "メッセージ入力部分のViewクラス",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "MessageListView": {
+            "name": "MessageListView",
+            "shortname": "MessageListView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/left_column/chat/MessageListView.ts",
+            "line": 7,
+            "description": "メッセージリストのViewクラス<br>\n左カラムにある相手のメッセージを表示する部分で、現在入っているチャンネル（またはユーザ）からのメッセージを表示します",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "GlobalMessageListView": {
+            "name": "GlobalMessageListView",
+            "shortname": "GlobalMessageListView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/left_column/globalmessages/GlobalMessageListView.ts",
+            "line": 6,
+            "description": "グローバルメッセージリストViewクラス<br>\n自分が入っている全チャンネル（または全ユーザ）からのメッセージすべてを表示するためのViewです",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "LeftColumnView": {
+            "name": "LeftColumnView",
+            "shortname": "LeftColumnView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/left_column/LeftColumnView.ts",
+            "line": 10,
+            "description": "左カラムViewクラス<br>\nチャット部分のView、グローバルメッセージリストViewを子Viewとして持ち管理しています",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "ChannelListView": {
+            "name": "ChannelListView",
+            "shortname": "ChannelListView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/right_sidebar/ChannelListView.ts",
+            "line": 6,
+            "description": "右サイドバーにあるチャンネルリストのViewクラス",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "RightSidebarTopUtilView": {
+            "name": "RightSidebarTopUtilView",
+            "shortname": "RightSidebarTopUtilView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts",
+            "line": 7,
+            "description": "右サイドバーの上部にあるユーティリティViewクラス<br>\nトグルサイドバーのトグルスイッチや設定ボタンなどが配置されています",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "RightSidebarView": {
+            "name": "RightSidebarView",
+            "shortname": "RightSidebarView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/right_sidebar/RightSidebarView.ts",
+            "line": 12,
+            "description": "右サイドバーのViewクラス<br>\n右サイドバー上部のユーティリティView、チャンネルリストView、ユーザーリストViewを子Viewとして持ち管理しています",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "UserListView": {
+            "name": "UserListView",
+            "shortname": "UserListView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/right_sidebar/UserListView.ts",
+            "line": 7,
+            "description": "右サイドバーにあるユーザーリストのViewクラス",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "ServerListView": {
+            "name": "ServerListView",
+            "shortname": "ServerListView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/toggle_sidebar/ServerListView.ts",
+            "line": 9,
+            "description": "右トグルサイドバーにあるサーバーリストのViewクラス",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
+        },
+        "ToggleSidebarView": {
+            "name": "ToggleSidebarView",
+            "shortname": "ToggleSidebarView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts",
+            "line": 11,
+            "description": "右トグルサイドバーのViewクラス<br>\n右トグルサイドバー上部のユーティリティView、サーバーリストViewを子Viewとして持ち管理しています",
+            "extends": "BaseView",
+            "is_constructor": 1,
+            "override": "",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ]
         },
         "ApplicationView": {
             "name": "ApplicationView",
@@ -13007,7 +13370,7 @@
         {
             "file": "front_src/view/base/BaseView.ts",
             "line": 44,
-            "description": "Viewをレンダリングします",
+            "description": "Viewをレンダリングします<br>\n自身のViewをレンダリングした後に自身が持っている子Viewをすべてレンダリングします",
             "override": "",
             "itemtype": "method",
             "name": "render",
@@ -13028,7 +13391,7 @@
         },
         {
             "file": "front_src/view/base/BaseView.ts",
-            "line": 68,
+            "line": 69,
             "description": "elプロパティに設定されているDOM要素の破棄、および、このビューに関連付けしているイベントを全て破棄します<br>\n廃棄する際は、自身が持っている子Viewのremoveメソッドを呼び出してから最後に自身をremoveします",
             "override": "",
             "itemtype": "method",
@@ -13043,7 +13406,7 @@
         },
         {
             "file": "front_src/view/base/BaseView.ts",
-            "line": 87,
+            "line": 88,
             "description": "自身が子Viewを持っているかチェックします",
             "itemtype": "method",
             "name": "hasSubViews",
@@ -13057,7 +13420,7 @@
         },
         {
             "file": "front_src/view/base/BaseView.ts",
-            "line": 102,
+            "line": 103,
             "description": "elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します<br>\n<br>\nelプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。<br>\nコールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。",
             "itemtype": "method",
             "name": "_setEvents",
@@ -13074,7 +13437,7 @@
         },
         {
             "file": "front_src/view/base/BaseView.ts",
-            "line": 122,
+            "line": 123,
             "description": "子Viewをレンダリングします",
             "itemtype": "method",
             "name": "_renderSubView",
@@ -13088,7 +13451,7 @@
         },
         {
             "file": "front_src/view/base/BaseView.ts",
-            "line": 140,
+            "line": 141,
             "description": "子Viewを自身のViewのプロパティとしてバインドします",
             "itemtype": "method",
             "name": "_bindSubView",
@@ -13454,6 +13817,325 @@
             "class": "DialogsView"
         },
         {
+            "file": "front_src/view/contents/left_column/chat/ChatView.ts",
+            "line": 23,
+            "description": "メッセージリストView",
+            "itemtype": "property",
+            "name": "_messageListView",
+            "access": "protected",
+            "tagname": "",
+            "type": "{MessageListView}",
+            "class": "ChatView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/chat/ChatView.ts",
+            "line": 32,
+            "description": "メッセージ入力部分のView",
+            "itemtype": "property",
+            "name": "_inputView",
+            "access": "protected",
+            "tagname": "",
+            "type": "{InputView}",
+            "class": "ChatView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/chat/ChatView.ts",
+            "line": 59,
+            "description": "Viewをレンダリングします",
+            "override": "",
+            "itemtype": "method",
+            "name": "render",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "ChatView"
+            },
+            "class": "ChatView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/chat/ChatView.ts",
+            "line": 74,
+            "description": "メッセージリストViewが入るDOM要素の高さを調整します<br>\nメッセージ入力部分のViewの高さが変更した時に呼び出され、メッセージ入力部分の高さの変更に合わせてDOM要素の高さを調整します。",
+            "itemtype": "method",
+            "name": "_resizeMsgListContainer",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "class": "ChatView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/chat/InputView.ts",
+            "line": 18,
+            "description": "メッセージ入力部分の高さが変更した時に発火するイベント",
+            "itemtype": "event",
+            "name": "CHANGE_HEIGHT",
+            "static": 1,
+            "class": "InputView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/chat/InputView.ts",
+            "line": 32,
+            "description": "elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します<br>\n<br>\nelプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。<br>\nコールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。",
+            "override": "",
+            "itemtype": "method",
+            "name": "_setEvents",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "設定するイベントとコールバック関数との関連付け",
+                "type": "Any"
+            },
+            "example": [
+                "\n     protected _setEvents(): any {\n       return {\n         \"click .dom-class\": \"callbackMethodName\"\n       };\n     }"
+            ],
+            "class": "InputView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/chat/InputView.ts",
+            "line": 55,
+            "description": "メッセージが入力されるたびに呼び出されるイベントハンドラ<br>\nメッセージの行数に合わせて高さを調整します。4行以上になると高さをそれ以上に高くすることはありません<br>\n高さに変更があった場合は、高さを調整した後にInputView.CHANGE_HEIGHTイベントが発火します",
+            "itemtype": "method",
+            "name": "_onInputMessage",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "class": "InputView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/LeftColumnView.ts",
+            "line": 22,
+            "description": "チャット部分のView",
+            "itemtype": "property",
+            "name": "_chatView",
+            "access": "protected",
+            "tagname": "",
+            "type": "{ChatView}",
+            "class": "LeftColumnView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/LeftColumnView.ts",
+            "line": 31,
+            "description": "グローバルメッセージリストのView",
+            "itemtype": "property",
+            "name": "_globalMessageListView",
+            "access": "protected",
+            "tagname": "",
+            "type": "{GlobalMessageListView}",
+            "class": "LeftColumnView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/LeftColumnView.ts",
+            "line": 58,
+            "description": "Viewをレンダリングします<br>\nレンダリングした後にJQueryUIのresizableを使い、チャット部分のViewをドラッグでサイズ調整できるようセッティングします",
+            "override": "",
+            "itemtype": "method",
+            "name": "render",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "LeftColumnView"
+            },
+            "class": "LeftColumnView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/LeftColumnView.ts",
+            "line": 73,
+            "description": "JQueryUIのresizableを使い、チャット部分のViewをドラッグでサイズ調整できるようセッティングします",
+            "itemtype": "method",
+            "name": "_setResizable",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "class": "LeftColumnView"
+        },
+        {
+            "file": "front_src/view/contents/left_column/LeftColumnView.ts",
+            "line": 89,
+            "description": "チャット部分Viewをドラッグによりサイズ調整しているときに呼ばれるイベントハンドラ<br>\nチャット部分のViewの高さに合わせてグローバルメッセージリストViewの高さを調整します<br>\nドラッグによるサイズ調整が終わると、チャット部分ViewとグローバルメッセージリストViewの高さ指定を%表示に戻します",
+            "itemtype": "method",
+            "name": "_resizeGlobalMsgContainer",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "JQueryイベントオブジェクト",
+                    "type": "Event"
+                },
+                {
+                    "name": "ui",
+                    "description": "",
+                    "type": "JQueryUI.ResizableUIParams"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "class": "LeftColumnView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/ChannelListView.ts",
+            "line": 22,
+            "description": "Viewをレンダリングします",
+            "override": "",
+            "itemtype": "method",
+            "name": "render",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "自身のインスタンス",
+                "type": "ChannelListView"
+            },
+            "class": "ChannelListView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts",
+            "line": 19,
+            "description": "トグルサイドバーが開いているか<br>\n開いていればtrue、閉じていればfalse",
+            "itemtype": "property",
+            "name": "_openTogglebar",
+            "access": "protected",
+            "tagname": "",
+            "type": "{boolean}",
+            "class": "RightSidebarTopUtilView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts",
+            "line": 36,
+            "description": "elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します<br>\n<br>\nelプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。<br>\nコールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。",
+            "override": "",
+            "itemtype": "method",
+            "name": "_setEvents",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "設定するイベントとコールバック関数との関連付け",
+                "type": "Any"
+            },
+            "example": [
+                "\n     protected _setEvents(): any {\n       return {\n         \"click .dom-class\": \"callbackMethodName\"\n       };\n     }"
+            ],
+            "class": "RightSidebarTopUtilView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts",
+            "line": 59,
+            "description": "トグルサイドバーのトグルスイッチを押した時に呼ばれるイベントハンドラ<br>\nトグルサイドバーの開閉状態に合わせてトグルスイッチの矢印の方向を変えます。\n引数を与えることにより矢印を任意の方向に変更することもできます",
+            "itemtype": "method",
+            "name": "changeTogglebarSwitch",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "state",
+                    "description": "\"left\"を与えると左に、\"right\"を与えると右にトグルスイッチの矢印の方向を変えます。\n何も指定しなかった場合はトグルサイドバーの状態に合わせます",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "class": "RightSidebarTopUtilView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/RightSidebarView.ts",
+            "line": 24,
+            "description": "右サイドバー上部のユーティリティView",
+            "itemtype": "property",
+            "name": "_rightSidebarTopUtilView",
+            "access": "protected",
+            "tagname": "",
+            "type": "{RightSidebarTopUtilView}",
+            "class": "RightSidebarView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/RightSidebarView.ts",
+            "line": 33,
+            "description": "チャンネルリストView",
+            "itemtype": "property",
+            "name": "_channelListView",
+            "access": "protected",
+            "tagname": "",
+            "type": "{ChannelListView}",
+            "class": "RightSidebarView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/RightSidebarView.ts",
+            "line": 42,
+            "description": "ユーザーリストView",
+            "itemtype": "property",
+            "name": "_userListView",
+            "access": "protected",
+            "tagname": "",
+            "type": "{UserListView}",
+            "class": "RightSidebarView"
+        },
+        {
+            "file": "front_src/view/contents/right_sidebar/RightSidebarView.ts",
+            "line": 74,
+            "description": "_rightSidebarTopUtilViewのゲッター",
+            "itemtype": "method",
+            "name": "rightSidebarTopUtilView",
+            "return": {
+                "description": "_rightSidebarTopUtilViewに入っているインスタンス",
+                "type": "RightSidebarTopUtilView"
+            },
+            "class": "RightSidebarView"
+        },
+        {
+            "file": "front_src/view/contents/toggle_sidebar/ServerListView.ts",
+            "line": 25,
+            "description": "elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します<br>\n<br>\nelプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。<br>\nコールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。",
+            "itemtype": "method",
+            "name": "_setEvents",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "設定するイベントとコールバック関数との関連付け",
+                "type": "Any"
+            },
+            "example": [
+                "\n     protected _setEvents(): any {\n       return {\n         \"click .dom-class\": \"callbackMethodName\"\n       };\n     }"
+            ],
+            "class": "ServerListView"
+        },
+        {
+            "file": "front_src/view/contents/toggle_sidebar/ServerListView.ts",
+            "line": 47,
+            "description": "サーバー追加ボタンを押した時に呼ばれるイベントハンドラ<br>\nサーバー追加ダイアログを表示させます",
+            "itemtype": "method",
+            "name": "_clickAddServer",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "JQueryイベントオブジェクト",
+                    "type": "JQueryEventObject"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "class": "ServerListView"
+        },
+        {
             "file": "front_src/view/ApplicationView.ts",
             "line": 27,
             "description": "右サイドバーのView",
@@ -13539,7 +14221,7 @@
         },
         {
             "message": "unknown tag: override",
-            "line": " front_src/view/base/BaseView.ts:68"
+            "line": " front_src/view/base/BaseView.ts:69"
         },
         {
             "message": "unknown tag: override",
@@ -13548,6 +14230,70 @@
         {
             "message": "unknown tag: override",
             "line": " front_src/view/contents/dialog/DialogView.ts:11"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/chat/ChatView.ts:10"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/chat/ChatView.ts:59"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/chat/InputView.ts:7"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/chat/InputView.ts:32"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/chat/MessageListView.ts:7"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/globalmessages/GlobalMessageListView.ts:6"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/LeftColumnView.ts:10"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/left_column/LeftColumnView.ts:58"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/right_sidebar/ChannelListView.ts:6"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/right_sidebar/ChannelListView.ts:22"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts:7"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/right_sidebar/RightSidebarTopUtilView.ts:36"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/right_sidebar/RightSidebarView.ts:12"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/right_sidebar/UserListView.ts:7"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/toggle_sidebar/ServerListView.ts:9"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts:11"
         },
         {
             "message": "unknown tag: override",

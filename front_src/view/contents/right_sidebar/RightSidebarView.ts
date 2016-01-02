@@ -8,13 +8,48 @@ import RightSidebarTopUtilView = require("./RightSidebarTopUtilView");
 import ChannelListView = require("./ChannelListView");
 import UserListView = require("./UserListView");
 
+
+/**
+ * 右サイドバーのViewクラス<br>
+ * 右サイドバー上部のユーティリティView、チャンネルリストView、ユーザーリストViewを子Viewとして持ち管理しています
+ *
+ * @class RightSidebarView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
+ */
 class RightSidebarView extends BaseView {
 
+  /**
+   * 右サイドバー上部のユーティリティView
+   *
+   * @property _rightSidebarTopUtilView
+   * @protected
+   * @type {RightSidebarTopUtilView}
+   */
   protected _rightSidebarTopUtilView: RightSidebarTopUtilView;
+
+  /**
+   * チャンネルリストView
+   *
+   * @property _channelListView
+   * @protected
+   * @type {ChannelListView}
+   */
   protected _channelListView: ChannelListView;
+
+  /**
+   * ユーザーリストView
+   *
+   * @property _userListView
+   * @protected
+   * @type {UserListView}
+   */
   protected _userListView: UserListView;
 
-  constructor(options?: any) {
+
+  constructor(options: any = null) {
     this._template = JST["contents/right_sidebar/right_sidebar"];
     this._subViews = [
       {
@@ -36,6 +71,12 @@ class RightSidebarView extends BaseView {
     super(options);
   }
 
+  /**
+   * _rightSidebarTopUtilViewのゲッター
+   *
+   * @method rightSidebarTopUtilView
+   * @return {RightSidebarTopUtilView} _rightSidebarTopUtilViewに入っているインスタンス
+   */
   get rightSidebarTopUtilView(): RightSidebarTopUtilView {
     return this._rightSidebarTopUtilView;
   }

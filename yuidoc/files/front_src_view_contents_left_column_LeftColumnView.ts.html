@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/left_column/LeftColumnView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,123 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/left_column/LeftColumnView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../base/BaseView&quot;);
+import SubViewOption = require(&quot;../../base/SubViewOption&quot;);
+import ChatView = require(&quot;./chat/ChatView&quot;);
+import GlobalMessageListView = require(&quot;./globalmessages/GlobalMessageListView&quot;);
+
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * 左カラムViewクラス&lt;br&gt;
+ * チャット部分のView、グローバルメッセージリストViewを子Viewとして持ち管理しています
  *
- * @interface SubViewOption
+ * @class LeftColumnView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class LeftColumnView extends BaseView {
 
   /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
+   * チャット部分のView
    *
-   * @property bind
-   * @type {string}
+   * @property _chatView
+   * @protected
+   * @type {ChatView}
    */
-  bind?: string;
+  protected _chatView: ChatView;
 
   /**
-   * 子Viewインスタンス
+   * グローバルメッセージリストのView
    *
-   * @property view
-   * @type {BaseView}
+   * @property _globalMessageListView
+   * @protected
+   * @type {GlobalMessageListView}
    */
-  view: BaseView;
+  protected _globalMessageListView: GlobalMessageListView;
+
+
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/left_column/left_column&quot;];
+    this._subViews = [
+      {
+        bind: &quot;_chatView&quot;,
+        view: new ChatView(),
+        selector: &quot;.chat-container&quot;
+      },
+      {
+        bind: &quot;_globalMessageListView&quot;,
+        view: new GlobalMessageListView(),
+        selector: &quot;.global-msg-container&quot;
+      }
+    ];
+    super(options);
+  }
 
   /**
-   * ビューに関連付けするDOM要素のセレクタ
+   * Viewをレンダリングします&lt;br&gt;
+   * レンダリングした後にJQueryUIのresizableを使い、チャット部分のViewをドラッグでサイズ調整できるようセッティングします
    *
-   * @property selector
-   * @type {string}
+   * @override
+   * @method render
+   * @public
+   * @return {LeftColumnView}
    */
-  selector?: string;
+  public render(): LeftColumnView {
+    super.render();
+    this._setResizable();
+    return this;
+  }
+
+  /**
+   * JQueryUIのresizableを使い、チャット部分のViewをドラッグでサイズ調整できるようセッティングします
+   *
+   * @method _setResizable
+   * @protected
+   * @return {void}
+   */
+  protected _setResizable(): void {
+    this._chatView.$el.resizable({
+      containment: &quot;.left-col-container&quot;,
+      handles: &quot;s&quot;,
+      resize: this._resizeGlobalMsgContainer.bind(this),
+      stop: this._resizeGlobalMsgContainer.bind(this)
+    });
+  }
+
+  /**
+   * チャット部分Viewをドラッグによりサイズ調整しているときに呼ばれるイベントハンドラ&lt;br&gt;
+   * チャット部分のViewの高さに合わせてグローバルメッセージリストViewの高さを調整します&lt;br&gt;
+   * ドラッグによるサイズ調整が終わると、チャット部分ViewとグローバルメッセージリストViewの高さ指定を%表示に戻します
+   *
+   * @method _resizeGlobalMsgContainer
+   * @protected
+   * @param event {Event} JQueryイベントオブジェクト
+   * @param ui {JQueryUI.ResizableUIParams}
+   * @return {void}
+   */
+  protected _resizeGlobalMsgContainer(
+    event: Event, ui: JQueryUI.ResizableUIParams): void {
+    if (event.type === &quot;resizestop&quot;) {
+      var globalMsgHeight: number = this._globalMessageListView.$el.height() * 100.0 / this.$el.height();
+      var chatHeight: number = 100 - globalMsgHeight;
+      this._globalMessageListView.$el.height(globalMsgHeight + &quot;%&quot;);
+      this._chatView.$el.height(chatHeight + &quot;%&quot;);
+    } else {
+      this._globalMessageListView.$el.height(this.$el.height() - ui.size.height);
+    }
+  }
+
 }
-export = SubViewOption;
+export = LeftColumnView;
 
     </pre>
 </div>

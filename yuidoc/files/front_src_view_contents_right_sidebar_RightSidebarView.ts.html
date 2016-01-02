@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/right_sidebar/RightSidebarView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,95 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/right_sidebar/RightSidebarView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../base/BaseView&quot;);
+import SubViewOption = require(&quot;../../base/SubViewOption&quot;);
+
+import RightSidebarTopUtilView = require(&quot;./RightSidebarTopUtilView&quot;);
+import ChannelListView = require(&quot;./ChannelListView&quot;);
+import UserListView = require(&quot;./UserListView&quot;);
+
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * 右サイドバーのViewクラス&lt;br&gt;
+ * 右サイドバー上部のユーティリティView、チャンネルリストView、ユーザーリストViewを子Viewとして持ち管理しています
  *
- * @interface SubViewOption
+ * @class RightSidebarView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class RightSidebarView extends BaseView {
 
   /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
+   * 右サイドバー上部のユーティリティView
    *
-   * @property bind
-   * @type {string}
+   * @property _rightSidebarTopUtilView
+   * @protected
+   * @type {RightSidebarTopUtilView}
    */
-  bind?: string;
+  protected _rightSidebarTopUtilView: RightSidebarTopUtilView;
 
   /**
-   * 子Viewインスタンス
+   * チャンネルリストView
    *
-   * @property view
-   * @type {BaseView}
+   * @property _channelListView
+   * @protected
+   * @type {ChannelListView}
    */
-  view: BaseView;
+  protected _channelListView: ChannelListView;
 
   /**
-   * ビューに関連付けするDOM要素のセレクタ
+   * ユーザーリストView
    *
-   * @property selector
-   * @type {string}
+   * @property _userListView
+   * @protected
+   * @type {UserListView}
    */
-  selector?: string;
+  protected _userListView: UserListView;
+
+
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/right_sidebar/right_sidebar&quot;];
+    this._subViews = [
+      {
+        bind: &quot;_rightSidebarTopUtilView&quot;,
+        view: new RightSidebarTopUtilView(),
+        selector: &quot;.top-util-container&quot;
+      },
+      {
+        bind: &quot;_channelListView&quot;,
+        view: new ChannelListView(),
+        selector: &quot;.channel-list-container&quot;
+      },
+      {
+        bind: &quot;_userListView&quot;,
+        view: new UserListView(),
+        selector: &quot;.user-list-container&quot;
+      }
+    ];
+    super(options);
+  }
+
+  /**
+   * _rightSidebarTopUtilViewのゲッター
+   *
+   * @method rightSidebarTopUtilView
+   * @return {RightSidebarTopUtilView} _rightSidebarTopUtilViewに入っているインスタンス
+   */
+  get rightSidebarTopUtilView(): RightSidebarTopUtilView {
+    return this._rightSidebarTopUtilView;
+  }
+
 }
-export = SubViewOption;
+export = RightSidebarView;
 
     </pre>
 </div>

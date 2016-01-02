@@ -42,7 +42,8 @@ class BaseView extends Backbone.View<Backbone.Model> {
   }
 
   /**
-   * Viewをレンダリングします
+   * Viewをレンダリングします<br>
+   * 自身のViewをレンダリングした後に自身が持っている子Viewをすべてレンダリングします
    *
    * @override
    * @method render

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/toggle_sidebar/ServerListView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,71 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/toggle_sidebar/ServerListView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import Mediator = require(&quot;../../../mediator/Mediator&quot;);
+import ViewEvent = require(&quot;../../../event/ViewEvent&quot;);
+import BaseView = require(&quot;../../base/BaseView&quot;);
+
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * 右トグルサイドバーにあるサーバーリストのViewクラス
  *
- * @interface SubViewOption
+ * @class ServerListView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class ServerListView extends BaseView {
+
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/toggle_sidebar/server_list&quot;];
+    super(options);
+  }
 
   /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
+   * elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します&lt;br&gt;
+   * &lt;br&gt;
+   * elプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。&lt;br&gt;
+   * コールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。
    *
-   * @property bind
-   * @type {string}
+   * @method _setEvents
+   * @protected
+   * @return {any} 設定するイベントとコールバック関数との関連付け
+   * @example
+   *      protected _setEvents(): any {
+   *        return {
+   *          &quot;click .dom-class&quot;: &quot;callbackMethodName&quot;
+   *        };
+   *      }
    */
-  bind?: string;
+  protected _setEvents(): any {
+    return _.extend(super._setEvents(), {
+      &quot;click .server-list__add-server&quot;: &quot;_clickAddServer&quot;
+    });
+  }
 
   /**
-   * 子Viewインスタンス
+   * サーバー追加ボタンを押した時に呼ばれるイベントハンドラ&lt;br&gt;
+   * サーバー追加ダイアログを表示させます
    *
-   * @property view
-   * @type {BaseView}
+   * @method _clickAddServer
+   * @protected
+   * @param event {JQueryEventObject} JQueryイベントオブジェクト
+   * @return {void}
    */
-  view: BaseView;
+  protected _clickAddServer(event: JQueryEventObject): void {
+    Mediator.mediator.trigger(ViewEvent.OPEN_ADD_SERVER_DIALOG);
+  }
 
-  /**
-   * ビューに関連付けするDOM要素のセレクタ
-   *
-   * @property selector
-   * @type {string}
-   */
-  selector?: string;
 }
-export = SubViewOption;
+export = ServerListView;
 
     </pre>
 </div>

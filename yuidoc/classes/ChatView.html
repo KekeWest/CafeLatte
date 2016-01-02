@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ApplicationView - CafeLatte</title>
+    <title>ChatView - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,7 +91,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1>ApplicationView Class</h1>
+<h1>ChatView Class</h1>
 <div class="box meta">
 
         <div class="extends">
@@ -99,7 +99,7 @@
         </div>
 
         <div class="foundat">
-            Defined in: <a href="../files/front_src_view_ApplicationView.ts.html#l14"><code>front_src&#x2F;view&#x2F;ApplicationView.ts:14</code></a>
+            Defined in: <a href="../files/front_src_view_contents_left_column_chat_ChatView.ts.html#l10"><code>front_src&#x2F;view&#x2F;contents&#x2F;left_column&#x2F;chat&#x2F;ChatView.ts:10</code></a>
         </div>
 
 
@@ -107,15 +107,16 @@
 
 
 <div class="box intro">
-    <p>アプリケーションのメインのViewクラス<br>
-他のViewを子Viewとして保持して管理しています</p>
+    <p>チャット部分のViewクラス<br>
+左カラムのチャット部分のクラスです。現在入っているチャンネル（もしくはユーザ）のチャットを表示します<br>
+子ViewにメッセージリストView、メッセージ入力Viewを持ち管理しています</p>
 
 </div>
 
     <div class="constructor">
         <h2>Constructor</h2>
-<div id="method_ApplicationView" class="method item">
-    <h3 class="name"><code>ApplicationView</code></h3>
+<div id="method_ChatView" class="method item">
+    <h3 class="name"><code>ChatView</code></h3>
 
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
@@ -135,7 +136,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/front_src_view_ApplicationView.ts.html#l14"><code>front_src&#x2F;view&#x2F;ApplicationView.ts:14</code></a>
+        <a href="../files/front_src_view_contents_left_column_chat_ChatView.ts.html#l10"><code>front_src&#x2F;view&#x2F;contents&#x2F;left_column&#x2F;chat&#x2F;ChatView.ts:10</code></a>
         </p>
 
 
@@ -193,12 +194,12 @@
                                 <a href="#method__renderSubView">_renderSubView</a>
 
                             </li>
-                            <li class="index-item method protected inherited">
-                                <a href="#method__setEvents">_setEvents</a>
+                            <li class="index-item method protected">
+                                <a href="#method__resizeMsgListContainer">_resizeMsgListContainer</a>
 
                             </li>
-                            <li class="index-item method protected">
-                                <a href="#method__setToggleSidebar">_setToggleSidebar</a>
+                            <li class="index-item method protected inherited">
+                                <a href="#method__setEvents">_setEvents</a>
 
                             </li>
                             <li class="index-item method public inherited">
@@ -221,11 +222,11 @@
 
                     <ul class="index-list properties extends">
                             <li class="index-item property protected">
-                                <a href="#property__leftColumnView">_leftColumnView</a>
+                                <a href="#property__inputView">_inputView</a>
 
                             </li>
                             <li class="index-item property protected">
-                                <a href="#property__rightSidebarView">_rightSidebarView</a>
+                                <a href="#property__messageListView">_messageListView</a>
 
                             </li>
                             <li class="index-item property protected inherited">
@@ -234,10 +235,6 @@
                             </li>
                             <li class="index-item property protected inherited">
                                 <a href="#property__template">_template</a>
-
-                            </li>
-                            <li class="index-item property protected">
-                                <a href="#property__toggleSidebarView">_toggleSidebarView</a>
 
                             </li>
                     </ul>
@@ -333,6 +330,49 @@
 
 
 </div>
+<div id="method__resizeMsgListContainer" class="method item protected">
+    <h3 class="name"><code>_resizeMsgListContainer</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+
+
+        <span class="flag protected">protected</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/front_src_view_contents_left_column_chat_ChatView.ts.html#l74"><code>front_src&#x2F;view&#x2F;contents&#x2F;left_column&#x2F;chat&#x2F;ChatView.ts:74</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>メッセージリストViewが入るDOM要素の高さを調整します<br>
+メッセージ入力部分のViewの高さが変更した時に呼び出され、メッセージ入力部分の高さの変更に合わせてDOM要素の高さを調整します。</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Void</span>:
+            </div>
+        </div>
+
+
+</div>
 <div id="method__setEvents" class="method item protected inherited">
     <h3 class="name"><code>_setEvents</code></h3>
 
@@ -391,48 +431,6 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
 
             </div>
         </div>
-</div>
-<div id="method__setToggleSidebar" class="method item protected">
-    <h3 class="name"><code>_setToggleSidebar</code></h3>
-
-        <span class="paren">()</span>
-
-        <span class="returns-inline">
-            <span class="type">Void</span>
-        </span>
-
-
-        <span class="flag protected">protected</span>
-
-
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/front_src_view_ApplicationView.ts.html#l99"><code>front_src&#x2F;view&#x2F;ApplicationView.ts:99</code></a>
-        </p>
-
-
-
-    </div>
-
-    <div class="description">
-        <p>右トグルサイドバーがトグルできるようにsimpleSidebarを使ってセッテイングします</p>
-
-    </div>
-
-
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                        <span class="type">Void</span>:
-            </div>
-        </div>
-
-
 </div>
 <div id="method_hasSubViews" class="method item public inherited">
     <h3 class="name"><code>hasSubViews</code></h3>
@@ -529,7 +527,7 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
         <span class="paren">()</span>
 
         <span class="returns-inline">
-            <span class="type"><a href="../classes/ApplicationView.html" class="crosslink">ApplicationView</a></span>
+            <span class="type"><a href="../classes/ChatView.html" class="crosslink">ChatView</a></span>
         </span>
 
 
@@ -545,7 +543,7 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
                 BaseView
             </a>
             but overwritten in
-        <a href="../files/front_src_view_ApplicationView.ts.html#l84"><code>front_src&#x2F;view&#x2F;ApplicationView.ts:84</code></a>
+        <a href="../files/front_src_view_contents_left_column_chat_ChatView.ts.html#l59"><code>front_src&#x2F;view&#x2F;contents&#x2F;left_column&#x2F;chat&#x2F;ChatView.ts:59</code></a>
         </p>
 
 
@@ -553,8 +551,7 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
     </div>
 
     <div class="description">
-        <p>Viewをレンダリングします<br>
-自身と子Viewをレンダリングした後、simpleSidebarを使って右トグルサイドバーがトグルできるようにセッティングします</p>
+        <p>Viewをレンダリングします</p>
 
     </div>
 
@@ -563,9 +560,7 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
             <h4>Returns:</h4>
 
             <div class="returns-description">
-                        <span class="type"><a href="../classes/ApplicationView.html" class="crosslink">ApplicationView</a></span>:
-                    <p>自身であるViewインスタンス</p>
-
+                        <span class="type"><a href="../classes/ChatView.html" class="crosslink">ChatView</a></span>:
             </div>
         </div>
 
@@ -576,9 +571,9 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
 
-<div id="property__leftColumnView" class="property item protected">
-    <h3 class="name"><code>_leftColumnView</code></h3>
-    <span class="type"><a href="../classes/LeftColumnView.html" class="crosslink">LeftColumnView</a></span>
+<div id="property__inputView" class="property item protected">
+    <h3 class="name"><code>_inputView</code></h3>
+    <span class="type"><a href="../classes/InputView.html" class="crosslink">InputView</a></span>
 
 
         <span class="flag protected">protected</span>
@@ -588,23 +583,23 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/front_src_view_ApplicationView.ts.html#l45"><code>front_src&#x2F;view&#x2F;ApplicationView.ts:45</code></a>
+        <a href="../files/front_src_view_contents_left_column_chat_ChatView.ts.html#l32"><code>front_src&#x2F;view&#x2F;contents&#x2F;left_column&#x2F;chat&#x2F;ChatView.ts:32</code></a>
         </p>
 
 
     </div>
 
     <div class="description">
-        <p>左カラムのView</p>
+        <p>メッセージ入力部分のView</p>
 
     </div>
 
 
 
 </div>
-<div id="property__rightSidebarView" class="property item protected">
-    <h3 class="name"><code>_rightSidebarView</code></h3>
-    <span class="type"><a href="../classes/RightSidebarView.html" class="crosslink">RightSidebarView</a></span>
+<div id="property__messageListView" class="property item protected">
+    <h3 class="name"><code>_messageListView</code></h3>
+    <span class="type"><a href="../classes/MessageListView.html" class="crosslink">MessageListView</a></span>
 
 
         <span class="flag protected">protected</span>
@@ -614,14 +609,14 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/front_src_view_ApplicationView.ts.html#l27"><code>front_src&#x2F;view&#x2F;ApplicationView.ts:27</code></a>
+        <a href="../files/front_src_view_contents_left_column_chat_ChatView.ts.html#l23"><code>front_src&#x2F;view&#x2F;contents&#x2F;left_column&#x2F;chat&#x2F;ChatView.ts:23</code></a>
         </p>
 
 
     </div>
 
     <div class="description">
-        <p>右サイドバーのView</p>
+        <p>メッセージリストView</p>
 
     </div>
 
@@ -674,32 +669,6 @@ elプロパティに設定されているDOM要素をルートとするDOMツリ
 
     <div class="description">
         <p>View側で扱うJST</p>
-
-    </div>
-
-
-
-</div>
-<div id="property__toggleSidebarView" class="property item protected">
-    <h3 class="name"><code>_toggleSidebarView</code></h3>
-    <span class="type"><a href="../classes/ToggleSidebarView.html" class="crosslink">ToggleSidebarView</a></span>
-
-
-        <span class="flag protected">protected</span>
-
-
-
-    <div class="meta">
-                <p>
-                Defined in
-        <a href="../files/front_src_view_ApplicationView.ts.html#l36"><code>front_src&#x2F;view&#x2F;ApplicationView.ts:36</code></a>
-        </p>
-
-
-    </div>
-
-    <div class="description">
-        <p>右トグルサイドバーのView</p>
 
     </div>
 

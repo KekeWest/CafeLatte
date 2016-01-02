@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>front_src/view/base/SubViewOption.ts - CafeLatte</title>
+    <title>front_src/view/contents/left_column/globalmessages/GlobalMessageListView.ts - CafeLatte</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -91,44 +91,34 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1 class="file-heading">File: front_src/view/base/SubViewOption.ts</h1>
+<h1 class="file-heading">File: front_src/view/contents/left_column/globalmessages/GlobalMessageListView.ts</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-import BaseView = require(&quot;./BaseView&quot;);
+import Backbone = require(&quot;backbone&quot;);
+import JST = require(&quot;jst&quot;);
+
+import BaseView = require(&quot;../../../base/BaseView&quot;);
 
 /**
- * Viewに子Viewを持たせる際のオプション
+ * グローバルメッセージリストViewクラス&lt;br&gt;
+ * 自分が入っている全チャンネル（または全ユーザ）からのメッセージすべてを表示するためのViewです
  *
- * @interface SubViewOption
+ * @class GlobalMessageListView
+ * @extends BaseView
+ * @constructor
+ * @override
+ * @param [options=null] {any}
  */
-interface SubViewOption {
+class GlobalMessageListView extends BaseView {
 
-  /**
-   * 自身のViewインスタンスのプロパティとしてバインドする際のプロパティ名
-   *
-   * @property bind
-   * @type {string}
-   */
-  bind?: string;
+  constructor(options: any = null) {
+    this._template = JST[&quot;contents/left_column/chat/global_messagelist&quot;];
+    super(options);
+  }
 
-  /**
-   * 子Viewインスタンス
-   *
-   * @property view
-   * @type {BaseView}
-   */
-  view: BaseView;
-
-  /**
-   * ビューに関連付けするDOM要素のセレクタ
-   *
-   * @property selector
-   * @type {string}
-   */
-  selector?: string;
 }
-export = SubViewOption;
+export = GlobalMessageListView;
 
     </pre>
 </div>
