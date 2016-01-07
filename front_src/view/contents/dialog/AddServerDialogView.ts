@@ -36,9 +36,7 @@ class AddServerDialogView extends DialogView {
       }
     ];
     this._dialogOption = {
-      title: "サーバー追加",
-      width: 400,
-      height: 300
+      title: "サーバー追加"
     };
     this._dialogId = AddServerDialogView.dialogName;
     super();

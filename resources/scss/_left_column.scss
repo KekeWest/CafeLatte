@@ -65,19 +65,10 @@
     }
 
     &__send-button {
+      @include common-button-cyan;
       margin: 5px 5px 5px 5px;
       height: 30px;
       width: 60px;
-      padding: 0px 0px 0px 0px;
-
-      &:focus,
-      &:hover {
-        background-color: $color-cyan;
-      }
-
-      &:active {
-        background-color: $color-darkcyan;
-      }
     }
   }
 }

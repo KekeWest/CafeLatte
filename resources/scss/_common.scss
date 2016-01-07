@@ -33,3 +33,17 @@ $sidebar-width: 200px;
   color: $color-chocolate;
   border-bottom-color: $color-chocolate;
 }
+
+@mixin common-button-cyan {
+  padding: 0px 0px 0px 0px;
+  height: 36px;
+
+  &:focus,
+  &:hover {
+    background-color: $color-cyan;
+  }
+
+  &:active {
+    background-color: $color-darkcyan;
+  }
+}
