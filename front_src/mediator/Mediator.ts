@@ -1,14 +1,18 @@
 import Backbone = require("backbone");
 
+import viewEvent = require("../event/ViewEvent");
+
+
 class Mediator {
 
-  static mediator: any;
+  public static ViewEvent = viewEvent;
 
-  static init(): void {
+  public static mediator: any;
+
+  public static init(): void {
     this.mediator = {};
     _.extend(this.mediator, Backbone.Events);
   }
 
 }
-
 export = Mediator;

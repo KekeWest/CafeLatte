@@ -2,7 +2,6 @@ import Backbone = require("backbone");
 import JST = require("jst");
 
 import Mediator = require("../../../mediator/Mediator");
-import ViewEvent = require("../../../event/ViewEvent");
 import BaseView = require("../../base/BaseView");
 
 
@@ -54,7 +53,7 @@ class ServerListView extends BaseView {
    * @return {void}
    */
   protected _clickAddServer(event: JQueryEventObject): void {
-    Mediator.mediator.trigger(ViewEvent.OPEN_ADD_SERVER_DIALOG);
+    Mediator.mediator.trigger(Mediator.ViewEvent.OPEN_ADD_SERVER_DIALOG);
   }
 
 }

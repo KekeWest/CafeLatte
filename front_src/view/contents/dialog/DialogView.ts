@@ -3,7 +3,6 @@ import JST = require("jst");
 
 import BaseView = require("../../base/BaseView");
 import Mediator = require("../../../mediator/Mediator");
-import ViewEvent = require("../../../event/ViewEvent");
 
 import DialogOption = require("./DialogOption");
 
@@ -161,7 +160,7 @@ class DialogView extends BaseView {
    */
   public close(): void {
     this._remove();
-    Mediator.mediator.trigger(ViewEvent.CLOSE_DIALOG, this);
+    Mediator.mediator.trigger(Mediator.ViewEvent.CLOSE_DIALOG, this);
   }
 
   /**

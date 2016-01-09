@@ -1,0 +1,3 @@
+interface ConnectedServerDTO extends ServerIdDTO {
+
+}

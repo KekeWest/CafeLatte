@@ -263,7 +263,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 11,
+            "line": 10,
             "description": "ダイアログViewクラス<br>\n新しくダイアログを作成する際は、このクラスを継承して作成していきます",
             "extends": "BaseView",
             "is_constructor": 1,
@@ -287,7 +287,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "front_src/view/contents/dialog/DialogsView.ts",
-            "line": 12,
+            "line": 11,
             "description": "ダイアログを管理するクラス",
             "extends": "BaseView",
             "is_constructor": 1
@@ -517,7 +517,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "front_src/view/contents/toggle_sidebar/ServerListView.ts",
-            "line": 9,
+            "line": 8,
             "description": "右トグルサイドバーにあるサーバーリストのViewクラス",
             "extends": "BaseView",
             "is_constructor": 1,
@@ -13604,7 +13604,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 23,
+            "line": 22,
             "description": "生成したダイアログViewインスタンスに割り振るID番号<br>\nIDを割り振るごとに+1ずつインクリメントされていきます",
             "itemtype": "property",
             "name": "_idNum",
@@ -13617,7 +13617,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 35,
+            "line": 34,
             "description": "ダイアログViewのID",
             "itemtype": "property",
             "name": "_dialogId",
@@ -13628,7 +13628,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 44,
+            "line": 43,
             "description": "ダイアログオプション",
             "itemtype": "property",
             "name": "_dialogOption",
@@ -13639,7 +13639,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 53,
+            "line": 52,
             "description": "デフォルト値が入ったダイアログオプションを返します",
             "itemtype": "method",
             "name": "_defaultOption",
@@ -13654,7 +13654,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 91,
+            "line": 90,
             "description": "elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します",
             "itemtype": "method",
             "name": "_setEvents",
@@ -13668,7 +13668,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 104,
+            "line": 103,
             "description": "_dialogIdのゲッター",
             "itemtype": "method",
             "name": "dialogId",
@@ -13680,7 +13680,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 114,
+            "line": 113,
             "description": "ダイアログのレンダリングをします",
             "itemtype": "method",
             "name": "render",
@@ -13703,7 +13703,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 142,
+            "line": 141,
             "description": "elプロパティに設定されているDOM要素の破棄、および、このビューに関連付けしているイベントを全て破棄します",
             "itemtype": "method",
             "name": "_remove",
@@ -13717,7 +13717,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 155,
+            "line": 154,
             "description": "ダイアログを閉じます",
             "itemtype": "method",
             "name": "close",
@@ -13731,7 +13731,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 167,
+            "line": 166,
             "description": "ダイアログのサイズを変更します<br>\nサイズは_dialogOptionのwidthとheightの値をもとにして変更します",
             "itemtype": "method",
             "name": "_resize",
@@ -13745,7 +13745,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogView.ts",
-            "line": 180,
+            "line": 179,
             "description": "ダイアログの表示する位置を調整します<br>\n表示する位置は_dialogOptionのtopとleftの値をもとにして変更します",
             "itemtype": "method",
             "name": "_adjustPosition",
@@ -13759,7 +13759,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogsView.ts",
-            "line": 22,
+            "line": 21,
             "description": "現在のz-indexの最大値",
             "itemtype": "property",
             "name": "_zIndex",
@@ -13771,7 +13771,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogsView.ts",
-            "line": 32,
+            "line": 31,
             "description": "DialogViewインスタンスを格納しておくためのオブジェクト",
             "itemtype": "property",
             "name": "_dialogs",
@@ -13783,7 +13783,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogsView.ts",
-            "line": 55,
+            "line": 54,
             "description": "サーバ追加のダイアログを出す\nダイアログが既に出ている場合はそのダイアログにフォーカスを当てる",
             "itemtype": "method",
             "name": "showAddServer",
@@ -13797,7 +13797,7 @@
         },
         {
             "file": "front_src/view/contents/dialog/DialogsView.ts",
-            "line": 76,
+            "line": 75,
             "description": "ダイアログが閉じられた場合に呼ばれるイベントハンドラ<br>\n_dialogsから閉じられたダイアログを削除する",
             "itemtype": "method",
             "name": "_removeDialog",
@@ -14099,7 +14099,7 @@
         },
         {
             "file": "front_src/view/contents/toggle_sidebar/ServerListView.ts",
-            "line": 25,
+            "line": 24,
             "description": "elプロパティに設定されているDOM要素をルートとするDOMツリー上で発火したイベントとコールバック関数との関連付けを設定します<br>\n<br>\nelプロパティに設定されているDOM要素をルートとするDOMツリーに新しいDOM要素を追加した場合にも、このeventsプロパティで設定している関連付けは動的に行われます。<br>\nコールバック関数内のthisは、ビューのインスタンスに束縛されます。また、実在しないコールバック関数名を指定すると、例外をスローします。",
             "itemtype": "method",
             "name": "_setEvents",
@@ -14116,7 +14116,7 @@
         },
         {
             "file": "front_src/view/contents/toggle_sidebar/ServerListView.ts",
-            "line": 47,
+            "line": 46,
             "description": "サーバー追加ボタンを押した時に呼ばれるイベントハンドラ<br>\nサーバー追加ダイアログを表示させます",
             "itemtype": "method",
             "name": "_clickAddServer",
@@ -14229,7 +14229,7 @@
         },
         {
             "message": "unknown tag: override",
-            "line": " front_src/view/contents/dialog/DialogView.ts:11"
+            "line": " front_src/view/contents/dialog/DialogView.ts:10"
         },
         {
             "message": "unknown tag: override",
@@ -14289,7 +14289,7 @@
         },
         {
             "message": "unknown tag: override",
-            "line": " front_src/view/contents/toggle_sidebar/ServerListView.ts:9"
+            "line": " front_src/view/contents/toggle_sidebar/ServerListView.ts:8"
         },
         {
             "message": "unknown tag: override",

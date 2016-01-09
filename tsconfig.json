@@ -7,6 +7,12 @@
   "files": [
     "./front_src/collection/base/BaseCollection.ts",
     "./front_src/collection/ServerCollection.ts",
+    "./front_src/dto/irc/ws/message/ChannelNameDTO.ts",
+    "./front_src/dto/irc/ws/message/ChannelUserDTO.ts",
+    "./front_src/dto/irc/ws/message/request/ConnectServerDTO.ts",
+    "./front_src/dto/irc/ws/message/response/ConnectedServerDTO.ts",
+    "./front_src/dto/irc/ws/message/ServerIdDTO.ts",
+    "./front_src/dto/irc/ws/message/WSMessageDTO.ts",
     "./front_src/event/ViewEvent.ts",
     "./front_src/main.ts",
     "./front_src/mediator/Mediator.ts",
@@ -46,7 +52,8 @@
     "./front_src/view/contents/toggle_sidebar/ServerListView.ts",
     "./front_src/view/contents/toggle_sidebar/ServerView.ts",
     "./front_src/view/contents/toggle_sidebar/ToggleSidebarTopUtilView.ts",
-    "./front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts"
+    "./front_src/view/contents/toggle_sidebar/ToggleSidebarView.ts",
+    "./front_src/ws/WSClient.ts"
   ],
   "atom": {
     "rewriteTsconfig": true

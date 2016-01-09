@@ -2,7 +2,6 @@ import Backbone = require("backbone");
 import JST = require("jst");
 
 import Mediator = require("../../../mediator/Mediator");
-import ViewEvent = require("../../../event/ViewEvent");
 import BaseView = require("../../base/BaseView");
 import SubViewOption = require("../../base/SubViewOption");
 
@@ -48,8 +47,8 @@ class DialogsView extends BaseView {
   }
 
   protected _startListenEvent(): void {
-    this.listenTo(Mediator.mediator, ViewEvent.OPEN_ADD_SERVER_DIALOG, this.showAddServer.bind(this));
-    this.listenTo(Mediator.mediator, ViewEvent.CLOSE_DIALOG, this._removeDialog.bind(this));
+    this.listenTo(Mediator.mediator, Mediator.ViewEvent.OPEN_ADD_SERVER_DIALOG, this.showAddServer.bind(this));
+    this.listenTo(Mediator.mediator, Mediator.ViewEvent.CLOSE_DIALOG, this._removeDialog.bind(this));
   }
 
  /**

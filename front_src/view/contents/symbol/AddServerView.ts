@@ -13,9 +13,13 @@ class AddServerView extends BaseView {
   }
 
   protected _setEvents(): any {
-    return {
+    return _.extend(super._setEvents(), {
+      "add-server__ok-button": "_onOK"
+    });
+  }
 
-    };
+  protected _onOK(): void {
+    return;
   }
 
 }
