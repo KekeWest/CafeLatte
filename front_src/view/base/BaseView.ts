@@ -81,8 +81,13 @@ class BaseView extends Backbone.View<Backbone.Model> {
         subView.view.remove();
       });
     }
+    Backbone.Validation.unbind(this);
     super.remove();
     return this;
+  }
+
+  protected _bindValidation(options: any): void {
+    Backbone.Validation.bind(this, options);
   }
 
   /**

@@ -142,10 +142,11 @@ class DialogView extends BaseView {
    * elプロパティに設定されているDOM要素の破棄、および、このビューに関連付けしているイベントを全て破棄します
    *
    * @method _remove
-   * @protected
+   * @public
+   * @override
    * @return {DialogView}
    */
-  protected _remove(): DialogView {
+  public remove(): DialogView {
     this.$el.draggable("destroy");
     super.remove();
     return this;
@@ -159,7 +160,7 @@ class DialogView extends BaseView {
    * @return {void}
    */
   public close(): void {
-    this._remove();
+    this.remove();
     Mediator.mediator.trigger(Mediator.ViewEvent.CLOSE_DIALOG, this);
   }
 

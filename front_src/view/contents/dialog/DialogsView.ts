@@ -42,11 +42,11 @@ class DialogsView extends BaseView {
     this._template = JST["contents/dialog/dialogs"];
     this._zIndex = 1000;
     this._dialogs = {};
-    this._startListenEvent();
+    this._listenTo();
     super(options);
   }
 
-  protected _startListenEvent(): void {
+  protected _listenTo(): void {
     this.listenTo(Mediator.mediator, Mediator.ViewEvent.OPEN_ADD_SERVER_DIALOG, this.showAddServer.bind(this));
     this.listenTo(Mediator.mediator, Mediator.ViewEvent.CLOSE_DIALOG, this._removeDialog.bind(this));
   }

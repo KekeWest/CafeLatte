@@ -356,6 +356,13 @@ declare module Backbone {
         undelegateEvents(): any;
 
         _ensureElement(): void;
+
+        // backbone.stickit
+        stickit(optionalModel?: TModel, optionalBindingsConfig?: any): void;
+        unstickit(optionalModel?: TModel, optionalSelector?: string): void;
+        addBinding(optionalModel: TModel, selector: string, configuration: any): void;
+        addBinding(optionalModel: TModel, configuration: any): void;
+
     }
 
     // SYNC
@@ -367,6 +374,14 @@ declare module Backbone {
     // Utility
     function noConflict(): typeof Backbone;
     var $: JQueryStatic;
+
+    // backbone.Validation
+    module Validation {
+      function configure(options: any): void;
+      function bind(view: View<Backbone.Model>, options?: any): void;
+      function unbind(view: View<Backbone.Model>, options?: any): void;
+      var callbacks: any;
+    }
 }
 
 declare module "backbone" {

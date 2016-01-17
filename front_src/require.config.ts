@@ -9,7 +9,9 @@ require.config({
     jquery_sidebar: "./bower_components/simple-sidebar/dist/jquery.simple-sidebar",
     jquery_mCustomScrollbar: "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min",
     underscore: "./bower_components/underscore/underscore",
-    backbone: "./bower_components/backbone/backbone"
+    backbone: "./bower_components/backbone/backbone",
+    backbone_stickit: "./bower_components/backbone.stickit/backbone.stickit",
+    backbone_validation: "./bower_components/backbone.validation/dist/backbone-validation-amd"
   },
 
   shim: {
@@ -34,6 +36,9 @@ require.config({
     jquery_mCustomScrollbar: {
       exports: "$",
       deps: ["jquery"]
+    },
+    backbone_stickit: {
+      deps: ["backbone"]
     }
   }
 
@@ -42,10 +47,14 @@ require.config({
 
 require(["main",
 "jquery_sidebar",
-"jquery_mCustomScrollbar"],
+"jquery_mCustomScrollbar",
+"backbone_stickit",
+"backbone_validation"],
 (Main: any,
 jquery_sidebar: any,
-jquery_mCustomScrollbar: any
+jquery_mCustomScrollbar: any,
+backbone_stickit: any,
+backbone_validation: any
 ) => {
   Main.run();
 });
