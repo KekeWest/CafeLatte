@@ -2,7 +2,6 @@ package cafelatte.irc;
 
 import java.io.IOException;
 
-import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectErrorEvent;
@@ -19,7 +18,6 @@ import org.pircbotx.hooks.types.GenericChannelUserEvent;
 import cafelatte.dto.irc.ws.message.ChannelNameDTO;
 import cafelatte.dto.irc.ws.message.ChannelUserDTO;
 import cafelatte.dto.irc.ws.message.WSMessageDTO;
-import cafelatte.dto.irc.ws.message.request.ConnectServerDTO;
 import cafelatte.dto.irc.ws.message.response.ConnectServerErrorDTO;
 import cafelatte.dto.irc.ws.message.response.ConnectedServerDTO;
 import cafelatte.dto.irc.ws.message.response.DisconnectedServerDTO;
@@ -28,7 +26,6 @@ import cafelatte.dto.irc.ws.message.response.JoinedChannelDTO;
 import cafelatte.dto.irc.ws.message.response.OutputRawLineDTO;
 import cafelatte.dto.irc.ws.message.response.PartedChannelDTO;
 import cafelatte.dto.irc.ws.message.response.ReceivedMessageDTO;
-import cafelatte.dto.irc.ws.message.response.ResponseServerIdDTO;
 
 public class Listener extends ListenerAdapter {
 
@@ -36,13 +33,6 @@ public class Listener extends ListenerAdapter {
 
 	public Listener(APIConverter apiConv) {
 		apiConverter = apiConv;
-	}
-
-	public void responseServerId(ConnectServerDTO reqDto, PircBotX bot) {
-		ResponseServerIdDTO resDto = new ResponseServerIdDTO();
-		resDto.id = reqDto.id;
-		resDto.serverId = bot.getBotId();
-		sendWSMessage(resDto);
 	}
 
 	@Override
@@ -54,7 +44,7 @@ public class Listener extends ListenerAdapter {
 			dto.statusCode = 4011;
 		}
 		dto.statusMessage = event.getException().getMessage();
-		dto.serverId = event.getBot().getBotId();
+		dto.serverId = event.getBot().getSettingId();
 		sendWSMessage(dto);
 
 	}
@@ -62,7 +52,7 @@ public class Listener extends ListenerAdapter {
 	@Override
 	public void onInput(InputEvent event) {
 		InputRawLineDTO dto = new InputRawLineDTO();
-		dto.serverId = event.getBot().getBotId();
+		dto.serverId = event.getBot().getSettingId();
 		dto.rawLine = event.getRawLine();
 		sendWSMessage(dto);
 	}
@@ -70,7 +60,7 @@ public class Listener extends ListenerAdapter {
 	@Override
 	public void onOutput(OutputEvent event) {
 		OutputRawLineDTO dto = new OutputRawLineDTO();
-		dto.serverId = event.getBot().getBotId();
+		dto.serverId = event.getBot().getSettingId();
 		dto.rawLine = event.getRawLine();
 		sendWSMessage(dto);
 	}
@@ -78,14 +68,14 @@ public class Listener extends ListenerAdapter {
 	@Override
 	public void onConnect(ConnectEvent event) {
 		ConnectedServerDTO dto = new ConnectedServerDTO();
-		dto.serverId = event.getBot().getBotId();
+		dto.serverId = event.getBot().getSettingId();
 		sendWSMessage(dto);
 	}
 
 	@Override
 	public void onDisconnect(DisconnectEvent event) {
 		DisconnectedServerDTO dto = new DisconnectedServerDTO();
-		dto.serverId = event.getBot().getBotId();
+		dto.serverId = event.getBot().getSettingId();
 		sendWSMessage(dto);
 	}
 
@@ -117,7 +107,7 @@ public class Listener extends ListenerAdapter {
 	}
 
 	protected void setChannelNameDTO(ChannelNameDTO dto, GenericChannelEvent event) {
-		dto.serverId = event.getBot().getBotId();
+		dto.serverId = event.getBot().getSettingId();
 		dto.channel = event.getChannel().getName();
 	}
 

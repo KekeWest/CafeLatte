@@ -4,27 +4,35 @@ import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.output.OutputIRC;
 
+import cafelatte.CafeLatteApplication;
+import cafelatte.domain.Server;
 import cafelatte.dto.irc.ws.message.request.ConnectServerDTO;
 import cafelatte.dto.irc.ws.message.request.JoinChannelDTO;
 import cafelatte.dto.irc.ws.message.request.QuitServerDTO;
+import cafelatte.service.ServerService;
+
 
 public class ServerHandler extends CommonHandler {
+
+	protected ServerService serverService;
 
 
 	public ServerHandler(RelayClient relayClient) {
 		super(relayClient);
+		serverService = CafeLatteApplication.getContext().getBean(ServerService.class);
 	}
 
 
 	public void connectServer(ConnectServerDTO dto) {
+		Server server = serverService.findOne(dto.serverId);
 		Configuration config = new Configuration.Builder()
-				.setName(dto.nickName)
-				.addServer(dto.serverAddr, dto.serverPort)
+				.setSettingId(server.id)
+				.setName(server.nickName)
+				.addServer(server.serverAddr, server.serverPort)
 				.addListener(relayClient.getIrcListener())
 				.buildConfiguration();
 
 		PircBotX bot = new PircBotX(config);
-		relayClient.getIrcListener().responseServerId(dto, bot);
 		relayClient.getServerManager().addBot(bot);
 	}
 
@@ -39,7 +47,7 @@ public class ServerHandler extends CommonHandler {
 
 
 	public void joinChannel(JoinChannelDTO dto) throws Exception {
-		OutputIRC outputIrc = relayClient.getServerManager().getBotById(dto.serverId).sendIRC();
+		OutputIRC outputIrc = getServer(dto.serverId).sendIRC();
 		if (dto.password != null) {
 			outputIrc.joinChannel(dto.channel, dto.password);
 		} else {

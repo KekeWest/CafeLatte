@@ -1,16 +1,8 @@
 package cafelatte.dto.irc.ws.message.request;
 
-import cafelatte.dto.irc.ws.message.WSMessageDTO;
+import cafelatte.dto.irc.ws.message.ServerIdDTO;
 
-public class ConnectServerDTO extends WSMessageDTO {
-
-	public Integer id = null;
-
-	public String nickName = null;
-
-	public String serverAddr = null;
-
-	public Integer serverPort = null;
+public class ConnectServerDTO extends ServerIdDTO {
 
 }
 
@@ -18,9 +10,6 @@ public class ConnectServerDTO extends WSMessageDTO {
 /*
 {
 "methodType":"connectServer",
-"id":0,
-"nickName":"hoge",
-"serverAddr":"192.168.1.21",
-"serverPort":6667
+"id":0
 }
 */

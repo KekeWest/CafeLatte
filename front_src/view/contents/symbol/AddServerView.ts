@@ -4,6 +4,8 @@ import JST = require("jst");
 import CommonUtil = require("../../../util/CommonUtil");
 import Mediator = require("../../../mediator/Mediator");
 
+import CollectionManager = require("../../../collection/CollectionManager");
+
 import ServerModel = require("../../../model/ServerModel");
 
 import BaseView = require("../../base/BaseView");
@@ -14,6 +16,7 @@ import SubViewOption = require("../../base/SubViewOption");
 class AddServerView extends BaseView {
 
   constructor(options?: any) {
+    this.collection = CollectionManager.serverCollection;
     if (!(options && options.model)) {
       this.model = new ServerModel();
     }
@@ -77,6 +80,7 @@ class AddServerView extends BaseView {
 
   protected _onOK(): void {
     if (this.model.isValid(true)) {
+      this.collection.add(this.model);
       this.model.save();
       Mediator.mediator.trigger(Mediator.ViewEvent.END_ADD_SERVER, this);
     }

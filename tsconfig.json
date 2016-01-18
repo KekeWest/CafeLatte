@@ -6,6 +6,7 @@
   ],
   "files": [
     "./front_src/collection/base/BaseCollection.ts",
+    "./front_src/collection/CollectionManager.ts",
     "./front_src/collection/ServerCollection.ts",
     "./front_src/dto/irc/ws/message/ChannelNameDTO.ts",
     "./front_src/dto/irc/ws/message/ChannelUserDTO.ts",

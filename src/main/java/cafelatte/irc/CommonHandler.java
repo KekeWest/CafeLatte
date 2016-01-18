@@ -20,7 +20,7 @@ public class CommonHandler {
 
 
 	protected PircBotX getServer(Integer serverId) {
-		return relayClient.getServerManager().getBotById(serverId);
+		return relayClient.getServerManager().getBotBySettingId(serverId);
 	}
 
 

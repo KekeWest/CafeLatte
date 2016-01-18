@@ -1,13 +1,13 @@
 import Backbone = require("backbone");
 
+import WSClient = require("../ws/WSClient");
+
 import BaseModel = require("./base/BaseModel");
 
 class ServerModel extends BaseModel {
 
-  public url: string;
-
   constructor(attributes?: any, options?: any) {
-    this.url = "/server";
+    this._listenTo();
     super(attributes, options);
   }
 
@@ -37,7 +37,30 @@ class ServerModel extends BaseModel {
     };
   }
 
-  public destroy(): void {
+  protected _listenTo(): void {
+    this.listenTo(this, "error", this._onError.bind(this));
+    this.listenTo(this, "sync", this._onSync.bind(this));
+  }
+
+  protected _onSync(): void {
+    this.connect();
+  }
+
+  public connect(): void {
+    var connectServerDTO: ConnectServerDTO = {
+      methodType: "connectServer",
+      serverId: this.id
+    };
+    WSClient.sendAPI(connectServerDTO);
+  }
+
+  protected _onError(model?: ServerModel, jqxhr?: JQueryXHR, options?: any): void {
+    if (!this.id) {
+      this.destroy();
+    }
+  }
+
+  public destroy(options?: Backbone.ModelDestroyOptions): any {
     this.trigger("destroy", this);
   }
 
