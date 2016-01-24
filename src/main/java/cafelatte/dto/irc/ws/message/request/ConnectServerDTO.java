@@ -10,6 +10,6 @@ public class ConnectServerDTO extends ServerIdDTO {
 /*
 {
 "methodType":"connectServer",
-"id":0
+"id":1
 }
 */
