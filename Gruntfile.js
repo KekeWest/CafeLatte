@@ -103,6 +103,10 @@ module.exports = function(grunt) {
       sass: {
         tasks: "compass:compile",
         files: ["resources/scss/**/*.scss"]
+      },
+      html: {
+        tasks: "copy:html",
+        files: ["src/main/resources/static/**/*.html"]
       }
     },
 
@@ -117,11 +121,21 @@ module.exports = function(grunt) {
           outdir: "yuidoc"
         }
       }
+    },
+
+    copy: {
+      html: {
+        expand: true,
+        cwd: "src/main/resources/static/",
+        src: ["**/*.html", "!css/**", "!img/**", "!js/**"],
+        dest: "src/main/resources/templates/"
+      }
     }
 
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-typescript');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-tslint');

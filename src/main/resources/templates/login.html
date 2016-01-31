@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>CafeLatte</title>
+    <link rel="stylesheet" type="text/css" href="js/bower_components/semantic/dist/semantic.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <body class="login-body">
+    <div class="login">
+      <h2 class="ui icon header login-header">
+        <i class="lock icon login-header__login-icon"></i>
+        <div class="content login-header__login-content">Login</div>
+      </h2>
+      <form class="ui form" action="/login" method="post">
+        <div class="field">
+          <label>ユーザー名</label>
+          <input type="text" name="userName">
+        </div>
+        <div class="field">
+          <label>パスワード</label>
+          <input type="password" name="password">
+        </div>
+        <button class="login__login-button ui teal button" type="submit">ログイン</button>
+      </form>
+    </div>
+  </body>
+</html>

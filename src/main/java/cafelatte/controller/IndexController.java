@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/")
 public class IndexController {
 
-//    /**
-//     * トップページを表示
-//     * @return テンプレートのパス
-//     */
-//	@RequestMapping(method = RequestMethod.GET)
-//    public String index() {
-//        return "index";
-//    }
+    /**
+     * トップページを表示
+     * @return テンプレートのパス
+     */
+	@RequestMapping(method = RequestMethod.GET)
+    public String index() {
+        return "index";
+    }
 
 	@RequestMapping(value = "/apitest", method = RequestMethod.GET)
 	public String test() {

@@ -7,7 +7,8 @@ require.config({
     jquery_ui: "./bower_components/jquery-ui/jquery-ui",
     semantic_ui: "./bower_components/semantic/dist/semantic",
     jquery_sidebar: "./bower_components/simple-sidebar/dist/jquery.simple-sidebar",
-    jquery_mCustomScrollbar: "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min",
+    jquery_mousewheel: "./bower_components/jquery-mousewheel/jquery.mousewheel",
+    jquery_mCustomScrollbar: "./bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar",
     underscore: "./bower_components/underscore/underscore",
     backbone: "./bower_components/backbone/backbone",
     backbone_stickit: "./bower_components/backbone.stickit/backbone.stickit",
@@ -33,9 +34,13 @@ require.config({
       exports: "$",
       deps: ["jquery_ui"]
     },
-    jquery_mCustomScrollbar: {
+    jquery_mousewheel: {
       exports: "$",
       deps: ["jquery"]
+    },
+    jquery_mCustomScrollbar: {
+      exports: "$",
+      deps: ["jquery_mousewheel"]
     },
     backbone_stickit: {
       deps: ["backbone"]
